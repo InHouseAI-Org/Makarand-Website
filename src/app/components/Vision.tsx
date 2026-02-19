@@ -1,135 +1,252 @@
 import { motion } from "motion/react";
-import { Building2, Trash2, BookOpen, Shield, Users, Droplets, CheckCircle2 } from "lucide-react";
+import {
+  Footprints,
+  Car,
+  TrafficCone,
+  Lightbulb,
+  Trash2,
+  ShoppingBag,
+  Droplets,
+  ParkingCircle,
+  Shield,
+  CheckCircle2,
+  Award,
+  Target,
+  Eye,
+  HandshakeIcon
+} from "lucide-react";
 
-const pillars = [
+const commitmentCategories = [
   {
-    icon: Building2,
-    title: "Infrastructure",
-    description: "Road reconstruction, flyover maintenance, stormwater drainage, and smart urban planning for a future-ready ward.",
-    stats: "42 Projects",
-    color: "bg-orange-50 text-orange-600",
+    icon: Footprints,
+    title: "Pedestrian Infrastructure",
+    items: [
+      "Uniform, level, and durable footpaths across the ward, built to scientific civic standards",
+      "Wheelchair-friendly slopes and safe entry exit points at all footpath crossings",
+      "Physical measures to prevent two-wheelers & illegal parking on pavements",
+      "Clear pedestrian movement without obstructions, encroachments, or uneven surfaces"
+    ]
+  },
+  {
+    icon: Car,
+    title: "Roads & Driving Safety",
+    items: [
+      "Systematic effort to keep internal roads pothole free and properly finished",
+      "Correctly designed speed-calming measures implemented after resident consultation",
+      "Alignment & correction of road surfaces, manholes, & drainage covers to improve driving safety",
+      "Better road markings and visibility at junctions and turns"
+    ]
+  },
+  {
+    icon: TrafficCone,
+    title: "Traffic Management & Signage",
+    items: [
+      "Improved visibility of traffic signals and road signs",
+      "Installation of appropriate signage only after consultation with local residents",
+      "Clear demarcation of no-parking and regulated parking zones to reduce congestion"
+    ]
+  },
+  {
+    icon: Lightbulb,
+    title: "Street Lighting & Surveillance",
+    items: [
+      "Completion of street lighting coverage across all roads and lanes",
+      "Enhanced lighting near junctions, pedestrian crossings, and public access points",
+      "Support for adequate lighting levels to improve CCTV coverage and public safety",
+      "Coordination to ensure 24x7 surveillance where demanded by residents"
+    ]
   },
   {
     icon: Trash2,
-    title: "Cleanliness & Sanitation",
-    description: "Waste management systems, public toilet renovation, and regular sanitation drives for a cleaner, healthier community.",
-    stats: "85% Coverage",
-    color: "bg-emerald-50 text-emerald-600",
+    title: "Cleanliness & Waste Systems",
+    items: [
+      "Daily, need-based waste removal systems aligned to local population density",
+      "Strengthening of segregation and collection practices across the ward",
+      "Preventing garbage accumulation at corners and public areas through better scheduling",
+      "Ongoing sanitation and hygiene measures to reduce health risks"
+    ]
   },
   {
-    icon: BookOpen,
-    title: "Education",
-    description: "School infrastructure upgrades, digital classrooms, scholarship programs, and library modernization initiatives.",
-    stats: "18 Schools",
-    color: "bg-blue-50 text-blue-600",
-  },
-  {
-    icon: Shield,
-    title: "Public Safety",
-    description: "CCTV installations, improved street lighting, pedestrian safety measures, and community watch programs.",
-    stats: "150+ CCTVs",
-    color: "bg-red-50 text-red-600",
-  },
-  {
-    icon: Users,
-    title: "Community Welfare",
-    description: "Senior citizen programs, women empowerment initiatives, health camps, and youth sports development.",
-    stats: "10K+ Beneficiaries",
-    color: "bg-purple-50 text-purple-600",
+    icon: ShoppingBag,
+    title: "Hawkers & Public Space Balance",
+    items: [
+      "Clear identification of authorised and unauthorised hawkers",
+      "Ensuring footpaths remain accessible to pedestrians",
+      "Structured solutions that balance livelihoods with public movement and safety",
+      "Creation of managed zones where required, with cleanliness accountability"
+    ]
   },
   {
     icon: Droplets,
-    title: "Water & Environment",
-    description: "Water pipeline upgrades, rainwater harvesting, tree plantation drives, and sustainable waste management.",
-    stats: "24/7 Water",
-    color: "bg-cyan-50 text-cyan-600",
+    title: "Water Security & Future Readiness",
+    items: [
+      "Support for long-term water planning for the ward as part of city-level strategy",
+      "Exploration and follow-through of water security solutions through reservoirs & infrastructure planning",
+      "Ensuring reliable, equitable water supply for residents"
+    ]
   },
+  {
+    icon: ParkingCircle,
+    title: "Parking & Mobility Management",
+    items: [
+      "Support for creation of organised additional parking solutions to meet the demand & reduce roadside congestion",
+      "Fair allocation of parking resources across residential and mixed-use areas",
+      "Reducing spillover parking that disrupts traffic and pedestrian movement"
+    ]
+  },
+  {
+    icon: Shield,
+    title: "Transparent Use of Public Funds",
+    items: [
+      "Proportionate allocation of corporator funds across all parts of the ward",
+      "Formation of a resident-led joint committee to oversee civic works",
+      "Contractor payments to be released only after inspection, approval, and satisfaction of the resident committee",
+      "Fair distribution of resources across all sections and strata of the ward"
+    ]
+  }
 ];
 
-const commitments = [
-  { target: "100%", label: "Roads repaired by 2027" },
-  { target: "Zero", label: "Unresolved grievances over 30 days" },
-  { target: "50+", label: "New CCTV installations this year" },
-  { target: "100%", label: "Digital literacy in ward schools" },
+const principles = [
+  {
+    icon: Target,
+    title: "Excellence",
+    description: "Setting new standards for civic work quality"
+  },
+  {
+    icon: Eye,
+    title: "Transparency",
+    description: "Every decision, open to public scrutiny"
+  },
+  {
+    icon: HandshakeIcon,
+    title: "Accountability",
+    description: "Results-driven governance you can measure"
+  }
 ];
 
 export function Vision({ isFullPage = false }: { isFullPage?: boolean }) {
   return (
     <section className={`${isFullPage ? "py-16 lg:py-24" : "py-16 lg:py-20"} bg-white`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-saffron mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
-            VISION & MANIFESTO
-          </p>
-          <h2 className="text-brown mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
-            Building a Better Ward, Together
-          </h2>
-          <p className="text-brown-light" style={{ fontSize: "16px", lineHeight: "1.7" }}>
-            Our development agenda is built on six key pillars — each backed by measurable targets and transparent execution.
-          </p>
-        </div>
+        {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          {/* Years Badge */}
+          <div className="inline-flex items-center gap-2 bg-saffron text-white px-5 py-2 rounded-full mb-5 shadow-md">
+            <Award className="w-4 h-4" />
+            <span className="font-bold text-xs tracking-wide">13+ YEARS OF SERVICE</span>
+          </div>
 
-        {/* Pillar Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {pillars.map((pillar, index) => (
+          {/* Main Title */}
+          <h1
+            className="text-brown mb-4"
+            style={{
+              fontSize: "clamp(32px, 4vw, 48px)",
+              fontWeight: 700,
+              fontFamily: "var(--font-family-serif)",
+              lineHeight: "1.2"
+            }}
+          >
+            Ward 226 | 2026 Commitment
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-brown-light max-w-3xl mx-auto mb-10" style={{ fontSize: "17px", lineHeight: "1.7" }}>
+            This commitment is not drafted at a desk. It is shaped by engaging conversations, trust,
+            and the everyday concerns shared by residents across Ward 226.
+          </p>
+
+          {/* Core Principles */}
+          <div className="flex items-center justify-center gap-8 flex-wrap">
+            {principles.map((principle) => (
+              <div key={principle.title} className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-saffron-light flex items-center justify-center">
+                  <principle.icon className="w-5 h-5 text-saffron" />
+                </div>
+                <div className="text-left">
+                  <p className="text-brown font-bold text-sm">{principle.title}</p>
+                  <p className="text-brown-muted text-xs">{principle.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Commitment Categories Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+          {commitmentCategories.map((category, categoryIndex) => (
             <motion.div
-              key={pillar.title}
+              key={category.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.08 }}
-              className="group bg-white border border-border rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.4, delay: categoryIndex * 0.05 }}
+              className="bg-white border border-border rounded-2xl overflow-hidden hover:shadow-xl hover:border-saffron/30 transition-all duration-300"
             >
-              <div className={`w-12 h-12 rounded-xl ${pillar.color} flex items-center justify-center mb-4`}>
-                <pillar.icon className="w-6 h-6" />
+              {/* Category Header */}
+              <div className="bg-gradient-to-r from-saffron-light to-cream p-6 border-b border-border">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-xl bg-white shadow-sm flex items-center justify-center shrink-0">
+                    <category.icon className="w-7 h-7 text-saffron" />
+                  </div>
+                  <h3 className="text-brown font-bold text-xl">{category.title}</h3>
+                </div>
               </div>
-              <h3 className="text-brown mb-2" style={{ fontSize: "18px", fontWeight: 700 }}>
-                {pillar.title}
-              </h3>
-              <p className="text-brown-light mb-4" style={{ fontSize: "14px", lineHeight: "1.7" }}>
-                {pillar.description}
-              </p>
-              <div className="pt-4 border-t border-border">
-                <span className="text-saffron" style={{ fontSize: "14px", fontWeight: 700 }}>{pillar.stats}</span>
+
+              {/* Category Items */}
+              <div className="p-6 space-y-3">
+                {category.items.map((item, itemIndex) => (
+                  <div
+                    key={itemIndex}
+                    className="flex items-start gap-3 group"
+                  >
+                    <div className="shrink-0 mt-1">
+                      <CheckCircle2 className="w-5 h-5 text-saffron" />
+                    </div>
+                    <p className="text-brown-light text-sm leading-relaxed">
+                      {item}
+                    </p>
+                  </div>
+                ))}
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Pledge Section */}
-        <div className="bg-brown rounded-2xl p-8 lg:p-12 text-white">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            <div>
-              <p className="text-saffron mb-3" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
-                OUR PLEDGE
-              </p>
-              <h3 className="mb-4" style={{ fontSize: "clamp(24px, 3vw, 32px)", fontWeight: 700, fontFamily: "var(--font-family-serif)", lineHeight: "1.3" }}>
-                Measurable Commitments,<br />
-                Accountable Governance
-              </h3>
-              <p className="text-white/70 mb-6" style={{ fontSize: "15px", lineHeight: "1.7" }}>
-                Every promise comes with a deadline and a metric. We believe in holding ourselves 
-                accountable to the people we serve — transparently and consistently.
-              </p>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-saffron mt-0.5 shrink-0" />
-                <p className="text-white/80" style={{ fontSize: "14px", lineHeight: "1.6" }}>
-                  Quarterly progress reports published online for all ongoing projects.
-                </p>
-              </div>
-            </div>
+        {/* The 2026 Commitment Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-br from-brown via-brown-dark to-brown text-white rounded-2xl p-8 lg:p-10 text-center"
+        >
+          <p className="text-saffron font-bold text-sm tracking-widest mb-3">THE 2026 COMMITMENT</p>
+          <h3
+            className="mb-6"
+            style={{
+              fontSize: "clamp(28px, 3.5vw, 40px)",
+              fontWeight: 700,
+              fontFamily: "var(--font-family-serif)"
+            }}
+          >
+            Excellence, Transparency & Accountability
+          </h3>
+          <p className="text-white/80 max-w-3xl mx-auto" style={{ fontSize: "16px", lineHeight: "1.7" }}>
+            This commitment is about excellence, transparency, and accountability in civic work.
+            I look forward to staying engaged with you and assure you of my continued availability.
+            I seek your valuable support as we take this commitment forward into 2026 and beyond.
+          </p>
+        </motion.div>
 
-            <div className="grid grid-cols-2 gap-4">
-              {commitments.map((item) => (
-                <div key={item.label} className="bg-white/10 rounded-xl p-5 backdrop-blur-sm">
-                  <p className="text-saffron mb-1" style={{ fontSize: "28px", fontWeight: 800 }}>{item.target}</p>
-                  <p className="text-white/70" style={{ fontSize: "13px", lineHeight: "1.5" }}>{item.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        {/* Closing Statement */}
+        <p className="text-brown-muted text-sm italic text-center mt-8">
+          A commitment born from conversations, delivered through action
+        </p>
       </div>
     </section>
   );

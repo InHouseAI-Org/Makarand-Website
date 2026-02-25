@@ -48,13 +48,13 @@ export function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-saffron mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
+          <p className="text-emerald mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
             TESTIMONIALS
           </p>
-          <h2 className="text-brown mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+          <h2 className="text-charcoal mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
             Voices from the Community
           </h2>
-          <p className="text-brown-light" style={{ fontSize: "16px", lineHeight: "1.7" }}>
+          <p className="text-charcoal-light" style={{ fontSize: "16px", lineHeight: "1.7" }}>
             Hear from the citizens and community leaders about the impact of development work in our ward.
           </p>
         </div>
@@ -70,15 +70,15 @@ export function Testimonials() {
               transition={{ delay: index * 0.08 }}
               className="bg-white rounded-xl p-6 border border-border hover:shadow-lg transition-all"
             >
-              <Quote className="w-8 h-8 text-saffron/30 mb-4" />
-              <p className="text-brown-light mb-6" style={{ fontSize: "15px", lineHeight: "1.7", fontStyle: "italic" }}>
+              <Quote className="w-8 h-8 text-emerald/30 mb-4" />
+              <p className="text-charcoal-light mb-6" style={{ fontSize: "15px", lineHeight: "1.7", fontStyle: "italic" }}>
                 "{item.quote}"
               </p>
               <div className="flex items-center gap-3 pt-4 border-t border-border">
                 <img src={item.image} alt={item.name} className="w-11 h-11 rounded-full object-cover" />
                 <div>
-                  <p className="text-brown" style={{ fontSize: "14px", fontWeight: 700 }}>{item.name}</p>
-                  <p className="text-brown-light" style={{ fontSize: "12px" }}>{item.role}</p>
+                  <p className="text-charcoal" style={{ fontSize: "14px", fontWeight: 700 }}>{item.name}</p>
+                  <p className="text-charcoal-light" style={{ fontSize: "12px" }}>{item.role}</p>
                 </div>
               </div>
             </motion.div>
@@ -86,7 +86,7 @@ export function Testimonials() {
         </div>
 
         {/* Community Leader Quotes */}
-        <div className="bg-brown rounded-2xl p-8 lg:p-12">
+        <div className="bg-charcoal rounded-2xl p-8 lg:p-12">
           <h3 className="text-white text-center mb-8" style={{ fontSize: "20px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
             Community Leader Endorsements
           </h3>
@@ -100,7 +100,7 @@ export function Testimonials() {
                 transition={{ delay: index * 0.1 }}
                 className="bg-white/10 backdrop-blur-sm rounded-xl p-6"
               >
-                <Quote className="w-6 h-6 text-saffron mb-3" />
+                <Quote className="w-6 h-6 text-emerald mb-3" />
                 <p className="text-white/80 mb-4" style={{ fontSize: "15px", lineHeight: "1.7", fontStyle: "italic" }}>
                   "{leader.quote}"
                 </p>

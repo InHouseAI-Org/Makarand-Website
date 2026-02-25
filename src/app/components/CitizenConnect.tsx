@@ -34,13 +34,13 @@ export function CitizenConnect() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-saffron mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
+          <p className="text-emerald mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
             CITIZEN CONNECT
           </p>
-          <h2 className="text-brown mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+          <h2 className="text-charcoal mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
             We're Here to Listen
           </h2>
-          <p className="text-brown-light" style={{ fontSize: "16px", lineHeight: "1.7" }}>
+          <p className="text-charcoal-light" style={{ fontSize: "16px", lineHeight: "1.7" }}>
             Reach out to us with suggestions, grievances, or if you'd like to volunteer. 
             Every voice matters in building a better ward.
           </p>
@@ -49,13 +49,13 @@ export function CitizenConnect() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Contact Info Panel */}
           <div className="lg:col-span-1">
-            <div className="bg-brown rounded-2xl p-8 text-white h-full">
+            <div className="bg-charcoal rounded-2xl p-8 text-white h-full">
               <h3 className="mb-6" style={{ fontSize: "20px", fontWeight: 700 }}>Office Information</h3>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5 text-saffron" />
+                    <MapPin className="w-5 h-5 text-emerald" />
                   </div>
                   <div>
                     <p style={{ fontSize: "14px", fontWeight: 600 }}>Office Address</p>
@@ -69,7 +69,7 @@ export function CitizenConnect() {
 
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5 text-saffron" />
+                    <Phone className="w-5 h-5 text-emerald" />
                   </div>
                   <div>
                     <p style={{ fontSize: "14px", fontWeight: 600 }}>Phone</p>
@@ -80,7 +80,7 @@ export function CitizenConnect() {
 
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
-                    <Mail className="w-5 h-5 text-saffron" />
+                    <Mail className="w-5 h-5 text-emerald" />
                   </div>
                   <div>
                     <p style={{ fontSize: "14px", fontWeight: 600 }}>Email</p>
@@ -90,7 +90,7 @@ export function CitizenConnect() {
 
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
-                    <Clock className="w-5 h-5 text-saffron" />
+                    <Clock className="w-5 h-5 text-emerald" />
                   </div>
                   <div>
                     <p style={{ fontSize: "14px", fontWeight: 600 }}>Office Hours</p>
@@ -130,8 +130,8 @@ export function CitizenConnect() {
                   onClick={() => setFormMode(tab.key)}
                   className={`flex items-center gap-2 px-5 py-2.5 rounded-xl transition-all ${
                     formMode === tab.key
-                      ? "bg-saffron text-white shadow-lg shadow-saffron/20"
-                      : "bg-cream text-brown-light border border-border hover:bg-cream-dark"
+                      ? "bg-emerald text-white shadow-lg shadow-emerald/20"
+                      : "bg-cream text-charcoal-light border border-border hover:bg-cream-dark"
                   }`}
                   style={{ fontSize: "14px", fontWeight: 600 }}
                 >
@@ -150,36 +150,36 @@ export function CitizenConnect() {
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-brown mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>Full Name *</label>
+                  <label className="block text-charcoal mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>Full Name *</label>
                   <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => updateField("name", e.target.value)}
-                    className="w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-saffron/30 focus:border-saffron outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-emerald/30 focus:border-emerald outline-none transition-all"
                     placeholder="Enter your full name"
                     style={{ fontSize: "14px" }}
                   />
                 </div>
                 <div>
-                  <label className="block text-brown mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>Phone Number *</label>
+                  <label className="block text-charcoal mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>Phone Number *</label>
                   <input
                     type="tel"
                     required
                     value={formData.phone}
                     onChange={(e) => updateField("phone", e.target.value)}
-                    className="w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-saffron/30 focus:border-saffron outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-emerald/30 focus:border-emerald outline-none transition-all"
                     placeholder="+91 98765 43210"
                     style={{ fontSize: "14px" }}
                   />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-brown mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>Email Address</label>
+                  <label className="block text-charcoal mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>Email Address</label>
                   <input
                     type="email"
                     value={formData.email}
                     onChange={(e) => updateField("email", e.target.value)}
-                    className="w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-saffron/30 focus:border-saffron outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-emerald/30 focus:border-emerald outline-none transition-all"
                     placeholder="your@email.com"
                     style={{ fontSize: "14px" }}
                   />
@@ -187,12 +187,12 @@ export function CitizenConnect() {
 
                 {formMode === "grievance" && (
                   <div className="md:col-span-2">
-                    <label className="block text-brown mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>Category *</label>
+                    <label className="block text-charcoal mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>Category *</label>
                     <select
                       required
                       value={formData.category}
                       onChange={(e) => updateField("category", e.target.value)}
-                      className="w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-saffron/30 focus:border-saffron outline-none transition-all"
+                      className="w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-emerald/30 focus:border-emerald outline-none transition-all"
                       style={{ fontSize: "14px" }}
                     >
                       <option value="">Select category</option>
@@ -208,13 +208,13 @@ export function CitizenConnect() {
 
                 {formMode === "volunteer" && (
                   <div className="md:col-span-2">
-                    <label className="block text-brown mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>Skills & Interests *</label>
+                    <label className="block text-charcoal mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>Skills & Interests *</label>
                     <input
                       type="text"
                       required
                       value={formData.skills}
                       onChange={(e) => updateField("skills", e.target.value)}
-                      className="w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-saffron/30 focus:border-saffron outline-none transition-all"
+                      className="w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-emerald/30 focus:border-emerald outline-none transition-all"
                       placeholder="e.g., Event Management, Teaching, Technical Skills"
                       style={{ fontSize: "14px" }}
                     />
@@ -222,14 +222,14 @@ export function CitizenConnect() {
                 )}
 
                 <div className="md:col-span-2">
-                  <label className="block text-brown mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>
+                  <label className="block text-charcoal mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>
                     {formMode === "contact" ? "Subject" : formMode === "grievance" ? "Issue Location" : "How would you like to help?"}
                   </label>
                   <input
                     type="text"
                     value={formData.subject}
                     onChange={(e) => updateField("subject", e.target.value)}
-                    className="w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-saffron/30 focus:border-saffron outline-none transition-all"
+                    className="w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-emerald/30 focus:border-emerald outline-none transition-all"
                     placeholder={
                       formMode === "contact" ? "What is this regarding?" :
                       formMode === "grievance" ? "Enter the location of the issue" :
@@ -240,7 +240,7 @@ export function CitizenConnect() {
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="block text-brown mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>
+                  <label className="block text-charcoal mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>
                     {formMode === "grievance" ? "Describe the Issue *" : "Message"}
                   </label>
                   <textarea
@@ -248,7 +248,7 @@ export function CitizenConnect() {
                     required={formMode === "grievance"}
                     value={formData.message}
                     onChange={(e) => updateField("message", e.target.value)}
-                    className="w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-saffron/30 focus:border-saffron outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-emerald/30 focus:border-emerald outline-none transition-all resize-none"
                     placeholder={
                       formMode === "contact" ? "Your message..." :
                       formMode === "grievance" ? "Please describe the issue in detail..." :
@@ -261,7 +261,7 @@ export function CitizenConnect() {
 
               <button
                 type="submit"
-                className="mt-6 w-full md:w-auto flex items-center justify-center gap-2 px-8 py-3.5 bg-saffron text-white rounded-xl hover:bg-saffron-dark transition-all shadow-lg shadow-saffron/20"
+                className="mt-6 w-full md:w-auto flex items-center justify-center gap-2 px-8 py-3.5 bg-emerald text-white rounded-xl hover:bg-emerald-dark transition-all shadow-lg shadow-emerald/20"
                 style={{ fontSize: "15px", fontWeight: 600 }}
               >
                 <Send className="w-4 h-4" />

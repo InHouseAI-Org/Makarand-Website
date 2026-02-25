@@ -26,13 +26,13 @@ export function WardInfo() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-saffron mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
+          <p className="text-emerald mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
             WARD INFORMATION
           </p>
-          <h2 className="text-brown mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+          <h2 className="text-charcoal mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
             Know Your Ward
           </h2>
-          <p className="text-brown-light" style={{ fontSize: "16px", lineHeight: "1.7" }}>
+          <p className="text-charcoal-light" style={{ fontSize: "16px", lineHeight: "1.7" }}>
             Everything citizens need to know about their ward — services, landmarks, development plans, and contact information.
           </p>
         </div>
@@ -46,9 +46,9 @@ export function WardInfo() {
             className="relative rounded-2xl overflow-hidden bg-cream border border-border"
           >
             <img src={IMAGES.mumbai} alt="Ward aerial view" className="w-full h-80 lg:h-full object-cover opacity-80" />
-            <div className="absolute inset-0 bg-brown/30 flex items-center justify-center">
+            <div className="absolute inset-0 bg-charcoal/30 flex items-center justify-center">
               <div className="text-center text-white p-6">
-                <MapPin className="w-12 h-12 mx-auto mb-4 text-saffron" />
+                <MapPin className="w-12 h-12 mx-auto mb-4 text-emerald" />
                 <p style={{ fontSize: "20px", fontWeight: 700 }}>Ward Map</p>
                 <p className="text-white/70 mt-2" style={{ fontSize: "14px" }}>
                   Interactive ward map coming soon
@@ -67,18 +67,18 @@ export function WardInfo() {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <h3 className="text-brown mb-6" style={{ fontSize: "22px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+            <h3 className="text-charcoal mb-6" style={{ fontSize: "22px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
               Key Landmarks
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {landmarks.map((item) => (
                 <div key={item.name} className="flex items-start gap-3 bg-cream rounded-xl p-4 border border-border">
-                  <div className="w-10 h-10 rounded-lg bg-saffron-light flex items-center justify-center shrink-0">
-                    <item.icon className="w-5 h-5 text-saffron" />
+                  <div className="w-10 h-10 rounded-lg bg-emerald-light flex items-center justify-center shrink-0">
+                    <item.icon className="w-5 h-5 text-emerald" />
                   </div>
                   <div>
-                    <p className="text-brown" style={{ fontSize: "14px", fontWeight: 700 }}>{item.name}</p>
-                    <p className="text-brown-light" style={{ fontSize: "12px" }}>{item.desc}</p>
+                    <p className="text-charcoal" style={{ fontSize: "14px", fontWeight: 700 }}>{item.name}</p>
+                    <p className="text-charcoal-light" style={{ fontSize: "12px" }}>{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -87,9 +87,9 @@ export function WardInfo() {
         </div>
 
         {/* Development Blueprint */}
-        <div className="bg-brown rounded-2xl p-8 lg:p-12 mb-16 text-white">
+        <div className="bg-charcoal rounded-2xl p-8 lg:p-12 mb-16 text-white">
           <div className="max-w-3xl mx-auto text-center">
-            <FileText className="w-10 h-10 text-saffron mx-auto mb-4" />
+            <FileText className="w-10 h-10 text-emerald mx-auto mb-4" />
             <h3 className="mb-4" style={{ fontSize: "24px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
               Development Blueprint 2025–2028
             </h3>
@@ -105,7 +105,7 @@ export function WardInfo() {
                 { val: "100%", desc: "Accountability" },
               ].map((item) => (
                 <div key={item.desc} className="bg-white/10 rounded-xl p-4 backdrop-blur-sm">
-                  <p className="text-saffron" style={{ fontSize: "22px", fontWeight: 800 }}>{item.val}</p>
+                  <p className="text-emerald" style={{ fontSize: "22px", fontWeight: 800 }}>{item.val}</p>
                   <p className="text-white/60 mt-1" style={{ fontSize: "12px" }}>{item.desc}</p>
                 </div>
               ))}
@@ -114,7 +114,7 @@ export function WardInfo() {
         </div>
 
         {/* Citizen Services */}
-        <h3 className="text-brown text-center mb-8" style={{ fontSize: "22px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+        <h3 className="text-charcoal text-center mb-8" style={{ fontSize: "22px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
           Citizen Services
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -127,12 +127,12 @@ export function WardInfo() {
               transition={{ delay: index * 0.05 }}
               className="flex items-start gap-3 bg-cream rounded-xl p-5 border border-border hover:shadow-md transition-all cursor-pointer"
             >
-              <div className="w-8 h-8 rounded-full bg-saffron/10 flex items-center justify-center shrink-0 mt-0.5">
-                <Phone className="w-4 h-4 text-saffron" />
+              <div className="w-8 h-8 rounded-full bg-emerald/10 flex items-center justify-center shrink-0 mt-0.5">
+                <Phone className="w-4 h-4 text-emerald" />
               </div>
               <div>
-                <p className="text-brown" style={{ fontSize: "15px", fontWeight: 700 }}>{service.title}</p>
-                <p className="text-brown-light" style={{ fontSize: "13px" }}>{service.desc}</p>
+                <p className="text-charcoal" style={{ fontSize: "15px", fontWeight: 700 }}>{service.title}</p>
+                <p className="text-charcoal-light" style={{ fontSize: "13px" }}>{service.desc}</p>
               </div>
             </motion.div>
           ))}

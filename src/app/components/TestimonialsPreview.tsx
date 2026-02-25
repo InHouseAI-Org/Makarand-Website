@@ -29,10 +29,10 @@ export function TestimonialsPreview() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <p className="text-saffron mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
+          <p className="text-emerald mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
             TESTIMONIALS
           </p>
-          <h2 className="text-brown mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+          <h2 className="text-charcoal mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
             Voices from the Community
           </h2>
         </div>
@@ -48,17 +48,17 @@ export function TestimonialsPreview() {
               transition={{ delay: index * 0.1 }}
               className="bg-gradient-to-br from-cream to-white border border-border rounded-2xl p-6 hover:shadow-xl transition-all"
             >
-              <Quote className="w-8 h-8 text-saffron/30 mb-4" />
-              <p className="text-brown-light mb-6" style={{ fontSize: "15px", lineHeight: "1.7", fontStyle: "italic" }}>
+              <Quote className="w-8 h-8 text-emerald/30 mb-4" />
+              <p className="text-charcoal-light mb-6" style={{ fontSize: "15px", lineHeight: "1.7", fontStyle: "italic" }}>
                 "{item.quote}"
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-saffron/10">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-emerald/10">
                   <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <p className="text-brown font-bold" style={{ fontSize: "15px" }}>{item.name}</p>
-                  <p className="text-brown-light" style={{ fontSize: "13px" }}>{item.role}</p>
+                  <p className="text-charcoal font-bold" style={{ fontSize: "15px" }}>{item.name}</p>
+                  <p className="text-charcoal-light" style={{ fontSize: "13px" }}>{item.role}</p>
                 </div>
               </div>
             </motion.div>

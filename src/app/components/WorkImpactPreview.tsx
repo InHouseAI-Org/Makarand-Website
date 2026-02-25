@@ -37,10 +37,10 @@ export function WorkImpactPreview() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <p className="text-saffron mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
+          <p className="text-emerald mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
             WORK & IMPACT
           </p>
-          <h2 className="text-brown mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+          <h2 className="text-charcoal mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
             Delivering Real Results
           </h2>
         </div>
@@ -56,11 +56,11 @@ export function WorkImpactPreview() {
               transition={{ delay: index * 0.1 }}
               className="bg-gradient-to-br from-cream to-white border border-border rounded-2xl p-6 text-center hover:shadow-lg transition-all"
             >
-              <div className="w-12 h-12 rounded-xl bg-saffron/10 flex items-center justify-center mx-auto mb-3">
-                <stat.icon className="w-6 h-6 text-saffron" />
+              <div className="w-12 h-12 rounded-xl bg-emerald/10 flex items-center justify-center mx-auto mb-3">
+                <stat.icon className="w-6 h-6 text-emerald" />
               </div>
-              <p className="text-brown font-bold mb-1" style={{ fontSize: "24px" }}>{stat.value}</p>
-              <p className="text-brown-light" style={{ fontSize: "13px" }}>{stat.label}</p>
+              <p className="text-charcoal font-bold mb-1" style={{ fontSize: "24px" }}>{stat.value}</p>
+              <p className="text-charcoal-light" style={{ fontSize: "13px" }}>{stat.label}</p>
             </motion.div>
           ))}
         </div>
@@ -83,8 +83,8 @@ export function WorkImpactPreview() {
                 </div>
               </div>
               <div className="p-5">
-                <span className="text-saffron text-xs font-bold">{project.category}</span>
-                <h3 className="text-brown mt-1 font-bold" style={{ fontSize: "16px" }}>{project.title}</h3>
+                <span className="text-emerald text-xs font-bold">{project.category}</span>
+                <h3 className="text-charcoal mt-1 font-bold" style={{ fontSize: "16px" }}>{project.title}</h3>
               </div>
             </motion.div>
           ))}
@@ -94,7 +94,7 @@ export function WorkImpactPreview() {
         <div className="text-center">
           <Link
             to="/work"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-saffron to-saffron-dark text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all hover:scale-105"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald to-emerald-dark text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all hover:scale-105"
           >
             View All Projects & Impact <ArrowRight className="w-5 h-5" />
           </Link>

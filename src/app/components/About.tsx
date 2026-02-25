@@ -49,13 +49,13 @@ export function About({ isFullPage = false }: { isFullPage?: boolean }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-saffron mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
+          <p className="text-emerald mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
             HIS JOURNEY
           </p>
-          <h2 className="text-brown mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+          <h2 className="text-charcoal mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
             From Grassroots to Governance
           </h2>
-          <p className="text-brown-light" style={{ fontSize: "16px", lineHeight: "1.7" }}>
+          <p className="text-charcoal-light" style={{ fontSize: "16px", lineHeight: "1.7" }}>
             A story of dedication, service, and unwavering commitment to the people — 
             from community volunteer to ward corporator.
           </p>
@@ -72,7 +72,7 @@ export function About({ isFullPage = false }: { isFullPage?: boolean }) {
                 className="relative rounded-2xl overflow-hidden shadow-xl"
               >
                 <img src={IMAGES.community} alt="Community service" className="w-full aspect-[4/5] object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <p className="text-white/80" style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "0.05em" }}>LEADERSHIP PHILOSOPHY</p>
                   <p className="text-white mt-2" style={{ fontSize: "18px", fontWeight: 600, fontFamily: "var(--font-family-serif)", lineHeight: "1.4" }}>
@@ -87,7 +87,7 @@ export function About({ isFullPage = false }: { isFullPage?: boolean }) {
           <div className="lg:col-span-7 order-1 lg:order-2">
             <div className="relative">
               {/* Vertical line */}
-              <div className="absolute left-6 top-0 bottom-0 w-px bg-saffron/20" />
+              <div className="absolute left-6 top-0 bottom-0 w-px bg-emerald/20" />
 
               <div className="space-y-8">
                 {displayData.map((item, index) => (
@@ -100,18 +100,18 @@ export function About({ isFullPage = false }: { isFullPage?: boolean }) {
                     className="relative pl-16"
                   >
                     {/* Timeline dot */}
-                    <div className="absolute left-0 top-0 w-12 h-12 rounded-full bg-white border-2 border-saffron/30 flex items-center justify-center shadow-sm">
-                      <item.icon className="w-5 h-5 text-saffron" />
+                    <div className="absolute left-0 top-0 w-12 h-12 rounded-full bg-white border-2 border-emerald/30 flex items-center justify-center shadow-sm">
+                      <item.icon className="w-5 h-5 text-emerald" />
                     </div>
 
                     <div className="bg-white rounded-xl p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
-                      <span className="inline-block px-3 py-1 bg-saffron-light text-saffron-dark rounded-full mb-3" style={{ fontSize: "12px", fontWeight: 700 }}>
+                      <span className="inline-block px-3 py-1 bg-emerald-light text-emerald-dark rounded-full mb-3" style={{ fontSize: "12px", fontWeight: 700 }}>
                         {item.year}
                       </span>
-                      <h3 className="text-brown mb-2" style={{ fontSize: "18px", fontWeight: 700 }}>
+                      <h3 className="text-charcoal mb-2" style={{ fontSize: "18px", fontWeight: 700 }}>
                         {item.title}
                       </h3>
-                      <p className="text-brown-light" style={{ fontSize: "14px", lineHeight: "1.7" }}>
+                      <p className="text-charcoal-light" style={{ fontSize: "14px", lineHeight: "1.7" }}>
                         {item.description}
                       </p>
                     </div>

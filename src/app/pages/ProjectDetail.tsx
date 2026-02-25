@@ -162,8 +162,8 @@ export function ProjectDetail() {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-brown mb-4" style={{ fontSize: "24px", fontWeight: 700 }}>Project Not Found</h2>
-          <Link to="/work" className="text-saffron hover:text-saffron-dark" style={{ fontSize: "15px", fontWeight: 600 }}>
+          <h2 className="text-charcoal mb-4" style={{ fontSize: "24px", fontWeight: 700 }}>Project Not Found</h2>
+          <Link to="/work" className="text-emerald hover:text-emerald-dark" style={{ fontSize: "15px", fontWeight: 600 }}>
             &larr; Back to All Projects
           </Link>
         </div>
@@ -177,7 +177,7 @@ export function ProjectDetail() {
         {/* Back Link */}
         <Link
           to="/work"
-          className="inline-flex items-center gap-2 text-brown-light hover:text-saffron transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-charcoal-light hover:text-emerald-dark transition-colors mb-8"
           style={{ fontSize: "14px", fontWeight: 500 }}
         >
           <ArrowLeft className="w-4 h-4" />
@@ -191,11 +191,11 @@ export function ProjectDetail() {
           className="relative rounded-2xl overflow-hidden mb-8"
         >
           <img src={project.image} alt={project.title} className="w-full h-64 lg:h-96 object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-brown/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent" />
           <div className="absolute bottom-6 left-6 right-6">
             <span
               className={`inline-block px-3 py-1 rounded-full text-white mb-3 ${
-                project.status === "completed" ? "bg-emerald-500" : "bg-saffron"
+                project.status === "completed" ? "bg-emerald-500" : "bg-emerald"
               }`}
               style={{ fontSize: "12px", fontWeight: 700 }}
             >
@@ -216,9 +216,9 @@ export function ProjectDetail() {
             { icon: project.status === "completed" ? CheckCircle2 : Clock, label: "Status", value: project.status === "completed" ? "Completed" : `${project.progress}% Complete` },
           ].map((meta) => (
             <div key={meta.label} className="bg-cream rounded-xl p-4 border border-border">
-              <meta.icon className="w-5 h-5 text-saffron mb-2" />
-              <p className="text-brown-light" style={{ fontSize: "12px", fontWeight: 600 }}>{meta.label}</p>
-              <p className="text-brown mt-0.5" style={{ fontSize: "14px", fontWeight: 700 }}>{meta.value}</p>
+              <meta.icon className="w-5 h-5 text-emerald mb-2" />
+              <p className="text-charcoal-light" style={{ fontSize: "12px", fontWeight: 600 }}>{meta.label}</p>
+              <p className="text-charcoal mt-0.5" style={{ fontSize: "14px", fontWeight: 700 }}>{meta.value}</p>
             </div>
           ))}
         </div>
@@ -227,15 +227,15 @@ export function ProjectDetail() {
         {project.status === "ongoing" && project.progress && (
           <div className="mb-10">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-brown" style={{ fontSize: "14px", fontWeight: 600 }}>Progress</span>
-              <span className="text-saffron" style={{ fontSize: "14px", fontWeight: 700 }}>{project.progress}%</span>
+              <span className="text-charcoal" style={{ fontSize: "14px", fontWeight: 600 }}>Progress</span>
+              <span className="text-emerald" style={{ fontSize: "14px", fontWeight: 700 }}>{project.progress}%</span>
             </div>
             <div className="w-full bg-cream-dark rounded-full h-4">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${project.progress}%` }}
                 transition={{ duration: 1.2, delay: 0.3 }}
-                className="h-4 rounded-full bg-gradient-to-r from-saffron to-saffron-dark"
+                className="h-4 rounded-full bg-gradient-to-r from-emerald to-emerald-dark"
               />
             </div>
           </div>
@@ -243,25 +243,25 @@ export function ProjectDetail() {
 
         {/* Description */}
         <div className="mb-10">
-          <h2 className="text-brown mb-4" style={{ fontSize: "22px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+          <h2 className="text-charcoal mb-4" style={{ fontSize: "22px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
             About This Project
           </h2>
-          <p className="text-brown-light" style={{ fontSize: "16px", lineHeight: "1.8" }}>
+          <p className="text-charcoal-light" style={{ fontSize: "16px", lineHeight: "1.8" }}>
             {project.description}
           </p>
         </div>
 
         {/* Details */}
         <div className="mb-10">
-          <h2 className="text-brown mb-4" style={{ fontSize: "22px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+          <h2 className="text-charcoal mb-4" style={{ fontSize: "22px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
             Key Details
           </h2>
           <div className="bg-cream rounded-xl p-6 border border-border">
             <ul className="space-y-3">
               {project.details.map((detail, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-saffron shrink-0 mt-0.5" />
-                  <span className="text-brown-light" style={{ fontSize: "15px", lineHeight: "1.6" }}>{detail}</span>
+                  <CheckCircle2 className="w-5 h-5 text-emerald shrink-0 mt-0.5" />
+                  <span className="text-charcoal-light" style={{ fontSize: "15px", lineHeight: "1.6" }}>{detail}</span>
                 </li>
               ))}
             </ul>
@@ -271,7 +271,7 @@ export function ProjectDetail() {
         {/* Gallery */}
         {project.gallery.length > 1 && (
           <div className="mb-10">
-            <h2 className="text-brown mb-4" style={{ fontSize: "22px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+            <h2 className="text-charcoal mb-4" style={{ fontSize: "22px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
               Project Gallery
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -285,13 +285,13 @@ export function ProjectDetail() {
         )}
 
         {/* CTA */}
-        <div className="bg-saffron-light rounded-xl p-6 text-center">
-          <p className="text-brown mb-4" style={{ fontSize: "16px", fontWeight: 600 }}>
+        <div className="bg-emerald-light rounded-xl p-6 text-center">
+          <p className="text-charcoal mb-4" style={{ fontSize: "16px", fontWeight: 600 }}>
             Have questions about this project?
           </p>
           <Link
             to="/connect"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-saffron text-white rounded-xl hover:bg-saffron-dark transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-emerald text-white rounded-xl hover:bg-emerald-dark transition-all"
             style={{ fontSize: "14px", fontWeight: 600 }}
           >
             Contact Our Office

@@ -8,7 +8,7 @@ export function Hero() {
     <section className="relative bg-white overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: "radial-gradient(circle at 1px 1px, #3D2B1F 1px, transparent 0)",
+        backgroundImage: "radial-gradient(circle at 1px 1px, #2D3436 1px, transparent 0)",
         backgroundSize: "40px 40px"
       }} />
 
@@ -21,20 +21,20 @@ export function Hero() {
             transition={{ duration: 0.7 }}
           >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-saffron-light rounded-full mb-6">
-              <div className="w-2 h-2 rounded-full bg-saffron animate-pulse" />
-              <span className="text-saffron-dark" style={{ fontSize: "13px", fontWeight: 600 }}>Corporator &middot; Mumbai Ward 226</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-light rounded-full mb-6">
+              <div className="w-2 h-2 rounded-full bg-emerald animate-pulse" />
+              <span className="text-emerald-dark" style={{ fontSize: "13px", fontWeight: 600 }}>Corporator &middot; Mumbai Ward 226</span>
             </div>
 
-            <h1 className="text-brown mb-6" style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 800, lineHeight: "1.15", fontFamily: "var(--font-family-serif)" }}>
+            <h1 className="text-charcoal mb-6" style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 800, lineHeight: "1.15", fontFamily: "var(--font-family-serif)" }}>
               Committed to{" "}
-              <span className="text-saffron">Development.</span>
+              <span className="text-emerald">Development.</span>
               <br />
               Dedicated to{" "}
-              <span className="text-saffron">Service.</span>
+              <span className="text-emerald">Service.</span>
             </h1>
 
-            <p className="text-brown-light max-w-lg mb-8" style={{ fontSize: "17px", lineHeight: "1.8" }}>
+            <p className="text-charcoal-light max-w-lg mb-8" style={{ fontSize: "17px", lineHeight: "1.8" }}>
               Building a cleaner, safer, and more prosperous ward through transparent governance, 
               citizen engagement, and development-focused leadership.
             </p>
@@ -47,8 +47,8 @@ export function Hero() {
                 { num: "50K+", label: "Citizens Served" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
-                  <p className="text-saffron" style={{ fontSize: "28px", fontWeight: 800 }}>{stat.num}</p>
-                  <p className="text-brown-light" style={{ fontSize: "12px", fontWeight: 500 }}>{stat.label}</p>
+                  <p className="text-emerald" style={{ fontSize: "28px", fontWeight: 800 }}>{stat.num}</p>
+                  <p className="text-charcoal-light" style={{ fontSize: "12px", fontWeight: 500 }}>{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -57,7 +57,7 @@ export function Hero() {
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/work"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-saffron text-white rounded-xl hover:bg-saffron-dark transition-all shadow-lg shadow-saffron/20"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-emerald text-white rounded-xl hover:bg-emerald-dark transition-all shadow-lg shadow-emerald/20"
                 style={{ fontSize: "15px", fontWeight: 600 }}
               >
                 <Briefcase className="w-4 h-4" />
@@ -66,7 +66,7 @@ export function Hero() {
               </Link>
               <Link
                 to="/connect"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-brown text-white rounded-xl hover:bg-brown-light transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-charcoal text-white rounded-xl hover:bg-charcoal-dark transition-all"
                 style={{ fontSize: "15px", fontWeight: 600 }}
               >
                 <MessageCircle className="w-4 h-4" />
@@ -74,7 +74,7 @@ export function Hero() {
               </Link>
               <Link
                 to="/work#ongoing"
-                className="inline-flex items-center gap-2 px-6 py-3.5 border-2 border-brown/15 text-brown rounded-xl hover:bg-cream transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3.5 border-2 border-charcoal/15 text-charcoal rounded-xl hover:bg-cream transition-all"
                 style={{ fontSize: "15px", fontWeight: 600 }}
               >
                 Ongoing Projects
@@ -91,15 +91,15 @@ export function Hero() {
           >
             <div className="relative">
               {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-full h-full bg-saffron/10 rounded-2xl" />
-              <div className="absolute -bottom-4 -left-4 w-full h-full border-2 border-saffron/20 rounded-2xl" />
+              <div className="absolute -top-4 -right-4 w-full h-full bg-emerald/10 rounded-2xl" />
+              <div className="absolute -bottom-4 -left-4 w-full h-full border-2 border-emerald/20 rounded-2xl" />
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
                 <img
                   src="makarand-image.jpeg"
                   alt="Makarand Narwekar"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brown/40 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <p className="text-white" style={{ fontSize: "20px", fontWeight: 700 }}>Makarand Narwekar</p>
                   <p className="text-white/80" style={{ fontSize: "14px" }}>Corporator, Mumbai</p>
@@ -111,7 +111,7 @@ export function Hero() {
       </div>
 
       {/* Bottom wave divider */}
-      <div className="h-1 bg-gradient-to-r from-transparent via-saffron/30 to-transparent" />
+      <div className="h-1 bg-gradient-to-r from-transparent via-emerald/30 to-transparent" />
     </section>
   );
 }

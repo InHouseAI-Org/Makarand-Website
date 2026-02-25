@@ -23,8 +23,8 @@ function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <div className="hidden sm:block">
-              <p className="text-brown" style={{ fontSize: "16px", fontWeight: 700, lineHeight: "1.2" }}>Makarand Narwekar</p>
-              <p className="text-brown-light" style={{ fontSize: "11px", fontWeight: 400 }}>Corporator &middot; Ward Development</p>
+              <p className="text-charcoal" style={{ fontSize: "16px", fontWeight: 700, lineHeight: "1.2" }}>Makarand Narwekar</p>
+              <p className="text-charcoal-light" style={{ fontSize: "11px", fontWeight: 400 }}>Corporator &middot; Ward Development</p>
             </div>
           </Link>
 
@@ -36,8 +36,8 @@ function Header() {
                 to={link.path}
                 className={`px-3 py-2 rounded-lg transition-colors ${
                   location.pathname === link.path
-                    ? "bg-saffron-light text-saffron-dark"
-                    : "text-brown-light hover:text-brown hover:bg-cream"
+                    ? "bg-emerald-light text-emerald-dark"
+                    : "text-charcoal-light hover:text-charcoal hover:bg-cream"
                 }`}
                 style={{ fontSize: "14px", fontWeight: 500 }}
               >
@@ -50,7 +50,7 @@ function Header() {
           <div className="flex items-center gap-3">
             <a
               href="tel:+919876543210"
-              className="hidden md:flex items-center gap-2 px-4 py-2 bg-saffron text-white rounded-lg hover:bg-saffron-dark transition-colors"
+              className="hidden md:flex items-center gap-2 px-4 py-2 bg-emerald text-white rounded-lg hover:bg-emerald-dark transition-colors"
               style={{ fontSize: "14px", fontWeight: 600 }}
             >
               <Phone className="w-4 h-4" />
@@ -58,7 +58,7 @@ function Header() {
             </a>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 text-brown rounded-lg hover:bg-cream"
+              className="lg:hidden p-2 text-charcoal rounded-lg hover:bg-cream"
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -77,8 +77,8 @@ function Header() {
                 onClick={() => setMobileOpen(false)}
                 className={`px-4 py-3 rounded-lg transition-colors ${
                   location.pathname === link.path
-                    ? "bg-saffron-light text-saffron-dark"
-                    : "text-brown-light hover:text-brown hover:bg-cream"
+                    ? "bg-emerald-light text-emerald-dark"
+                    : "text-charcoal-light hover:text-charcoal hover:bg-cream"
                 }`}
                 style={{ fontSize: "15px", fontWeight: 500 }}
               >
@@ -87,7 +87,7 @@ function Header() {
             ))}
             <a
               href="tel:+919876543210"
-              className="mt-2 flex items-center justify-center gap-2 px-4 py-3 bg-saffron text-white rounded-lg"
+              className="mt-2 flex items-center justify-center gap-2 px-4 py-3 bg-emerald text-white rounded-lg"
               style={{ fontSize: "15px", fontWeight: 600 }}
             >
               <Phone className="w-4 h-4" />
@@ -104,7 +104,7 @@ function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="bg-brown text-white/90">
+    <footer className="bg-charcoal text-white/90">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -124,7 +124,7 @@ function Footer() {
                 <a
                   key={i}
                   href="#"
-                  className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-saffron transition-colors"
+                  className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-emerald-dark transition-colors"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -134,11 +134,11 @@ function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-saffron mb-4" style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.05em" }}>QUICK LINKS</h4>
+            <h4 className="text-emerald mb-4" style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.05em" }}>QUICK LINKS</h4>
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-white/60 hover:text-saffron transition-colors" style={{ fontSize: "14px" }}>
+                  <Link to={link.path} className="text-white/60 hover:text-emerald-dark transition-colors" style={{ fontSize: "14px" }}>
                     {link.label}
                   </Link>
                 </li>
@@ -148,10 +148,10 @@ function Footer() {
 
           {/* Office Info */}
           <div>
-            <h4 className="text-saffron mb-4" style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.05em" }}>OFFICE</h4>
+            <h4 className="text-emerald mb-4" style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.05em" }}>OFFICE</h4>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 mt-1 text-saffron shrink-0" />
+                <MapPin className="w-4 h-4 mt-1 text-emerald shrink-0" />
                 <p className="text-white/60" style={{ fontSize: "14px", lineHeight: "1.6" }}>
                   Ward Office, Colaba Division,<br />
                   Mumbai - 400001,<br />
@@ -159,7 +159,7 @@ function Footer() {
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <Phone className="w-4 h-4 mt-1 text-saffron shrink-0" />
+                <Phone className="w-4 h-4 mt-1 text-emerald shrink-0" />
                 <div>
                   <p className="text-white/60" style={{ fontSize: "14px" }}>+91 98765 43210</p>
                   <p className="text-white/60" style={{ fontSize: "14px" }}>Mon–Sat, 10am–6pm</p>
@@ -170,7 +170,7 @@ function Footer() {
 
           {/* Party Affiliation */}
           <div>
-            <h4 className="text-saffron mb-4" style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.05em" }}>AFFILIATION</h4>
+            <h4 className="text-emerald mb-4" style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.05em" }}>AFFILIATION</h4>
             <p className="text-white/60 mb-2" style={{ fontSize: "14px" }}>
               Member, Bharatiya Janata Party (BJP)
             </p>

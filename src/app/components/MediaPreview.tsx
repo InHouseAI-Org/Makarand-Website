@@ -37,10 +37,10 @@ export function MediaPreview() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <p className="text-saffron mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
+          <p className="text-emerald mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
             MEDIA & RECOGNITION
           </p>
-          <h2 className="text-brown mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+          <h2 className="text-charcoal mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
             In the Spotlight
           </h2>
         </div>
@@ -54,8 +54,8 @@ export function MediaPreview() {
             className="bg-white rounded-2xl p-8 border border-border"
           >
             <div className="flex items-center gap-3 mb-6">
-              <Award className="w-6 h-6 text-saffron" />
-              <h3 className="text-brown" style={{ fontSize: "20px", fontWeight: 700 }}>Awards & Recognition</h3>
+              <Award className="w-6 h-6 text-emerald" />
+              <h3 className="text-charcoal" style={{ fontSize: "20px", fontWeight: 700 }}>Awards & Recognition</h3>
             </div>
             <div className="space-y-4">
               {featuredAwards.map((item, index) => (
@@ -65,11 +65,11 @@ export function MediaPreview() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="border-l-4 border-saffron pl-4 py-2"
+                  className="border-l-4 border-emerald pl-4 py-2"
                 >
-                  <span className="text-saffron" style={{ fontSize: "12px", fontWeight: 700 }}>{item.year}</span>
-                  <h4 className="text-brown mt-1" style={{ fontSize: "16px", fontWeight: 700 }}>{item.title}</h4>
-                  <p className="text-brown-light" style={{ fontSize: "13px" }}>{item.org}</p>
+                  <span className="text-emerald" style={{ fontSize: "12px", fontWeight: 700 }}>{item.year}</span>
+                  <h4 className="text-charcoal mt-1" style={{ fontSize: "16px", fontWeight: 700 }}>{item.title}</h4>
+                  <p className="text-charcoal-light" style={{ fontSize: "13px" }}>{item.org}</p>
                 </motion.div>
               ))}
             </div>
@@ -83,8 +83,8 @@ export function MediaPreview() {
             className="bg-white rounded-2xl p-8 border border-border"
           >
             <div className="flex items-center gap-3 mb-6">
-              <Newspaper className="w-6 h-6 text-saffron" />
-              <h3 className="text-brown" style={{ fontSize: "20px", fontWeight: 700 }}>Recent Press</h3>
+              <Newspaper className="w-6 h-6 text-emerald" />
+              <h3 className="text-charcoal" style={{ fontSize: "20px", fontWeight: 700 }}>Recent Press</h3>
             </div>
             <div className="space-y-4">
               {featuredPress.map((item, index) => (
@@ -102,10 +102,10 @@ export function MediaPreview() {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-saffron" style={{ fontSize: "11px", fontWeight: 600 }}>{item.source}</span>
-                        <span className="text-brown-light" style={{ fontSize: "11px" }}>• {item.date}</span>
+                        <span className="text-emerald" style={{ fontSize: "11px", fontWeight: 600 }}>{item.source}</span>
+                        <span className="text-charcoal-light" style={{ fontSize: "11px" }}>• {item.date}</span>
                       </div>
-                      <h4 className="text-brown group-hover:text-saffron transition-colors" style={{ fontSize: "14px", fontWeight: 700, lineHeight: "1.4" }}>
+                      <h4 className="text-charcoal group-hover:text-emerald-dark transition-colors" style={{ fontSize: "14px", fontWeight: 700, lineHeight: "1.4" }}>
                         {item.title}
                       </h4>
                     </div>
@@ -124,8 +124,8 @@ export function MediaPreview() {
           className="bg-white rounded-2xl p-8 border border-border mb-8"
         >
           <div className="flex items-center gap-3 mb-6">
-            <Camera className="w-6 h-6 text-saffron" />
-            <h3 className="text-brown" style={{ fontSize: "20px", fontWeight: 700 }}>Recent Moments</h3>
+            <Camera className="w-6 h-6 text-emerald" />
+            <h3 className="text-charcoal" style={{ fontSize: "20px", fontWeight: 700 }}>Recent Moments</h3>
           </div>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
             {[IMAGES.rally, IMAGES.community, IMAGES.award, IMAGES.school, IMAGES.cleanStreet, IMAGES.park].map((img, index) => (
@@ -147,7 +147,7 @@ export function MediaPreview() {
         <div className="text-center">
           <Link
             to="/media"
-            className="inline-flex items-center gap-2 text-saffron hover:text-saffron-dark transition-colors font-semibold"
+            className="inline-flex items-center gap-2 text-emerald hover:text-emerald-dark transition-colors font-semibold"
           >
             View All Media & Gallery <ArrowRight className="w-5 h-5" />
           </Link>

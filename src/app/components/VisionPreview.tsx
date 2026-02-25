@@ -58,13 +58,13 @@ export function VisionPreview() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-saffron to-saffron-dark text-white px-5 py-2 rounded-full mb-4 shadow-lg shadow-saffron/20">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald to-emerald-dark text-white px-5 py-2 rounded-full mb-4 shadow-lg shadow-emerald/20">
             <Award className="w-4 h-4" />
             <span className="font-bold text-xs tracking-wide">13+ YEARS OF SERVICE</span>
           </div>
 
           <h2
-            className="text-brown mb-3"
+            className="text-charcoal mb-3"
             style={{
               fontSize: "clamp(28px, 3.5vw, 40px)",
               fontWeight: 700,
@@ -73,7 +73,7 @@ export function VisionPreview() {
           >
             Ward 226 | 2026 Commitment
           </h2>
-          <p className="text-brown-light max-w-2xl mx-auto" style={{ fontSize: "16px", lineHeight: "1.7" }}>
+          <p className="text-charcoal-light max-w-2xl mx-auto" style={{ fontSize: "16px", lineHeight: "1.7" }}>
             A commitment shaped by conversations, trust, and the everyday concerns of Ward 226 residents.
           </p>
         </motion.div>
@@ -89,13 +89,13 @@ export function VisionPreview() {
               transition={{ delay: index * 0.08 }}
               className="group bg-gradient-to-br from-white to-cream border border-border rounded-2xl p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-saffron/10 to-brown/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border border-saffron/20">
-                <item.icon className="w-6 h-6 text-saffron" />
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald/10 to-charcoal/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border border-emerald/20">
+                <item.icon className="w-6 h-6 text-emerald" />
               </div>
-              <h3 className="text-brown mb-2" style={{ fontSize: "17px", fontWeight: 700 }}>
+              <h3 className="text-charcoal mb-2" style={{ fontSize: "17px", fontWeight: 700 }}>
                 {item.title}
               </h3>
-              <p className="text-brown-light" style={{ fontSize: "14px", lineHeight: "1.6" }}>
+              <p className="text-charcoal-light" style={{ fontSize: "14px", lineHeight: "1.6" }}>
                 {item.description}
               </p>
             </motion.div>
@@ -107,7 +107,7 @@ export function VisionPreview() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-brown via-brown-dark to-brown text-white rounded-2xl p-8 lg:p-10 text-center"
+          className="bg-gradient-to-br from-charcoal via-charcoal-dark to-charcoal text-white rounded-2xl p-8 lg:p-10 text-center"
         >
           <h3
             className="mb-4"
@@ -127,7 +127,7 @@ export function VisionPreview() {
 
           <Link
             to="/vision"
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-saffron to-saffron-dark text-white px-6 py-3 rounded-full font-bold shadow-xl hover:shadow-2xl transition-all hover:scale-105"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald to-emerald-dark text-white px-6 py-3 rounded-full font-bold shadow-xl hover:shadow-2xl transition-all hover:scale-105"
           >
             View Full Manifesto
             <ArrowRight className="w-5 h-5" />

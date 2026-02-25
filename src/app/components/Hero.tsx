@@ -48,7 +48,7 @@ export function Hero() {
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
                   <p className="text-saffron" style={{ fontSize: "28px", fontWeight: 800 }}>{stat.num}</p>
-                  <p className="text-brown-muted" style={{ fontSize: "12px", fontWeight: 500 }}>{stat.label}</p>
+                  <p className="text-brown-light" style={{ fontSize: "12px", fontWeight: 500 }}>{stat.label}</p>
                 </div>
               ))}
             </div>

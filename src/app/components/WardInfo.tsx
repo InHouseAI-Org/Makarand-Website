@@ -78,7 +78,7 @@ export function WardInfo() {
                   </div>
                   <div>
                     <p className="text-brown" style={{ fontSize: "14px", fontWeight: 700 }}>{item.name}</p>
-                    <p className="text-brown-muted" style={{ fontSize: "12px" }}>{item.desc}</p>
+                    <p className="text-brown-light" style={{ fontSize: "12px" }}>{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -132,7 +132,7 @@ export function WardInfo() {
               </div>
               <div>
                 <p className="text-brown" style={{ fontSize: "15px", fontWeight: 700 }}>{service.title}</p>
-                <p className="text-brown-muted" style={{ fontSize: "13px" }}>{service.desc}</p>
+                <p className="text-brown-light" style={{ fontSize: "13px" }}>{service.desc}</p>
               </div>
             </motion.div>
           ))}

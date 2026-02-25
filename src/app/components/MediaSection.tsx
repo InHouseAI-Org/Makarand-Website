@@ -97,7 +97,7 @@ export function MediaSection() {
                 </div>
                 <span className="text-saffron" style={{ fontSize: "12px", fontWeight: 700 }}>{item.year}</span>
                 <h4 className="text-brown mt-1 mb-2" style={{ fontSize: "17px", fontWeight: 700 }}>{item.title}</h4>
-                <p className="text-brown-muted mb-2" style={{ fontSize: "13px", fontWeight: 600 }}>{item.org}</p>
+                <p className="text-brown-light mb-2" style={{ fontSize: "13px", fontWeight: 600 }}>{item.org}</p>
                 <p className="text-brown-light" style={{ fontSize: "14px", lineHeight: "1.6" }}>{item.description}</p>
               </motion.div>
             ))}
@@ -126,7 +126,7 @@ export function MediaSection() {
                 <div className="p-5">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-saffron" style={{ fontSize: "12px", fontWeight: 600 }}>{item.source}</span>
-                    <span className="text-brown-muted" style={{ fontSize: "12px" }}>{item.date}</span>
+                    <span className="text-brown-light" style={{ fontSize: "12px" }}>{item.date}</span>
                   </div>
                   <h4 className="text-brown group-hover:text-saffron transition-colors" style={{ fontSize: "15px", fontWeight: 700, lineHeight: "1.4" }}>
                     {item.title}

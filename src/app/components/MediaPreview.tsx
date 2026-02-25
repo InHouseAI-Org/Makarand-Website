@@ -69,7 +69,7 @@ export function MediaPreview() {
                 >
                   <span className="text-saffron" style={{ fontSize: "12px", fontWeight: 700 }}>{item.year}</span>
                   <h4 className="text-brown mt-1" style={{ fontSize: "16px", fontWeight: 700 }}>{item.title}</h4>
-                  <p className="text-brown-muted" style={{ fontSize: "13px" }}>{item.org}</p>
+                  <p className="text-brown-light" style={{ fontSize: "13px" }}>{item.org}</p>
                 </motion.div>
               ))}
             </div>
@@ -103,7 +103,7 @@ export function MediaPreview() {
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-saffron" style={{ fontSize: "11px", fontWeight: 600 }}>{item.source}</span>
-                        <span className="text-brown-muted" style={{ fontSize: "11px" }}>• {item.date}</span>
+                        <span className="text-brown-light" style={{ fontSize: "11px" }}>• {item.date}</span>
                       </div>
                       <h4 className="text-brown group-hover:text-saffron transition-colors" style={{ fontSize: "14px", fontWeight: 700, lineHeight: "1.4" }}>
                         {item.title}

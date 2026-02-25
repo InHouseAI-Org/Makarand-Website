@@ -110,7 +110,7 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
             >
               <stat.icon className="w-8 h-8 text-saffron mx-auto mb-3" />
               <p className="text-brown" style={{ fontSize: "28px", fontWeight: 800 }}>{stat.value}</p>
-              <p className="text-brown-muted" style={{ fontSize: "13px", fontWeight: 500 }}>{stat.label}</p>
+              <p className="text-brown-light" style={{ fontSize: "13px", fontWeight: 500 }}>{stat.label}</p>
             </motion.div>
           ))}
         </div>
@@ -166,7 +166,7 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
                       {project.description}
                     </p>
                     <div className="flex items-center justify-between pt-4 border-t border-border">
-                      <span className="text-brown-muted" style={{ fontSize: "13px" }}>{project.date}</span>
+                      <span className="text-brown-light" style={{ fontSize: "13px" }}>{project.date}</span>
                       <span className="text-brown" style={{ fontSize: "14px", fontWeight: 700 }}>{project.budget}</span>
                     </div>
                   </div>
@@ -197,7 +197,7 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
                           <h3 className="text-brown group-hover:text-saffron transition-colors" style={{ fontSize: "18px", fontWeight: 700 }}>
                             {project.title}
                           </h3>
-                          <p className="text-brown-muted mt-1" style={{ fontSize: "13px" }}>
+                          <p className="text-brown-light mt-1" style={{ fontSize: "13px" }}>
                             Budget: {project.budget} &middot; Expected: {project.expectedCompletion}
                           </p>
                         </div>
@@ -241,7 +241,7 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
                 </div>
                 <h3 className="text-brown mb-2" style={{ fontSize: "16px", fontWeight: 700 }}>{project.title}</h3>
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
-                  <span className="text-brown-muted" style={{ fontSize: "13px" }}>Timeline: {project.timeline}</span>
+                  <span className="text-brown-light" style={{ fontSize: "13px" }}>Timeline: {project.timeline}</span>
                   <span className="text-saffron" style={{ fontSize: "14px", fontWeight: 700 }}>{project.budget}</span>
                 </div>
               </motion.div>
@@ -263,7 +263,7 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
                 </div>
                 <div className="p-4">
                   <p className="text-brown" style={{ fontSize: "15px", fontWeight: 600 }}>Ward Road — Before Reconstruction</p>
-                  <p className="text-brown-muted" style={{ fontSize: "13px" }}>Potholed, waterlogged during monsoons</p>
+                  <p className="text-brown-light" style={{ fontSize: "13px" }}>Potholed, waterlogged during monsoons</p>
                 </div>
               </div>
               <div className="bg-white rounded-xl overflow-hidden border border-border">
@@ -273,7 +273,7 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
                 </div>
                 <div className="p-4">
                   <p className="text-brown" style={{ fontSize: "15px", fontWeight: 600 }}>Ward Road — After Reconstruction</p>
-                  <p className="text-brown-muted" style={{ fontSize: "13px" }}>Smooth surface, proper drainage installed</p>
+                  <p className="text-brown-light" style={{ fontSize: "13px" }}>Smooth surface, proper drainage installed</p>
                 </div>
               </div>
             </div>

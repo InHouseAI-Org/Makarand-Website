@@ -170,7 +170,7 @@ export function Vision({ isFullPage = false }: { isFullPage?: boolean }) {
                 </div>
                 <div className="text-left">
                   <p className="text-brown font-bold text-sm">{principle.title}</p>
-                  <p className="text-brown-muted text-xs">{principle.description}</p>
+                  <p className="text-brown-light text-xs">{principle.description}</p>
                 </div>
               </div>
             ))}
@@ -244,7 +244,7 @@ export function Vision({ isFullPage = false }: { isFullPage?: boolean }) {
         </motion.div>
 
         {/* Closing Statement */}
-        <p className="text-brown-muted text-sm italic text-center mt-8">
+        <p className="text-brown-light text-sm italic text-center mt-8">
           A commitment born from conversations, delivered through action
         </p>
       </div>

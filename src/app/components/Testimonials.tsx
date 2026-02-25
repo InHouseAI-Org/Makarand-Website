@@ -78,7 +78,7 @@ export function Testimonials() {
                 <img src={item.image} alt={item.name} className="w-11 h-11 rounded-full object-cover" />
                 <div>
                   <p className="text-brown" style={{ fontSize: "14px", fontWeight: 700 }}>{item.name}</p>
-                  <p className="text-brown-muted" style={{ fontSize: "12px" }}>{item.role}</p>
+                  <p className="text-brown-light" style={{ fontSize: "12px" }}>{item.role}</p>
                 </div>
               </div>
             </motion.div>

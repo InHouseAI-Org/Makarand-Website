@@ -24,7 +24,7 @@ function Header() {
           <Link to="/" className="flex items-center gap-3">
             <div className="hidden sm:block">
               <p className="text-brown" style={{ fontSize: "16px", fontWeight: 700, lineHeight: "1.2" }}>Makarand Narwekar</p>
-              <p className="text-brown-muted" style={{ fontSize: "11px", fontWeight: 400 }}>Corporator &middot; Ward Development</p>
+              <p className="text-brown-light" style={{ fontSize: "11px", fontWeight: 400 }}>Corporator &middot; Ward Development</p>
             </div>
           </Link>
 
@@ -187,13 +187,6 @@ function Footer() {
           <p className="text-white/40" style={{ fontSize: "13px" }}>
             &copy; 2026 Makarand Narwekar. All rights reserved.
           </p>
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-2 text-white/40 hover:text-saffron transition-colors"
-            style={{ fontSize: "13px" }}
-          >
-            Back to Top <ChevronUp className="w-4 h-4" />
-          </button>
         </div>
       </div>
     </footer>

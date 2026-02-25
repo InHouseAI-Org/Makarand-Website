@@ -217,7 +217,7 @@ export function ProjectDetail() {
           ].map((meta) => (
             <div key={meta.label} className="bg-cream rounded-xl p-4 border border-border">
               <meta.icon className="w-5 h-5 text-saffron mb-2" />
-              <p className="text-brown-muted" style={{ fontSize: "12px", fontWeight: 600 }}>{meta.label}</p>
+              <p className="text-brown-light" style={{ fontSize: "12px", fontWeight: 600 }}>{meta.label}</p>
               <p className="text-brown mt-0.5" style={{ fontSize: "14px", fontWeight: 700 }}>{meta.value}</p>
             </div>
           ))}

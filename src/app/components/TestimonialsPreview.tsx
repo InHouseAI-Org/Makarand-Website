@@ -58,7 +58,7 @@ export function TestimonialsPreview() {
                 </div>
                 <div>
                   <p className="text-brown font-bold" style={{ fontSize: "15px" }}>{item.name}</p>
-                  <p className="text-brown-muted" style={{ fontSize: "13px" }}>{item.role}</p>
+                  <p className="text-brown-light" style={{ fontSize: "13px" }}>{item.role}</p>
                 </div>
               </div>
             </motion.div>

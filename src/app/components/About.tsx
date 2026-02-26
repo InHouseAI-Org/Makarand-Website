@@ -49,7 +49,7 @@ export function About({ isFullPage = false }: { isFullPage?: boolean }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-emerald mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
+          <p className="text-coral mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
             HIS JOURNEY
           </p>
           <h2 className="text-charcoal mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
@@ -87,7 +87,7 @@ export function About({ isFullPage = false }: { isFullPage?: boolean }) {
           <div className="lg:col-span-7 order-1 lg:order-2">
             <div className="relative">
               {/* Vertical line */}
-              <div className="absolute left-6 top-0 bottom-0 w-px bg-emerald/20" />
+              <div className="absolute left-6 top-0 bottom-0 w-px bg-coral/20" />
 
               <div className="space-y-8">
                 {displayData.map((item, index) => (
@@ -100,12 +100,12 @@ export function About({ isFullPage = false }: { isFullPage?: boolean }) {
                     className="relative pl-16"
                   >
                     {/* Timeline dot */}
-                    <div className="absolute left-0 top-0 w-12 h-12 rounded-full bg-white border-2 border-emerald/30 flex items-center justify-center shadow-sm">
-                      <item.icon className="w-5 h-5 text-emerald" />
+                    <div className="absolute left-0 top-0 w-12 h-12 rounded-full bg-white border-2 border-coral/30 flex items-center justify-center shadow-sm">
+                      <item.icon className="w-5 h-5 text-coral" />
                     </div>
 
                     <div className="bg-white rounded-xl p-6 shadow-sm border border-border hover:shadow-md transition-shadow">
-                      <span className="inline-block px-3 py-1 bg-emerald-light text-emerald-dark rounded-full mb-3" style={{ fontSize: "12px", fontWeight: 700 }}>
+                      <span className="inline-block px-3 py-1 bg-coral-light text-coral-dark rounded-full mb-3" style={{ fontSize: "12px", fontWeight: 700 }}>
                         {item.year}
                       </span>
                       <h3 className="text-charcoal mb-2" style={{ fontSize: "18px", fontWeight: 700 }}>

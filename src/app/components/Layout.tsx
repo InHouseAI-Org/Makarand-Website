@@ -17,29 +17,28 @@ function Header() {
   const location = useLocation();
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+    <header className="sticky top-0 z-50 bg-white border-b border-charcoal/10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <div className="hidden sm:block">
-              <p className="text-charcoal" style={{ fontSize: "16px", fontWeight: 700, lineHeight: "1.2" }}>Makarand Narwekar</p>
-              <p className="text-charcoal-light" style={{ fontSize: "11px", fontWeight: 400 }}>Corporator &middot; Ward Development</p>
-            </div>
+            <p className="text-charcoal" style={{ fontSize: "18px", fontWeight: 800, letterSpacing: "-0.01em", fontFamily: "var(--font-family-serif)" }}>
+              MAKARAND NARWEKAR
+            </p>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-3 py-2 rounded-lg transition-colors ${
+                className={`transition-colors ${
                   location.pathname === link.path
-                    ? "bg-emerald-light text-emerald-dark"
-                    : "text-charcoal-light hover:text-charcoal hover:bg-cream"
+                    ? "text-coral"
+                    : "text-charcoal hover:text-coral"
                 }`}
-                style={{ fontSize: "14px", fontWeight: 500 }}
+                style={{ fontSize: "14px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: "var(--font-family-serif)" }}
               >
                 {link.label}
               </Link>
@@ -48,17 +47,16 @@ function Header() {
 
           {/* CTA + Mobile Toggle */}
           <div className="flex items-center gap-3">
-            <a
-              href="tel:+919876543210"
-              className="hidden md:flex items-center gap-2 px-4 py-2 bg-emerald text-white rounded-lg hover:bg-emerald-dark transition-colors"
-              style={{ fontSize: "14px", fontWeight: 600 }}
+            <Link
+              to="/connect"
+              className="hidden md:inline-flex items-center justify-center px-6 py-3 bg-coral text-white rounded-full hover:bg-coral-dark transition-all"
+              style={{ fontSize: "14px", fontWeight: 600, fontFamily: "var(--font-family-serif)" }}
             >
-              <Phone className="w-4 h-4" />
-              Contact Office
-            </a>
+              CONTACT
+            </Link>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 text-charcoal rounded-lg hover:bg-cream"
+              className="lg:hidden p-2 text-charcoal"
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -68,27 +66,27 @@ function Header() {
 
       {/* Mobile Nav */}
       {mobileOpen && (
-        <div className="lg:hidden border-t border-border bg-white">
-          <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
+        <div className="lg:hidden border-t border-charcoal/10 bg-white">
+          <nav className="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-2">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setMobileOpen(false)}
-                className={`px-4 py-3 rounded-lg transition-colors ${
+                className={`px-4 py-3 rounded-full transition-colors text-center ${
                   location.pathname === link.path
-                    ? "bg-emerald-light text-emerald-dark"
+                    ? "bg-coral text-white"
                     : "text-charcoal-light hover:text-charcoal hover:bg-cream"
                 }`}
-                style={{ fontSize: "15px", fontWeight: 500 }}
+                style={{ fontSize: "15px", fontWeight: 500, fontFamily: "var(--font-family-serif)" }}
               >
                 {link.label}
               </Link>
             ))}
             <a
               href="tel:+919876543210"
-              className="mt-2 flex items-center justify-center gap-2 px-4 py-3 bg-emerald text-white rounded-lg"
-              style={{ fontSize: "15px", fontWeight: 600 }}
+              className="mt-2 flex items-center justify-center gap-2 px-4 py-3 bg-coral text-white rounded-lg"
+              style={{ fontSize: "15px", fontWeight: 600, fontFamily: "var(--font-family-serif)" }}
             >
               <Phone className="w-4 h-4" />
               Contact Office
@@ -112,8 +110,8 @@ function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <div>
-                <p style={{ fontSize: "16px", fontWeight: 700 }}>Makarand Narwekar</p>
-                <p className="text-white/60" style={{ fontSize: "12px" }}>Corporator</p>
+                <p style={{ fontSize: "16px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>Makarand Narwekar</p>
+                <p className="text-white/60" style={{ fontSize: "12px", fontFamily: "var(--font-family-serif)" }}>Corporator</p>
               </div>
             </div>
             <p className="text-white/60 mb-6" style={{ fontSize: "14px", lineHeight: "1.7" }}>
@@ -124,7 +122,7 @@ function Footer() {
                 <a
                   key={i}
                   href="#"
-                  className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-emerald-dark transition-colors"
+                  className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral-dark transition-colors"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -134,11 +132,11 @@ function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-emerald mb-4" style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.05em" }}>QUICK LINKS</h4>
+            <h4 className="text-coral mb-4" style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.05em", fontFamily: "var(--font-family-serif)" }}>QUICK LINKS</h4>
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-white/60 hover:text-emerald-dark transition-colors" style={{ fontSize: "14px" }}>
+                  <Link to={link.path} className="text-white/60 hover:text-coral-dark transition-colors" style={{ fontSize: "14px", fontFamily: "var(--font-family-serif)" }}>
                     {link.label}
                   </Link>
                 </li>
@@ -148,10 +146,10 @@ function Footer() {
 
           {/* Office Info */}
           <div>
-            <h4 className="text-emerald mb-4" style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.05em" }}>OFFICE</h4>
+            <h4 className="text-coral mb-4" style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.05em", fontFamily: "var(--font-family-serif)" }}>OFFICE</h4>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 mt-1 text-emerald shrink-0" />
+                <MapPin className="w-4 h-4 mt-1 text-coral shrink-0" />
                 <p className="text-white/60" style={{ fontSize: "14px", lineHeight: "1.6" }}>
                   Ward Office, Colaba Division,<br />
                   Mumbai - 400001,<br />
@@ -159,7 +157,7 @@ function Footer() {
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <Phone className="w-4 h-4 mt-1 text-emerald shrink-0" />
+                <Phone className="w-4 h-4 mt-1 text-coral shrink-0" />
                 <div>
                   <p className="text-white/60" style={{ fontSize: "14px" }}>+91 98765 43210</p>
                   <p className="text-white/60" style={{ fontSize: "14px" }}>Mon–Sat, 10am–6pm</p>
@@ -170,7 +168,7 @@ function Footer() {
 
           {/* Party Affiliation */}
           <div>
-            <h4 className="text-emerald mb-4" style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.05em" }}>AFFILIATION</h4>
+            <h4 className="text-coral mb-4" style={{ fontSize: "14px", fontWeight: 700, letterSpacing: "0.05em", fontFamily: "var(--font-family-serif)" }}>AFFILIATION</h4>
             <p className="text-white/60 mb-2" style={{ fontSize: "14px" }}>
               Member, Bharatiya Janata Party (BJP)
             </p>

@@ -87,7 +87,7 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <p className="text-emerald mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
+          <p className="text-coral mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
             WORK & IMPACT
           </p>
           <h2 className="text-charcoal mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
@@ -108,7 +108,7 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
               viewport={{ once: true }}
               className="bg-white rounded-xl p-6 text-center border border-border shadow-sm"
             >
-              <stat.icon className="w-8 h-8 text-emerald mx-auto mb-3" />
+              <stat.icon className="w-8 h-8 text-coral mx-auto mb-3" />
               <p className="text-charcoal" style={{ fontSize: "28px", fontWeight: 800 }}>{stat.value}</p>
               <p className="text-charcoal-light" style={{ fontSize: "13px", fontWeight: 500 }}>{stat.label}</p>
             </motion.div>
@@ -127,7 +127,7 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
               onClick={() => setActiveTab(tab.key)}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-xl transition-all ${
                 activeTab === tab.key
-                  ? "bg-emerald text-white shadow-lg shadow-emerald/20"
+                  ? "bg-coral text-white shadow-lg shadow-coral/20"
                   : "bg-white text-charcoal-light border border-border hover:bg-cream-dark"
               }`}
               style={{ fontSize: "14px", fontWeight: 600 }}
@@ -152,14 +152,14 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
                   <div className="relative h-48 overflow-hidden">
                     <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute top-3 left-3">
-                      <span className="px-3 py-1 bg-emerald-500 text-white rounded-full" style={{ fontSize: "11px", fontWeight: 700 }}>
+                      <span className="px-3 py-1 bg-coral-500 text-white rounded-full" style={{ fontSize: "11px", fontWeight: 700 }}>
                         Completed
                       </span>
                     </div>
                   </div>
                   <div className="p-5">
-                    <span className="text-emerald" style={{ fontSize: "12px", fontWeight: 600 }}>{project.category}</span>
-                    <h3 className="text-charcoal mt-1 mb-2 group-hover:text-emerald-dark transition-colors" style={{ fontSize: "18px", fontWeight: 700 }}>
+                    <span className="text-coral" style={{ fontSize: "12px", fontWeight: 600 }}>{project.category}</span>
+                    <h3 className="text-charcoal mt-1 mb-2 group-hover:text-coral-dark transition-colors" style={{ fontSize: "18px", fontWeight: 700 }}>
                       {project.title}
                     </h3>
                     <p className="text-charcoal-light mb-4" style={{ fontSize: "14px", lineHeight: "1.6" }}>
@@ -194,14 +194,14 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
                     <div className="flex-1 p-5">
                       <div className="flex items-start justify-between mb-3">
                         <div>
-                          <h3 className="text-charcoal group-hover:text-emerald-dark transition-colors" style={{ fontSize: "18px", fontWeight: 700 }}>
+                          <h3 className="text-charcoal group-hover:text-coral-dark transition-colors" style={{ fontSize: "18px", fontWeight: 700 }}>
                             {project.title}
                           </h3>
                           <p className="text-charcoal-light mt-1" style={{ fontSize: "13px" }}>
                             Budget: {project.budget} &middot; Expected: {project.expectedCompletion}
                           </p>
                         </div>
-                        <span className="px-3 py-1 bg-emerald-light text-emerald-dark rounded-full shrink-0" style={{ fontSize: "12px", fontWeight: 700 }}>
+                        <span className="px-3 py-1 bg-coral-light text-coral-dark rounded-full shrink-0" style={{ fontSize: "12px", fontWeight: 700 }}>
                           {project.progress}%
                         </span>
                       </div>
@@ -210,7 +210,7 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
                           initial={{ width: 0 }}
                           animate={{ width: `${project.progress}%` }}
                           transition={{ duration: 1, delay: 0.3 }}
-                          className="h-3 rounded-full bg-gradient-to-r from-emerald to-emerald-dark"
+                          className="h-3 rounded-full bg-gradient-to-r from-coral to-coral-dark"
                         />
                       </div>
                     </div>
@@ -234,15 +234,15 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.08 }}
-                className="bg-white rounded-xl p-6 border border-dashed border-emerald/40 hover:border-emerald hover:shadow-md transition-all"
+                className="bg-white rounded-xl p-6 border border-dashed border-coral/40 hover:border-coral hover:shadow-md transition-all"
               >
-                <div className="w-10 h-10 rounded-lg bg-emerald-light flex items-center justify-center mb-4">
-                  <ArrowUpRight className="w-5 h-5 text-emerald" />
+                <div className="w-10 h-10 rounded-lg bg-coral-light flex items-center justify-center mb-4">
+                  <ArrowUpRight className="w-5 h-5 text-coral" />
                 </div>
                 <h3 className="text-charcoal mb-2" style={{ fontSize: "16px", fontWeight: 700 }}>{project.title}</h3>
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
                   <span className="text-charcoal-light" style={{ fontSize: "13px" }}>Timeline: {project.timeline}</span>
-                  <span className="text-emerald" style={{ fontSize: "14px", fontWeight: 700 }}>{project.budget}</span>
+                  <span className="text-coral" style={{ fontSize: "14px", fontWeight: 700 }}>{project.budget}</span>
                 </div>
               </motion.div>
             ))}
@@ -269,7 +269,7 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
               <div className="bg-white rounded-xl overflow-hidden border border-border">
                 <div className="relative">
                   <img src={IMAGES.afterRoad} alt="After" className="w-full h-56 object-cover" />
-                  <div className="absolute top-3 left-3 px-3 py-1 bg-emerald-500 text-white rounded-full" style={{ fontSize: "12px", fontWeight: 700 }}>After</div>
+                  <div className="absolute top-3 left-3 px-3 py-1 bg-coral-500 text-white rounded-full" style={{ fontSize: "12px", fontWeight: 700 }}>After</div>
                 </div>
                 <div className="p-4">
                   <p className="text-charcoal" style={{ fontSize: "15px", fontWeight: 600 }}>Ward Road — After Reconstruction</p>

@@ -48,7 +48,7 @@ export function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-emerald mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
+          <p className="text-coral mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
             TESTIMONIALS
           </p>
           <h2 className="text-charcoal mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
@@ -70,7 +70,7 @@ export function Testimonials() {
               transition={{ delay: index * 0.08 }}
               className="bg-white rounded-xl p-6 border border-border hover:shadow-lg transition-all"
             >
-              <Quote className="w-8 h-8 text-emerald/30 mb-4" />
+              <Quote className="w-8 h-8 text-coral/30 mb-4" />
               <p className="text-charcoal-light mb-6" style={{ fontSize: "15px", lineHeight: "1.7", fontStyle: "italic" }}>
                 "{item.quote}"
               </p>
@@ -100,7 +100,7 @@ export function Testimonials() {
                 transition={{ delay: index * 0.1 }}
                 className="bg-white/10 backdrop-blur-sm rounded-xl p-6"
               >
-                <Quote className="w-6 h-6 text-emerald mb-3" />
+                <Quote className="w-6 h-6 text-coral mb-3" />
                 <p className="text-white/80 mb-4" style={{ fontSize: "15px", lineHeight: "1.7", fontStyle: "italic" }}>
                   "{leader.quote}"
                 </p>

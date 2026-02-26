@@ -163,7 +163,7 @@ export function ProjectDetail() {
       <div className="min-h-[60vh] flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-charcoal mb-4" style={{ fontSize: "24px", fontWeight: 700 }}>Project Not Found</h2>
-          <Link to="/work" className="text-emerald hover:text-emerald-dark" style={{ fontSize: "15px", fontWeight: 600 }}>
+          <Link to="/work" className="text-coral hover:text-coral-dark" style={{ fontSize: "15px", fontWeight: 600 }}>
             &larr; Back to All Projects
           </Link>
         </div>
@@ -177,7 +177,7 @@ export function ProjectDetail() {
         {/* Back Link */}
         <Link
           to="/work"
-          className="inline-flex items-center gap-2 text-charcoal-light hover:text-emerald-dark transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-charcoal-light hover:text-coral-dark transition-colors mb-8"
           style={{ fontSize: "14px", fontWeight: 500 }}
         >
           <ArrowLeft className="w-4 h-4" />
@@ -195,7 +195,7 @@ export function ProjectDetail() {
           <div className="absolute bottom-6 left-6 right-6">
             <span
               className={`inline-block px-3 py-1 rounded-full text-white mb-3 ${
-                project.status === "completed" ? "bg-emerald-500" : "bg-emerald"
+                project.status === "completed" ? "bg-coral-500" : "bg-coral"
               }`}
               style={{ fontSize: "12px", fontWeight: 700 }}
             >
@@ -216,7 +216,7 @@ export function ProjectDetail() {
             { icon: project.status === "completed" ? CheckCircle2 : Clock, label: "Status", value: project.status === "completed" ? "Completed" : `${project.progress}% Complete` },
           ].map((meta) => (
             <div key={meta.label} className="bg-cream rounded-xl p-4 border border-border">
-              <meta.icon className="w-5 h-5 text-emerald mb-2" />
+              <meta.icon className="w-5 h-5 text-coral mb-2" />
               <p className="text-charcoal-light" style={{ fontSize: "12px", fontWeight: 600 }}>{meta.label}</p>
               <p className="text-charcoal mt-0.5" style={{ fontSize: "14px", fontWeight: 700 }}>{meta.value}</p>
             </div>
@@ -228,14 +228,14 @@ export function ProjectDetail() {
           <div className="mb-10">
             <div className="flex items-center justify-between mb-2">
               <span className="text-charcoal" style={{ fontSize: "14px", fontWeight: 600 }}>Progress</span>
-              <span className="text-emerald" style={{ fontSize: "14px", fontWeight: 700 }}>{project.progress}%</span>
+              <span className="text-coral" style={{ fontSize: "14px", fontWeight: 700 }}>{project.progress}%</span>
             </div>
             <div className="w-full bg-cream-dark rounded-full h-4">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${project.progress}%` }}
                 transition={{ duration: 1.2, delay: 0.3 }}
-                className="h-4 rounded-full bg-gradient-to-r from-emerald to-emerald-dark"
+                className="h-4 rounded-full bg-gradient-to-r from-coral to-coral-dark"
               />
             </div>
           </div>
@@ -260,7 +260,7 @@ export function ProjectDetail() {
             <ul className="space-y-3">
               {project.details.map((detail, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-coral shrink-0 mt-0.5" />
                   <span className="text-charcoal-light" style={{ fontSize: "15px", lineHeight: "1.6" }}>{detail}</span>
                 </li>
               ))}
@@ -285,13 +285,13 @@ export function ProjectDetail() {
         )}
 
         {/* CTA */}
-        <div className="bg-emerald-light rounded-xl p-6 text-center">
+        <div className="bg-coral-light rounded-xl p-6 text-center">
           <p className="text-charcoal mb-4" style={{ fontSize: "16px", fontWeight: 600 }}>
             Have questions about this project?
           </p>
           <Link
             to="/connect"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-emerald text-white rounded-xl hover:bg-emerald-dark transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-coral text-white rounded-xl hover:bg-coral-dark transition-all"
             style={{ fontSize: "14px", fontWeight: 600 }}
           >
             Contact Our Office

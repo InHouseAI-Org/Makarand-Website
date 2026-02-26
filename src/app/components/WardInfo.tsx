@@ -26,7 +26,7 @@ export function WardInfo() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-emerald mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
+          <p className="text-coral mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
             WARD INFORMATION
           </p>
           <h2 className="text-charcoal mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
@@ -48,7 +48,7 @@ export function WardInfo() {
             <img src={IMAGES.mumbai} alt="Ward aerial view" className="w-full h-80 lg:h-full object-cover opacity-80" />
             <div className="absolute inset-0 bg-charcoal/30 flex items-center justify-center">
               <div className="text-center text-white p-6">
-                <MapPin className="w-12 h-12 mx-auto mb-4 text-emerald" />
+                <MapPin className="w-12 h-12 mx-auto mb-4 text-coral" />
                 <p style={{ fontSize: "20px", fontWeight: 700 }}>Ward Map</p>
                 <p className="text-white/70 mt-2" style={{ fontSize: "14px" }}>
                   Interactive ward map coming soon
@@ -73,8 +73,8 @@ export function WardInfo() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {landmarks.map((item) => (
                 <div key={item.name} className="flex items-start gap-3 bg-cream rounded-xl p-4 border border-border">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-light flex items-center justify-center shrink-0">
-                    <item.icon className="w-5 h-5 text-emerald" />
+                  <div className="w-10 h-10 rounded-lg bg-coral-light flex items-center justify-center shrink-0">
+                    <item.icon className="w-5 h-5 text-coral" />
                   </div>
                   <div>
                     <p className="text-charcoal" style={{ fontSize: "14px", fontWeight: 700 }}>{item.name}</p>
@@ -89,7 +89,7 @@ export function WardInfo() {
         {/* Development Blueprint */}
         <div className="bg-charcoal rounded-2xl p-8 lg:p-12 mb-16 text-white">
           <div className="max-w-3xl mx-auto text-center">
-            <FileText className="w-10 h-10 text-emerald mx-auto mb-4" />
+            <FileText className="w-10 h-10 text-coral mx-auto mb-4" />
             <h3 className="mb-4" style={{ fontSize: "24px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
               Development Blueprint 2025–2028
             </h3>
@@ -105,7 +105,7 @@ export function WardInfo() {
                 { val: "100%", desc: "Accountability" },
               ].map((item) => (
                 <div key={item.desc} className="bg-white/10 rounded-xl p-4 backdrop-blur-sm">
-                  <p className="text-emerald" style={{ fontSize: "22px", fontWeight: 800 }}>{item.val}</p>
+                  <p className="text-coral" style={{ fontSize: "22px", fontWeight: 800 }}>{item.val}</p>
                   <p className="text-white/60 mt-1" style={{ fontSize: "12px" }}>{item.desc}</p>
                 </div>
               ))}
@@ -127,8 +127,8 @@ export function WardInfo() {
               transition={{ delay: index * 0.05 }}
               className="flex items-start gap-3 bg-cream rounded-xl p-5 border border-border hover:shadow-md transition-all cursor-pointer"
             >
-              <div className="w-8 h-8 rounded-full bg-emerald/10 flex items-center justify-center shrink-0 mt-0.5">
-                <Phone className="w-4 h-4 text-emerald" />
+              <div className="w-8 h-8 rounded-full bg-coral/10 flex items-center justify-center shrink-0 mt-0.5">
+                <Phone className="w-4 h-4 text-coral" />
               </div>
               <div>
                 <p className="text-charcoal" style={{ fontSize: "15px", fontWeight: 700 }}>{service.title}</p>

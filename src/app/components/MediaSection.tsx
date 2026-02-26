@@ -61,28 +61,28 @@ const videos = [
 
 export function MediaSection() {
   return (
-    <section className="py-16 lg:py-24 bg-cream">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 lg:py-28 bg-cream">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-emerald mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <p className="text-coral mb-3" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
             MEDIA & RECOGNITION
           </p>
-          <h2 className="text-charcoal mb-4" style={{ fontSize: "clamp(28px, 3.5vw, 40px)", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+          <h2 className="text-charcoal mb-4" style={{ fontSize: "clamp(36px, 5vw, 56px)", fontWeight: 900, letterSpacing: "-0.01em", fontFamily: "var(--font-family-serif)" }}>
             In the Spotlight
           </h2>
-          <p className="text-charcoal-light" style={{ fontSize: "16px", lineHeight: "1.7" }}>
+          <p className="text-charcoal-light" style={{ fontSize: "17px", lineHeight: "1.8" }}>
             Awards, press coverage, and moments from our journey of service and development.
           </p>
         </div>
 
         {/* Awards */}
-        <div className="mb-16">
-          <div className="flex items-center gap-3 mb-6">
-            <Award className="w-6 h-6 text-emerald" />
-            <h3 className="text-charcoal" style={{ fontSize: "20px", fontWeight: 700 }}>Awards & Recognition</h3>
+        <div className="mb-20">
+          <div className="flex items-center gap-3 mb-8">
+            <Award className="w-6 h-6 text-coral" />
+            <h3 className="text-charcoal" style={{ fontSize: "22px", fontWeight: 700 }}>Awards & Recognition</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {awards.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -90,12 +90,13 @@ export function MediaSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
-                className="bg-white rounded-xl p-6 border border-border hover:shadow-lg transition-all"
+                className="bg-white p-8 border border-border hover:shadow-lg transition-all"
+                style={{ borderRadius: "28px" }}
               >
-                <div className="w-12 h-12 rounded-full bg-emerald-light flex items-center justify-center mb-4">
-                  <Award className="w-6 h-6 text-emerald" />
+                <div className="w-12 h-12 rounded-full bg-coral-light flex items-center justify-center mb-4">
+                  <Award className="w-6 h-6 text-coral" />
                 </div>
-                <span className="text-emerald" style={{ fontSize: "12px", fontWeight: 700 }}>{item.year}</span>
+                <span className="text-coral" style={{ fontSize: "12px", fontWeight: 700 }}>{item.year}</span>
                 <h4 className="text-charcoal mt-1 mb-2" style={{ fontSize: "17px", fontWeight: 700 }}>{item.title}</h4>
                 <p className="text-charcoal-light mb-2" style={{ fontSize: "13px", fontWeight: 600 }}>{item.org}</p>
                 <p className="text-charcoal-light" style={{ fontSize: "14px", lineHeight: "1.6" }}>{item.description}</p>
@@ -105,12 +106,12 @@ export function MediaSection() {
         </div>
 
         {/* Press Coverage */}
-        <div className="mb-16">
-          <div className="flex items-center gap-3 mb-6">
-            <Newspaper className="w-6 h-6 text-emerald" />
-            <h3 className="text-charcoal" style={{ fontSize: "20px", fontWeight: 700 }}>Press Coverage</h3>
+        <div className="mb-20">
+          <div className="flex items-center gap-3 mb-8">
+            <Newspaper className="w-6 h-6 text-coral" />
+            <h3 className="text-charcoal" style={{ fontSize: "22px", fontWeight: 700 }}>Press Coverage</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pressItems.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -118,20 +119,21 @@ export function MediaSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
-                className="group bg-white rounded-xl overflow-hidden border border-border hover:shadow-lg transition-all cursor-pointer"
+                className="group bg-white overflow-hidden border border-border hover:shadow-lg transition-all cursor-pointer"
+                style={{ borderRadius: "28px" }}
               >
                 <div className="h-40 overflow-hidden">
                   <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-5">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-emerald" style={{ fontSize: "12px", fontWeight: 600 }}>{item.source}</span>
+                    <span className="text-coral" style={{ fontSize: "12px", fontWeight: 600 }}>{item.source}</span>
                     <span className="text-charcoal-light" style={{ fontSize: "12px" }}>{item.date}</span>
                   </div>
-                  <h4 className="text-charcoal group-hover:text-emerald-dark transition-colors" style={{ fontSize: "15px", fontWeight: 700, lineHeight: "1.4" }}>
+                  <h4 className="text-charcoal group-hover:text-coral-dark transition-colors" style={{ fontSize: "15px", fontWeight: 700, lineHeight: "1.4" }}>
                     {item.title}
                   </h4>
-                  <div className="mt-3 flex items-center gap-1 text-emerald" style={{ fontSize: "13px", fontWeight: 600 }}>
+                  <div className="mt-3 flex items-center gap-1 text-coral" style={{ fontSize: "13px", fontWeight: 600 }}>
                     Read More <ExternalLink className="w-3 h-3" />
                   </div>
                 </div>
@@ -140,40 +142,147 @@ export function MediaSection() {
           </div>
         </div>
 
-        {/* Photo Gallery */}
+        {/* Photo Gallery - Unique Pill-Shaped Layout */}
         <div className="mb-16">
-          <div className="flex items-center gap-3 mb-6">
-            <Camera className="w-6 h-6 text-emerald" />
+          <div className="flex items-center gap-3 mb-8">
+            <Camera className="w-6 h-6 text-coral" />
             <h3 className="text-charcoal" style={{ fontSize: "20px", fontWeight: 700 }}>Photo Gallery</h3>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {galleryImages.map((img, index) => (
+
+          {/* Pill-shaped gallery with varied sizes */}
+          <div className="relative">
+            {/* Row 1 - Large pills */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <motion.div
-                key={img.alt}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="group relative rounded-xl overflow-hidden cursor-pointer aspect-[4/3]"
+                transition={{ duration: 0.6 }}
+                className="group relative overflow-hidden cursor-pointer bg-white"
+                style={{
+                  borderRadius: "60px",
+                  height: "280px"
+                }}
               >
-                <img src={img.src} alt={img.alt} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/40 transition-all flex items-center justify-center">
-                  <p className="text-white opacity-0 group-hover:opacity-100 transition-opacity" style={{ fontSize: "14px", fontWeight: 600 }}>
-                    {img.alt}
+                <img src={galleryImages[0].src} alt={galleryImages[0].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
+                  <p className="text-white" style={{ fontSize: "16px", fontWeight: 600 }}>
+                    {galleryImages[0].alt}
                   </p>
                 </div>
               </motion.div>
-            ))}
+
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="group relative overflow-hidden cursor-pointer bg-white"
+                style={{
+                  borderRadius: "60px",
+                  height: "280px"
+                }}
+              >
+                <img src={galleryImages[1].src} alt={galleryImages[1].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
+                  <p className="text-white" style={{ fontSize: "16px", fontWeight: 600 }}>
+                    {galleryImages[1].alt}
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Row 2 - Mixed sizes */}
+            <div className="grid grid-cols-3 gap-4 mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="group relative overflow-hidden cursor-pointer bg-white"
+                style={{
+                  borderRadius: "50px",
+                  height: "200px"
+                }}
+              >
+                <img src={galleryImages[2].src} alt={galleryImages[2].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <p className="text-white" style={{ fontSize: "14px", fontWeight: 600 }}>
+                    {galleryImages[2].alt}
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="col-span-2 group relative overflow-hidden cursor-pointer bg-white"
+                style={{
+                  borderRadius: "50px",
+                  height: "200px"
+                }}
+              >
+                <img src={galleryImages[3].src} alt={galleryImages[3].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <p className="text-white" style={{ fontSize: "14px", fontWeight: 600 }}>
+                    {galleryImages[3].alt}
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Row 3 - Small pills */}
+            <div className="grid grid-cols-2 gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="group relative overflow-hidden cursor-pointer bg-white"
+                style={{
+                  borderRadius: "50px",
+                  height: "180px"
+                }}
+              >
+                <img src={galleryImages[4].src} alt={galleryImages[4].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <p className="text-white" style={{ fontSize: "14px", fontWeight: 600 }}>
+                    {galleryImages[4].alt}
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="group relative overflow-hidden cursor-pointer bg-white"
+                style={{
+                  borderRadius: "50px",
+                  height: "180px"
+                }}
+              >
+                <img src={galleryImages[5].src} alt={galleryImages[5].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <p className="text-white" style={{ fontSize: "14px", fontWeight: 600 }}>
+                    {galleryImages[5].alt}
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
 
         {/* Video Thumbnails */}
         <div>
-          <div className="flex items-center gap-3 mb-6">
-            <Play className="w-6 h-6 text-emerald" />
-            <h3 className="text-charcoal" style={{ fontSize: "20px", fontWeight: 700 }}>Videos</h3>
+          <div className="flex items-center gap-3 mb-8">
+            <Play className="w-6 h-6 text-coral" />
+            <h3 className="text-charcoal" style={{ fontSize: "22px", fontWeight: 700 }}>Videos</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {videos.map((video, index) => (
               <motion.div
                 key={video.title}
@@ -181,13 +290,14 @@ export function MediaSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
-                className="group bg-white rounded-xl overflow-hidden border border-border hover:shadow-lg transition-all cursor-pointer"
+                className="group bg-white overflow-hidden border border-border hover:shadow-lg transition-all cursor-pointer"
+                style={{ borderRadius: "28px" }}
               >
                 <div className="relative h-44 overflow-hidden">
                   <img src={video.thumbnail} alt={video.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-charcoal/30 flex items-center justify-center">
                     <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Play className="w-6 h-6 text-emerald ml-1" />
+                      <Play className="w-6 h-6 text-coral ml-1" />
                     </div>
                   </div>
                   <div className="absolute bottom-3 right-3 px-2 py-1 bg-black/70 text-white rounded" style={{ fontSize: "12px" }}>
@@ -195,7 +305,7 @@ export function MediaSection() {
                   </div>
                 </div>
                 <div className="p-4">
-                  <h4 className="text-charcoal group-hover:text-emerald-dark transition-colors" style={{ fontSize: "15px", fontWeight: 700 }}>
+                  <h4 className="text-charcoal group-hover:text-coral-dark transition-colors" style={{ fontSize: "15px", fontWeight: 700 }}>
                     {video.title}
                   </h4>
                 </div>

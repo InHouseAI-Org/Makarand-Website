@@ -137,7 +137,7 @@ export function Vision({ isFullPage = false }: { isFullPage?: boolean }) {
           className="text-center mb-16"
         >
           {/* Years Badge */}
-          <div className="inline-flex items-center gap-2 bg-emerald text-white px-5 py-2 rounded-full mb-5 shadow-md">
+          <div className="inline-flex items-center gap-2 bg-coral text-white px-5 py-2 rounded-full mb-5 shadow-md">
             <Award className="w-4 h-4" />
             <span className="font-bold text-xs tracking-wide">13+ YEARS OF SERVICE</span>
           </div>
@@ -165,8 +165,8 @@ export function Vision({ isFullPage = false }: { isFullPage?: boolean }) {
           <div className="flex items-center justify-center gap-8 flex-wrap">
             {principles.map((principle) => (
               <div key={principle.title} className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-emerald-light flex items-center justify-center">
-                  <principle.icon className="w-5 h-5 text-emerald" />
+                <div className="w-10 h-10 rounded-lg bg-coral-light flex items-center justify-center">
+                  <principle.icon className="w-5 h-5 text-coral" />
                 </div>
                 <div className="text-left">
                   <p className="text-charcoal font-bold text-sm">{principle.title}</p>
@@ -186,13 +186,13 @@ export function Vision({ isFullPage = false }: { isFullPage?: boolean }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.4, delay: categoryIndex * 0.05 }}
-              className="bg-white border border-border rounded-2xl overflow-hidden hover:shadow-xl hover:border-emerald/30 transition-all duration-300"
+              className="bg-white border border-border rounded-2xl overflow-hidden hover:shadow-xl hover:border-coral/30 transition-all duration-300"
             >
               {/* Category Header */}
-              <div className="bg-gradient-to-r from-emerald-light to-cream p-6 border-b border-border">
+              <div className="bg-gradient-to-r from-coral-light to-cream p-6 border-b border-border">
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-xl bg-white shadow-sm flex items-center justify-center shrink-0">
-                    <category.icon className="w-7 h-7 text-emerald" />
+                    <category.icon className="w-7 h-7 text-coral" />
                   </div>
                   <h3 className="text-charcoal font-bold text-xl">{category.title}</h3>
                 </div>
@@ -206,7 +206,7 @@ export function Vision({ isFullPage = false }: { isFullPage?: boolean }) {
                     className="flex items-start gap-3 group"
                   >
                     <div className="shrink-0 mt-1">
-                      <CheckCircle2 className="w-5 h-5 text-emerald" />
+                      <CheckCircle2 className="w-5 h-5 text-coral" />
                     </div>
                     <p className="text-charcoal-light text-sm leading-relaxed">
                       {item}
@@ -225,7 +225,7 @@ export function Vision({ isFullPage = false }: { isFullPage?: boolean }) {
           viewport={{ once: true }}
           className="bg-gradient-to-br from-charcoal via-charcoal-dark to-charcoal text-white rounded-2xl p-8 lg:p-10 text-center"
         >
-          <p className="text-emerald font-bold text-sm tracking-widest mb-3">THE 2026 COMMITMENT</p>
+          <p className="text-coral font-bold text-sm tracking-widest mb-3">THE 2026 COMMITMENT</p>
           <h3
             className="mb-6"
             style={{

@@ -11,12 +11,12 @@ export function Hero() {
       <section
         className="relative overflow-hidden h-[95vh]"
         style={{
-          backgroundImage: "url('ChatGPT Image Feb 26, 2026 at 07_18_51 AM.png')",
+          backgroundImage: "url('ChatGPT Image Mar 10, 2026 at 06_13_51 PM.png')",
           backgroundSize: "auto",
           backgroundPosition: "center",
         }}
       >
-          {/* STAGE 1: Centered text with image inside */}
+          {/* STAGE 1: Centered text with image inside
           {animationStage === "centered" && (
               <motion.div
                 initial={{ opacity: 1 }}
@@ -49,12 +49,12 @@ export function Hero() {
                   NARWEKAR
                 </motion.h1>
               </motion.div>
-          )}
+          )} */}
 
         <div className="max-w-7xl mx-auto w-full">
 
           {/* STAGE 2: Text Content */}
-          {animationStage === "split" && (
+          {/* {animationStage === "split" && ( */}
               <div className="relative z-10 max-w-2xl px-8 lg:px-16">
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
@@ -114,7 +114,7 @@ export function Hero() {
                   </Link>
                 </motion.div>
               </div>
-          )}
+          {/* )} */}
 
         </div>
       </section>

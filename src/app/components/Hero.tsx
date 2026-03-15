@@ -55,7 +55,7 @@ export function Hero() {
 
           {/* STAGE 2: Text Content */}
           {/* {animationStage === "split" && ( */}
-              <div className="relative z-10 max-w-2xl px-8 lg:px-16">
+              <div className="relative z-10 max-w-2xl mt-12 px-8 lg:px-16">
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -100,15 +100,15 @@ export function Hero() {
                 >
                   <Link
                     to="/work"
-                    className="inline-flex items-center justify-center px-12 py-4 bg-coral text-white rounded-full hover:bg-coral/90 hover:scale-105 transition-all shadow-lg"
+                    className="inline-flex items-center justify-center px-12 py-4 bg-coral text-white rounded-full hover:bg-white hover:text-coral border-2 border-coral hover:scale-105 transition-all shadow-lg"
                     style={{ fontSize: "16px", fontWeight: 600 }}
                   >
                     VIEW OUR WORK
                   </Link>
                   <Link
                     to="/connect"
-                    className="inline-flex items-center justify-center px-12 py-4 text-coral rounded-full hover:bg-white hover:scale-105 transition-all border-2 border-coral shadow-lg"
-                    style={{ fontSize: "16px", fontWeight: 600, backgroundColor: "transparent" }}
+                    className="inline-flex items-center justify-center px-12 py-4 text-coral rounded-full hover:bg-coral hover:text-white border-2 border-coral hover:scale-105 transition-all shadow-lg"
+                    style={{ fontSize: "16px", fontWeight: 600 }}
                   >
                     TELL YOUR STORY
                   </Link>

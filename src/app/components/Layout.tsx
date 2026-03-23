@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, Outlet, useLocation } from "react-router";
 import { Menu, X, Phone, MapPin, Facebook, Instagram, Youtube, Linkedin } from "lucide-react";
+import { PopupManager } from "./PopupManager";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -171,17 +172,31 @@ function Footer() {
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 mt-1 text-coral shrink-0" />
-                <p className="text-white/60" style={{ fontSize: "14px", lineHeight: "1.6" }}>
-                  Ward Office, Colaba Division,<br />
-                  Mumbai - 400001,<br />
-                  Maharashtra, India
-                </p>
+                <div>
+                  <p className="text-white/80 mb-2" style={{ fontSize: "13px", fontWeight: 600 }}>Personal Office</p>
+                  <p className="text-white/60" style={{ fontSize: "13px", lineHeight: "1.6" }}>
+                    Ground Floor, Ajanta Apartment,<br />
+                    Shaheed Bhagat Singh Road, Colaba Causeway,<br />
+                    Mumbai - 400005
+                  </p>
+                  <p className="text-white/60 mt-1" style={{ fontSize: "12px" }}>Mon–Sat: 7:00 PM – 10:30 PM</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 mt-1 text-coral shrink-0" />
+                <div>
+                  <p className="text-white/80 mb-2" style={{ fontSize: "13px", fontWeight: 600 }}>'A' Ward Office</p>
+                  <p className="text-white/60" style={{ fontSize: "13px", lineHeight: "1.6" }}>
+                    134 'E' Shahid Bhagat Singh Marg,<br />
+                    Near R.B.I., Fort, Mumbai - 400001
+                  </p>
+                  <p className="text-white/60 mt-1" style={{ fontSize: "12px" }}>Mon–Sat: 11:30 AM – 1:00 PM</p>
+                </div>
               </div>
               <div className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-1 text-coral shrink-0" />
                 <div>
                   <p className="text-white/60" style={{ fontSize: "14px" }}>+91 99999 99999</p>
-                  <p className="text-white/60" style={{ fontSize: "14px" }}>Mon–Sat, 10am–6pm</p>
                 </div>
               </div>
             </div>
@@ -226,6 +241,7 @@ export function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <PopupManager />
     </div>
   );
 }

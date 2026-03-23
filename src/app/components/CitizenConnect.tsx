@@ -133,11 +133,24 @@ export function CitizenConnect() {
                     <MapPin className="w-5 h-5 text-coral" />
                   </div>
                   <div>
-                    <p style={{ fontSize: "14px", fontWeight: 600 }}>Office Address</p>
+                    <p style={{ fontSize: "14px", fontWeight: 600 }}>Personal Office</p>
                     <p className="text-white/60 mt-1" style={{ fontSize: "13px", lineHeight: "1.6" }}>
-                      Ward Office, Colaba Division,<br />
-                      Mumbai - 400001,<br />
-                      Maharashtra, India
+                      Ground Floor, Ajanta Apartment,<br />
+                      Shaheed Bhagat Singh Road, Colaba Causeway,<br />
+                      Mumbai, Maharashtra - 400005
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5 text-coral" />
+                  </div>
+                  <div>
+                    <p style={{ fontSize: "14px", fontWeight: 600 }}>'A' Ward Office</p>
+                    <p className="text-white/60 mt-1" style={{ fontSize: "13px", lineHeight: "1.6" }}>
+                      'A' Ward Office Building, 134 'E' Shahid Bhagat Singh Marg,<br />
+                      Near R.B.I., Fort, Mumbai - 400001
                     </p>
                   </div>
                 </div>
@@ -169,9 +182,13 @@ export function CitizenConnect() {
                   </div>
                   <div>
                     <p style={{ fontSize: "14px", fontWeight: 600 }}>Office Hours</p>
-                    <p className="text-white/60 mt-1" style={{ fontSize: "13px" }}>
-                      Mon–Fri: 10:00 AM – 6:00 PM<br />
-                      Saturday: 10:00 AM – 2:00 PM
+                    <p className="text-white/60 mt-1 mb-2" style={{ fontSize: "13px", lineHeight: "1.6" }}>
+                      <strong>Personal Office (Colaba Causeway):</strong><br />
+                      Mon–Sat: 7:00 PM – 10:30 PM
+                    </p>
+                    <p className="text-white/60" style={{ fontSize: "13px", lineHeight: "1.6" }}>
+                      <strong>'A' Ward Office (Fort):</strong><br />
+                      Mon–Sat: 11:30 AM – 1:00 PM
                     </p>
                   </div>
                 </div>

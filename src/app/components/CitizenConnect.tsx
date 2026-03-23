@@ -1,12 +1,48 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
-import { MapPin, Phone, Mail, Clock, MessageCircle, Send, UserPlus, AlertTriangle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageCircle, Send, UserPlus, AlertTriangle, ChevronDown, Check, GraduationCap } from "lucide-react";
 import { toast, Toaster } from "sonner";
+import { useSearchParams } from "react-router";
 
-type FormMode = "contact" | "grievance" | "volunteer";
+type FormMode = "contact" | "grievance" | "volunteer" | "youth";
+
+const grievanceCategories = [
+  { value: "general", label: "General Administration" },
+  { value: "complaints", label: "Civic Complaints (General Nature)" },
+  { value: "health", label: "Health License / Unlicensed Traders" },
+  { value: "garbage", label: "Garbage / Sewage / Drainage / Sanitation" },
+  { value: "stormwater", label: "Storm Water Drain" },
+  { value: "construction", label: "Illegal Construction / Building Repairs" },
+  { value: "pandal", label: "Temporary Pandal" },
+  { value: "roads", label: "Road Repair / Potholes / Footpath" },
+  { value: "hawkers", label: "Hawkers / Encroachment" },
+  { value: "zebra", label: "Zebra Crossings" },
+  { value: "water", label: "Water Supply / Contamination / Leakages" },
+  { value: "waterconnection", label: "New Water Connection" },
+  { value: "roadblocking", label: "Road Blocking" },
+  { value: "pests", label: "Mosquitoes / Pests / Rats / Fogging" },
+  { value: "trees", label: "Tree Trimming / Unauthorized Cutting" },
+  { value: "garden", label: "Garden Maintenance" },
+  { value: "engineering", label: "Engineering Matters" },
+  { value: "animals", label: "Stray Dogs / Animal Nuisance" },
+  { value: "schools", label: "Municipal Schools" },
+  { value: "electricity", label: "Electricity Breakdown / Street Lights" },
+  { value: "other", label: "Other" },
+];
+
+const youthPrograms = [
+  { value: "education", label: "Education & Skill Development" },
+  { value: "employment", label: "Employment & Entrepreneurship" },
+  { value: "sports", label: "Sports & Recreation" },
+  { value: "innovation", label: "Innovation & Leadership" },
+  { value: "health", label: "Health & Wellness" },
+  { value: "community", label: "Community Engagement" },
+];
 
 export function CitizenConnect() {
-  const [formMode, setFormMode] = useState<FormMode>("contact");
+  const [searchParams] = useSearchParams();
+  const initialMode = (searchParams.get("mode") as FormMode) || "contact";
+  const [formMode, setFormMode] = useState<FormMode>(initialMode);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,16 +52,55 @@ export function CitizenConnect() {
     category: "",
     ward: "",
     skills: "",
+    program: "",
   });
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isProgramDropdownOpen, setIsProgramDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const programDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+      if (programDropdownRef.current && !programDropdownRef.current.contains(event.target as Node)) {
+        setIsProgramDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success("Your submission has been received! We will get back to you shortly.");
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "", category: "", ward: "", skills: "" });
+    setFormData({ name: "", email: "", phone: "", subject: "", message: "", category: "", ward: "", skills: "", program: "" });
   };
 
   const updateField = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleCategorySelect = (value: string) => {
+    updateField("category", value);
+    setIsDropdownOpen(false);
+  };
+
+  const handleProgramSelect = (value: string) => {
+    updateField("program", value);
+    setIsProgramDropdownOpen(false);
+  };
+
+  const getSelectedCategoryLabel = () => {
+    const selected = grievanceCategories.find(cat => cat.value === formData.category);
+    return selected ? selected.label : "Select category";
+  };
+
+  const getSelectedProgramLabel = () => {
+    const selected = youthPrograms.find(prog => prog.value === formData.program);
+    return selected ? selected.label : "Select a program";
   };
 
   return (
@@ -73,8 +148,8 @@ export function CitizenConnect() {
                   </div>
                   <div>
                     <p style={{ fontSize: "14px", fontWeight: 600 }}>Phone</p>
-                    <p className="text-white/60 mt-1" style={{ fontSize: "13px" }}>+91 98765 43210</p>
-                    <p className="text-white/60" style={{ fontSize: "13px" }}>+91 22 2204 1234</p>
+                    <p className="text-white/60 mt-1" style={{ fontSize: "13px" }}>+91 99999 99999</p>
+                    <p className="text-white/60" style={{ fontSize: "13px" }}>+91 22 2222 2222</p>
                   </div>
                 </div>
 
@@ -104,7 +179,7 @@ export function CitizenConnect() {
 
               {/* WhatsApp Button */}
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919999999999"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 flex items-center justify-center gap-2 w-full py-3 bg-[#25D366] text-white rounded-xl hover:bg-[#1fb855] transition-colors"
@@ -123,6 +198,7 @@ export function CitizenConnect() {
               {[
                 { key: "contact" as FormMode, label: "Contact Us", icon: Send },
                 { key: "grievance" as FormMode, label: "Submit Grievance", icon: AlertTriangle },
+                { key: "youth" as FormMode, label: "Youth Program Enrollment", icon: GraduationCap },
                 { key: "volunteer" as FormMode, label: "Volunteer Signup", icon: UserPlus },
               ].map((tab) => (
                 <button
@@ -188,21 +264,98 @@ export function CitizenConnect() {
                 {formMode === "grievance" && (
                   <div className="md:col-span-2">
                     <label className="block text-charcoal mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>Category *</label>
-                    <select
-                      required
-                      value={formData.category}
-                      onChange={(e) => updateField("category", e.target.value)}
-                      className="w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-coral/30 focus:border-coral outline-none transition-all"
-                      style={{ fontSize: "14px" }}
-                    >
-                      <option value="">Select category</option>
-                      <option value="roads">Roads & Infrastructure</option>
-                      <option value="water">Water Supply</option>
-                      <option value="sanitation">Sanitation & Cleanliness</option>
-                      <option value="lighting">Street Lighting</option>
-                      <option value="safety">Public Safety</option>
-                      <option value="other">Other</option>
-                    </select>
+                    <div ref={dropdownRef} className="relative">
+                      <button
+                        type="button"
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        className={`w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-coral/30 focus:border-coral outline-none transition-all flex items-center justify-between ${
+                          !formData.category ? "text-charcoal-light" : "text-charcoal"
+                        }`}
+                        style={{ fontSize: "14px" }}
+                      >
+                        <span>{getSelectedCategoryLabel()}</span>
+                        <ChevronDown className={`w-5 h-5 text-charcoal-light transition-transform ${isDropdownOpen ? "rotate-180" : ""}`} />
+                      </button>
+
+                      {isDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="absolute z-10 w-full mt-2 bg-white border border-border rounded-xl shadow-lg overflow-hidden"
+                        >
+                          <div className="max-h-64 overflow-y-auto">
+                            {grievanceCategories.map((category) => (
+                              <button
+                                key={category.value}
+                                type="button"
+                                onClick={() => handleCategorySelect(category.value)}
+                                className={`w-full px-4 py-3 text-left flex items-center justify-between transition-colors ${
+                                  formData.category === category.value
+                                    ? "bg-coral-light text-coral"
+                                    : "text-charcoal hover:bg-cream"
+                                }`}
+                                style={{ fontSize: "14px" }}
+                              >
+                                <span>{category.label}</span>
+                                {formData.category === category.value && (
+                                  <Check className="w-4 h-4 text-coral" />
+                                )}
+                              </button>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {formMode === "youth" && (
+                  <div className="md:col-span-2">
+                    <label className="block text-charcoal mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>Program of Interest *</label>
+                    <div ref={programDropdownRef} className="relative">
+                      <button
+                        type="button"
+                        onClick={() => setIsProgramDropdownOpen(!isProgramDropdownOpen)}
+                        className={`w-full px-4 py-3 bg-white border border-border rounded-xl focus:ring-2 focus:ring-coral/30 focus:border-coral outline-none transition-all flex items-center justify-between ${
+                          !formData.program ? "text-charcoal-light" : "text-charcoal"
+                        }`}
+                        style={{ fontSize: "14px" }}
+                      >
+                        <span>{getSelectedProgramLabel()}</span>
+                        <ChevronDown className={`w-5 h-5 text-charcoal-light transition-transform ${isProgramDropdownOpen ? "rotate-180" : ""}`} />
+                      </button>
+
+                      {isProgramDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="absolute z-10 w-full mt-2 bg-white border border-border rounded-xl shadow-lg overflow-hidden"
+                        >
+                          <div className="max-h-64 overflow-y-auto">
+                            {youthPrograms.map((program) => (
+                              <button
+                                key={program.value}
+                                type="button"
+                                onClick={() => handleProgramSelect(program.value)}
+                                className={`w-full px-4 py-3 text-left flex items-center justify-between transition-colors ${
+                                  formData.program === program.value
+                                    ? "bg-coral-light text-coral"
+                                    : "text-charcoal hover:bg-cream"
+                                }`}
+                                style={{ fontSize: "14px" }}
+                              >
+                                <span>{program.label}</span>
+                                {formData.program === program.value && (
+                                  <Check className="w-4 h-4 text-coral" />
+                                )}
+                              </button>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </div>
                   </div>
                 )}
 
@@ -223,7 +376,10 @@ export function CitizenConnect() {
 
                 <div className="md:col-span-2">
                   <label className="block text-charcoal mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>
-                    {formMode === "contact" ? "Subject" : formMode === "grievance" ? "Issue Location" : "How would you like to help?"}
+                    {formMode === "contact" ? "Subject" :
+                     formMode === "grievance" ? "Issue Location" :
+                     formMode === "youth" ? "Education Background" :
+                     "How would you like to help?"}
                   </label>
                   <input
                     type="text"
@@ -233,6 +389,7 @@ export function CitizenConnect() {
                     placeholder={
                       formMode === "contact" ? "What is this regarding?" :
                       formMode === "grievance" ? "Enter the location of the issue" :
+                      formMode === "youth" ? "e.g., 12th Grade, Undergraduate, Graduate" :
                       "Describe how you'd like to contribute"
                     }
                     style={{ fontSize: "14px" }}
@@ -241,7 +398,9 @@ export function CitizenConnect() {
 
                 <div className="md:col-span-2">
                   <label className="block text-charcoal mb-1.5" style={{ fontSize: "13px", fontWeight: 600 }}>
-                    {formMode === "grievance" ? "Describe the Issue *" : "Message"}
+                    {formMode === "grievance" ? "Describe the Issue *" :
+                     formMode === "youth" ? "Why do you want to join this program?" :
+                     "Message"}
                   </label>
                   <textarea
                     rows={4}
@@ -252,6 +411,7 @@ export function CitizenConnect() {
                     placeholder={
                       formMode === "contact" ? "Your message..." :
                       formMode === "grievance" ? "Please describe the issue in detail..." :
+                      formMode === "youth" ? "Tell us about your goals and what you hope to achieve..." :
                       "Tell us about yourself and your availability..."
                     }
                     style={{ fontSize: "14px" }}
@@ -265,7 +425,10 @@ export function CitizenConnect() {
                 style={{ fontSize: "15px", fontWeight: 600 }}
               >
                 <Send className="w-4 h-4" />
-                {formMode === "contact" ? "Send Message" : formMode === "grievance" ? "Submit Grievance" : "Sign Up as Volunteer"}
+                {formMode === "contact" ? "Send Message" :
+                 formMode === "grievance" ? "Submit Grievance" :
+                 formMode === "youth" ? "Submit Enrollment" :
+                 "Sign Up as Volunteer"}
               </button>
             </motion.form>
           </div>

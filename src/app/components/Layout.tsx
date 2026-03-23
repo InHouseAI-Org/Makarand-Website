@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link, Outlet, useLocation } from "react-router";
-import { Menu, X, Phone, MapPin, Facebook, Twitter, Instagram, Youtube, ChevronUp } from "lucide-react";
+import { Menu, X, Phone, MapPin, Facebook, Instagram, Youtube, Linkedin } from "lucide-react";
 
 const navLinks = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
   { label: "Vision", path: "/vision" },
   { label: "Work & Impact", path: "/work" },
+  { label: "Youth", path: "/youth" },
+  { label: "Government Projects", path: "/government-projects" },
   { label: "Ward Info", path: "/ward" },
   { label: "Media", path: "/media" },
-  { label: "Connect", path: "/connect" },
 ];
 
 function Header() {
@@ -18,7 +19,7 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-charcoal/10">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="max-w-7xl mx-auto px-2 sm:px-5 lg:px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
@@ -28,7 +29,7 @@ function Header() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-5">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -84,7 +85,7 @@ function Header() {
               </Link>
             ))}
             <a
-              href="tel:+919876543210"
+              href="tel:+919999999999"
               className="mt-2 flex items-center justify-center gap-2 px-4 py-3 bg-coral text-white rounded-lg"
               style={{ fontSize: "15px", fontWeight: 600, fontFamily: "var(--font-family-serif)" }}
             >
@@ -100,6 +101,21 @@ function Header() {
 
 function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  // Custom X (Twitter) icon component
+  const XIcon = () => (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+
+  const socialLinks = [
+    { icon: Facebook, href: "https://www.facebook.com/MakarandNarwekarOfficial/" },
+    { icon: XIcon, href: "https://x.com/MNarwekar" },
+    { icon: Instagram, href: "https://www.instagram.com/makarandnarwekarofficial/reels/" },
+    { icon: Youtube, href: "https://youtube.com/@narwekarmakarand?si=NL9_dd0DGW1-cNGa" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/makarand-narwekar-772468294/" }
+  ];
 
   return (
     <footer className="bg-charcoal text-white/90">
@@ -118,15 +134,20 @@ function Footer() {
               Dedicated to transforming our ward through transparent governance, sustainable development, and citizen-first service.
             </p>
             <div className="flex gap-3">
-              {[Facebook, Twitter, Instagram, Youtube].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral-dark transition-colors"
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
+              {socialLinks.map((social, i) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={i}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-coral-dark transition-colors"
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -159,7 +180,7 @@ function Footer() {
               <div className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-1 text-coral shrink-0" />
                 <div>
-                  <p className="text-white/60" style={{ fontSize: "14px" }}>+91 98765 43210</p>
+                  <p className="text-white/60" style={{ fontSize: "14px" }}>+91 99999 99999</p>
                   <p className="text-white/60" style={{ fontSize: "14px" }}>Mon–Sat, 10am–6pm</p>
                 </div>
               </div>

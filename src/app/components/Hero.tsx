@@ -9,113 +9,109 @@ export function Hero() {
     <>
       {/* Main Hero Section */}
       <section
-        className="relative overflow-hidden h-[95vh]"
+        className="relative overflow-hidden h-[95vh] flex items-center justify-center"
         style={{
           backgroundImage: "url('ChatGPT Image Mar 10, 2026 at 06_13_51 PM.png')",
-          backgroundSize: "auto",
+          backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       >
-          {/* STAGE 1: Centered text with image inside
-          {animationStage === "centered" && (
-              <motion.div
-                initial={{ opacity: 1 }}
-                animate={{ opacity: [1, 1, 0] }}
-                transition={{
-                  opacity: { duration: 1.5, delay: 1.2, times: [0, 0.99, 1] }
-                }}
-                onAnimationComplete={() => {
-                  setAnimationStage("split");
-                }}
-                //className="text-center relative z-10 w-full h-full flex items-center justify-center"
-                className="absolute text-center inset-0 flex items-center justify-center" style={{ height: "100%", width: "100%", backgroundColor: "#ff8465" }}
-              >
-                <motion.h1
-                  initial={{ opacity: 1, scale: 1, y: 0, x:0 }}
-                  animate={{ opacity: 1, scale: 110, y: -5000, x: -3800 }}
-                  transition={{ duration: 1.5, delay: 1.2, ease: "linear" }}
-                  style={{
-                    fontSize: "clamp(200px, 15vw, 180px)",
-                    fontWeight: 900,
-                    lineHeight: "0.9",
-                    letterSpacing: "-0.04em",
-                    textTransform: "uppercase",
-                    width: "100%",
-                    color: "white"
-                  }}
-                >
-                  MAKARAND
-                  <br />
-                  NARWEKAR
-                </motion.h1>
-              </motion.div>
-          )} */}
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/8 to-transparent"></div>
 
-        <div className="max-w-7xl mx-auto w-full">
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-6 sm:px-8 lg:px-12">
+          <div className="max-w-4xl">
 
-          {/* STAGE 2: Text Content */}
-          {/* {animationStage === "split" && ( */}
-              <div className="relative z-10 max-w-2xl mt-12 px-8 lg:px-16">
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="mb-8"
-                  style={{
-                    fontSize: "clamp(50px, 6vw, 80px)",
-                    fontWeight: 700,
-                    lineHeight: "1.2",
-                    letterSpacing: "-0.02em",
-                    color: "#1A1A1A",
-                    fontFamily: "var(--font-family-serif)"
-                  }}
-                >
-                  Committed to{" "}
-                  <span className="text-coral" style={{ fontWeight: 900 }}>Development.</span>
-                  <br />
-                  Dedicated to{" "}
-                  <span className="text-coral" style={{ fontWeight: 900 }}>Service.</span>
-                </motion.h1>
-
-                <motion.p
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                  className="text-black/95 max-w-lg mb-12"
-                  style={{
-                    fontSize: "20px",
-                    lineHeight: "1.7",
-                    fontWeight: 400
-                  }}
-                >
-                  Building a cleaner, safer, and more prosperous ward through
-                  transparent governance and citizen engagement.
-                </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
-                  className="flex flex-wrap gap-4"
-                >
-                  <Link
-                    to="/work"
-                    className="inline-flex items-center justify-center px-12 py-4 bg-coral text-white rounded-full hover:bg-white hover:text-coral border-2 border-coral hover:scale-105 transition-all shadow-lg"
-                    style={{ fontSize: "16px", fontWeight: 600 }}
-                  >
-                    VIEW OUR WORK
-                  </Link>
-                  <Link
-                    to="/connect"
-                    className="inline-flex items-center justify-center px-12 py-4 text-coral rounded-full hover:bg-coral hover:text-white border-2 border-coral hover:scale-105 transition-all shadow-lg"
-                    style={{ fontSize: "16px", fontWeight: 600 }}
-                  >
-                    TELL YOUR STORY
-                  </Link>
-                </motion.div>
+            {/* Hashtag Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="mb-6"
+            >
+              <div className="inline-flex items-center px-6 py-3 bg-coral text-white rounded-full shadow-xl">
+                <span style={{
+                  fontSize: "clamp(16px, 1.8vw, 20px)",
+                  fontWeight: 800,
+                  letterSpacing: "0.05em"
+                }}>
+                  #PowerToPeople
+                </span>
               </div>
-          {/* )} */}
+            </motion.div>
 
+            {/* Main Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              style={{
+                fontSize: "clamp(50px, 6vw, 80px)",
+                fontWeight: 700,
+                lineHeight: "1.2",
+                letterSpacing: "-0.02em",
+                color: "#1A1A1A",
+                fontFamily: "var(--font-family-serif)",
+                marginBottom: "28px"
+              }}
+            >
+              Committed to{" "}
+              <span className="text-coral" style={{ fontWeight: 900 }}>Development.</span>
+              <br />
+              Dedicated to{" "}
+              <span className="text-coral" style={{ fontWeight: 900 }}>Service.</span>
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              style={{
+                fontSize: "clamp(17px, 1.9vw, 20px)",
+                lineHeight: "1.7",
+                fontWeight: 400,
+                color: "rgba(26, 26, 26, 0.8)",
+                marginBottom: "36px",
+                maxWidth: "620px"
+              }}
+            >
+              Building a cleaner, safer, and more prosperous ward through
+              transparent governance and citizen engagement.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              className="flex flex-wrap gap-4"
+            >
+              <Link
+                to="/work"
+                className="inline-flex items-center justify-center px-9 py-4 bg-coral text-white rounded-full border-2 border-coral transition-all duration-300 hover:bg-transparent hover:text-coral shadow-xl hover:shadow-2xl hover:scale-105"
+                style={{
+                  fontSize: "15px",
+                  fontWeight: 700,
+                  letterSpacing: "0.5px"
+                }}
+              >
+                VIEW OUR WORK
+              </Link>
+              <Link
+                to="/connect"
+                className="inline-flex items-center justify-center px-9 py-4 text-coral rounded-full hover:bg-coral hover:text-white border-2 border-coral hover:scale-105 transition-all shadow-xl"
+                style={{
+                  fontSize: "15px",
+                  fontWeight: 700,
+                  letterSpacing: "0.5px"
+                }}
+              >
+                SHARE YOUR CONCERN
+              </Link>
+            </motion.div>
+
+          </div>
         </div>
       </section>
 
@@ -148,7 +144,7 @@ export function Hero() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
             {[
               { num: "200", label: "Projects Completed" },
-              { num: "15", label: "Years of Service" },
+              { num: "14", label: "Years of Service" },
               { num: "50K", label: "Citizens Served" },
             ].map((stat, index) => (
               <motion.div

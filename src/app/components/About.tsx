@@ -22,21 +22,21 @@ const timelineData = [
     icon: Users,
   },
   {
-    year: "2014",
-    title: "First Electoral Victory",
-    description: "Elected as corporator with a clear mandate for development and transparent governance. Introduced ward-level accountability measures from day one.",
+    year: "2012",
+    title: "First Electoral Victory as Independent",
+    description: "Elected as an independent corporator with a clear mandate for development and transparent governance, proving that dedication to service transcends party lines. Introduced ward-level accountability measures from day one.",
     icon: Landmark,
   },
   {
-    year: "2019",
+    year: "2017",
     title: "Re-election & Major Milestones",
     description: "Won a decisive re-election on the back of completed infrastructure projects, improved sanitation, and strong community engagement programs.",
     icon: Award,
   },
   {
-    year: "Present",
-    title: "Vision for the Future",
-    description: "Focused on smart infrastructure, digital governance, and sustainable development to make the ward a model for civic excellence across Mumbai.",
+    year: "2026 - Present",
+    title: "Re-elected for Third Term",
+    description: "Triumphantly re-elected with overwhelming public support, reflecting the community's trust in his proven track record. Continuing the mission with renewed focus on smart infrastructure, digital governance, and sustainable development to make the ward a model for civic excellence across Mumbai.",
     icon: Target,
   },
 ];
@@ -56,7 +56,7 @@ export function About({ isFullPage = false }: { isFullPage?: boolean }) {
             From Grassroots to Governance
           </h2>
           <p className="text-charcoal-light" style={{ fontSize: "16px", lineHeight: "1.7" }}>
-            A story of dedication, service, and unwavering commitment to the people — 
+            A story of dedication, service, and unwavering commitment to the people - 
             from community volunteer to ward corporator.
           </p>
         </div>

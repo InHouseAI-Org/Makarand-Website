@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { MapPin, Building, Info, FileText, Phone, Hospital, GraduationCap, Bus } from "lucide-react";
+import { MapPin, Building, Info, FileText, Phone, Hospital, GraduationCap, Bus, Users, Shield, Flame } from "lucide-react";
 import { IMAGES } from "./images";
 
 const landmarks = [
@@ -20,6 +20,38 @@ const citizenServices = [
   { title: "Health Services", desc: "Vaccination, health camps, PHC" },
 ];
 
+const wardOfficers = [
+  { name: "Mr. Jaydeep More", designation: "Assistant Commissioner 'A'", contact: "9769666505", issues: "General Administration" },
+  { name: "Mr. Mahesh Patil", designation: "Complaint Officer", contact: "9029007188", issues: "Civic complaints of general nature" },
+  { name: "Mr. Prafula Yadav", designation: "Medical Officer Health", contact: "9821890590", issues: "Health license, grievances, unlicensed traders" },
+  { name: "Mr. Arun Vaidya", designation: "A.E Solid Waste Management", contact: "9820739100", issues: "Garbage, Sewage, Drainage, Sanitation, Storm water drain" },
+  { name: "Mr. Rahul Jadhav", designation: "A.E Building & Factory", contact: "9930025277", issues: "Temporary pandal, Illegal construction, Building repairs" },
+  { name: "Mr. Ravi Mhaske", designation: "A.E Maintenance", contact: "9004688678", issues: "Road repair, Potholes, Footpath, Hawkers, Zebra crossings" },
+  { name: "Ms. Neeta Arote", designation: "A.E Water Works", contact: "8655358122", issues: "Water supply, Contamination, Leakages, New connections" },
+  { name: "Mr. Nilay Pawar", designation: "Sr. Inspector (License)", contact: "9819074701", issues: "Hawker nuisance" },
+  { name: "Mr. Parikshit Patil", designation: "Sr. Inspector (Encroachment)", contact: "8369512377", issues: "Road blocking, Hawkers, Encroachment" },
+  { name: "Mr. Tushar Wagh", designation: "Pest Control Officer", contact: "9096375894", issues: "Mosquitoes, Pests, Rats, Fogging schedule" },
+  { name: "Mr. Sudarshan Aaware", designation: "Horticulture Assistant", contact: "9763230130", issues: "Tree trimming, Unauthorized cutting, Garden maintenance" },
+  { name: "Mr. Kanojiya", designation: "Executive Engineer", contact: "9975673419", issues: "Engineering matters" },
+  { name: "Dr. K.A. Pathan", designation: "Swan Niyantran Adhikari", contact: "022 25563284", issues: "Stray dogs/animal nuisance" },
+  { name: "Ms. Reena Varake", designation: "A.O (Schools)", contact: "9823517255", issues: "Municipal Schools" },
+  { name: "Mr. Abhijeet Dhotre", designation: "A.E Electrical", contact: "9923203333", issues: "Electricity breakdown, Street lights" },
+];
+
+const policeStations = [
+  { name: "Shri. Yogesh Sable", station: "MRA Marg Police Station", designation: "Sr. Police Inspector", contact: "8976947179" },
+  { name: "Shri. Shrikant Adate", station: "Azad Maidan", designation: "Sr. Police Inspector", contact: "8976947178" },
+  { name: "Shri. Nilesh Bagul", station: "Marine Drive", designation: "Sr. Police Inspector", contact: "8976947165" },
+  { name: "Shri. Sudhakar Deshmuk", station: "Colaba", designation: "Sr. Police Inspector", contact: "8976947163" },
+  { name: "Shri. Satish Gaikwad", station: "Cuffe Parade", designation: "Sr. Police Inspector", contact: "7768933007" },
+];
+
+const fireStations = [
+  { name: "Colaba Fire Station", contact: "022 2204 3603" },
+  { name: "Nariman Point Fire Station", contact: "022 2288 2787" },
+  { name: "Fort Fire Station", contact: "022 2261 1942" },
+];
+
 export function WardInfo() {
   return (
     <section className="py-16 lg:py-24 bg-white">
@@ -33,7 +65,7 @@ export function WardInfo() {
             Know Your Ward
           </h2>
           <p className="text-charcoal-light" style={{ fontSize: "16px", lineHeight: "1.7" }}>
-            Everything citizens need to know about their ward — services, landmarks, development plans, and contact information.
+            Everything citizens need to know about their ward - services, landmarks, development plans, and contact information.
           </p>
         </div>
 
@@ -117,7 +149,7 @@ export function WardInfo() {
         <h3 className="text-charcoal text-center mb-8" style={{ fontSize: "22px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
           Citizen Services
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
           {citizenServices.map((service, index) => (
             <motion.div
               key={service.title}
@@ -136,6 +168,114 @@ export function WardInfo() {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Ward Officers Contact Directory */}
+        <div className="mb-16">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 mb-3">
+              <Users className="w-6 h-6 text-coral" />
+              <h3 className="text-charcoal" style={{ fontSize: "26px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+                BMC A Ward Officers
+              </h3>
+            </div>
+            <p className="text-charcoal-light" style={{ fontSize: "15px" }}>
+              Direct contact information for all ward officials
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {wardOfficers.map((officer, index) => (
+              <motion.div
+                key={officer.contact}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.02 }}
+                className="bg-cream rounded-xl p-5 border border-border hover:shadow-md transition-all"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <p className="text-charcoal mb-1" style={{ fontSize: "16px", fontWeight: 700 }}>{officer.name}</p>
+                    <p className="text-coral mb-2" style={{ fontSize: "13px", fontWeight: 600 }}>{officer.designation}</p>
+                    <p className="text-charcoal-light mb-3" style={{ fontSize: "12px", lineHeight: "1.5" }}>{officer.issues}</p>
+                    <a href={`tel:${officer.contact}`} className="inline-flex items-center gap-2 text-charcoal hover:text-coral transition-colors">
+                      <Phone className="w-4 h-4" />
+                      <span style={{ fontSize: "14px", fontWeight: 600 }}>{officer.contact}</span>
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Police Stations */}
+        <div className="mb-16">
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 mb-3">
+              <Shield className="w-6 h-6 text-coral" />
+              <h3 className="text-charcoal" style={{ fontSize: "26px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+                Police Stations
+              </h3>
+            </div>
+            <p className="text-charcoal-light" style={{ fontSize: "15px" }}>
+              Contact information for local police stations
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {policeStations.map((station, index) => (
+              <motion.div
+                key={station.contact}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="bg-cream rounded-xl p-5 border border-border hover:shadow-md transition-all"
+              >
+                <p className="text-coral mb-2" style={{ fontSize: "14px", fontWeight: 700 }}>{station.station}</p>
+                <p className="text-charcoal mb-1" style={{ fontSize: "15px", fontWeight: 600 }}>{station.name}</p>
+                <p className="text-charcoal-light mb-3" style={{ fontSize: "12px" }}>{station.designation}</p>
+                <a href={`tel:${station.contact}`} className="inline-flex items-center gap-2 text-charcoal hover:text-coral transition-colors">
+                  <Phone className="w-4 h-4" />
+                  <span style={{ fontSize: "14px", fontWeight: 600 }}>{station.contact}</span>
+                </a>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Fire Stations */}
+        <div>
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 mb-3">
+              <Flame className="w-6 h-6 text-coral" />
+              <h3 className="text-charcoal" style={{ fontSize: "26px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+                Fire Stations
+              </h3>
+            </div>
+            <p className="text-charcoal-light" style={{ fontSize: "15px" }}>
+              Emergency fire services contact numbers
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {fireStations.map((station, index) => (
+              <motion.div
+                key={station.contact}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-coral-light rounded-xl p-6 border-2 border-coral hover:shadow-lg transition-all text-center"
+              >
+                <Flame className="w-8 h-8 text-coral mx-auto mb-3" />
+                <p className="text-charcoal mb-3" style={{ fontSize: "15px", fontWeight: 700 }}>{station.name}</p>
+                <a href={`tel:${station.contact}`} className="inline-flex items-center gap-2 text-coral hover:text-charcoal transition-colors">
+                  <Phone className="w-4 h-4" />
+                  <span style={{ fontSize: "15px", fontWeight: 700 }}>{station.contact}</span>
+                </a>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

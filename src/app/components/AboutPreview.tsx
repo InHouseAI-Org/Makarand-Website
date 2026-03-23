@@ -46,12 +46,12 @@ export function AboutPreview() {
             <div className="space-y-6">
               <div className="flex gap-5 items-start">
                 <div className="w-14 h-14 rounded-2xl bg-coral/10 flex items-center justify-center shrink-0 border border-coral/20">
-                  <span className="text-coral font-bold text-lg">13+</span>
+                  <span className="text-coral font-bold text-lg">14+</span>
                 </div>
                 <div>
                   <h3 className="text-charcoal font-bold mb-2" style={{ fontSize: "20px" }}>Years of Service</h3>
                   <p className="text-charcoal-light" style={{ fontSize: "16px", lineHeight: "1.7" }}>
-                    Dedicated to public service since 2008, from grassroots activism to becoming a trusted corporator.
+                    Dedicated to public service since 2012, from grassroots activism to becoming a trusted corporator.
                   </p>
                 </div>
               </div>

@@ -94,7 +94,7 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
             Delivering Results, Not Just Promises
           </h2>
           <p className="text-charcoal-light" style={{ fontSize: "16px", lineHeight: "1.7" }}>
-            Tracking progress on every project — completed, ongoing, and planned — with full transparency.
+            Tracking progress on every project - completed, ongoing, and planned - with full transparency.
           </p>
         </div>
 
@@ -249,36 +249,6 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
           </div>
         )}
 
-        {/* Before/After Section */}
-        {isFullPage && (
-          <div className="mt-16">
-            <h3 className="text-center text-charcoal mb-8" style={{ fontSize: "24px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
-              Before &amp; After
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white rounded-xl overflow-hidden border border-border">
-                <div className="relative">
-                  <img src={IMAGES.beforeRoad} alt="Before" className="w-full h-56 object-cover" />
-                  <div className="absolute top-3 left-3 px-3 py-1 bg-red-500 text-white rounded-full" style={{ fontSize: "12px", fontWeight: 700 }}>Before</div>
-                </div>
-                <div className="p-4">
-                  <p className="text-charcoal" style={{ fontSize: "15px", fontWeight: 600 }}>Ward Road — Before Reconstruction</p>
-                  <p className="text-charcoal-light" style={{ fontSize: "13px" }}>Potholed, waterlogged during monsoons</p>
-                </div>
-              </div>
-              <div className="bg-white rounded-xl overflow-hidden border border-border">
-                <div className="relative">
-                  <img src={IMAGES.afterRoad} alt="After" className="w-full h-56 object-cover" />
-                  <div className="absolute top-3 left-3 px-3 py-1 bg-coral-500 text-white rounded-full" style={{ fontSize: "12px", fontWeight: 700 }}>After</div>
-                </div>
-                <div className="p-4">
-                  <p className="text-charcoal" style={{ fontSize: "15px", fontWeight: 600 }}>Ward Road — After Reconstruction</p>
-                  <p className="text-charcoal-light" style={{ fontSize: "13px" }}>Smooth surface, proper drainage installed</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );

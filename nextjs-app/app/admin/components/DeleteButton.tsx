@@ -6,7 +6,7 @@ import { Trash2 } from 'lucide-react';
 
 interface DeleteButtonProps {
   id: string;
-  type: 'project' | 'governmentProject' | 'wardOfficer' | 'media' | 'testimonial' | 'gallery' | 'socialMedia';
+  type: 'project' | 'governmentProject' | 'wardOfficer' | 'media' | 'testimonial' | 'gallery' | 'socialMedia' | 'youthTestimonial';
   title: string;
 }
 

@@ -7,7 +7,7 @@ import { Eye, EyeOff } from 'lucide-react';
 interface TogglePublishButtonProps {
   id: string;
   published: boolean;
-  type: 'project' | 'governmentProject' | 'wardOfficer' | 'media' | 'testimonial' | 'gallery' | 'socialMedia';
+  type: 'project' | 'governmentProject' | 'wardOfficer' | 'media' | 'testimonial' | 'gallery' | 'socialMedia' | 'youthTestimonial';
 }
 
 export function TogglePublishButton({ id, published, type }: TogglePublishButtonProps) {

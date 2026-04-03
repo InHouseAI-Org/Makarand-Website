@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Youth } from "../components/Youth";
+import { prisma } from "@/lib/prisma";
+import { YouthClient } from "../components/YouthClient";
 
 export const metadata: Metadata = {
   title: 'Youth Programs | Empowering Tomorrow\'s Leaders',
@@ -15,6 +16,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function YouthPage() {
-  return <Youth />;
+export default async function YouthPage() {
+  // Fetch youth testimonials from database
+  const dbTestimonials = await prisma.youthTestimonial.findMany({
+    where: { published: true },
+    orderBy: { createdAt: 'desc' },
+  });
+
+  const testimonials = dbTestimonials.map(t => ({
+    name: t.name,
+    age: t.age || undefined,
+    school: t.school || undefined,
+    content: t.content,
+    photo: t.photo || undefined,
+    photoUrl: t.photoUrl || undefined,
+  }));
+
+  return <YouthClient testimonials={testimonials} />;
 }

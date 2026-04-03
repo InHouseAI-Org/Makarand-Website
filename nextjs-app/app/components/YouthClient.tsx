@@ -1,7 +1,8 @@
 'use client';
 
+import { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
-import { GraduationCap, Trophy, Briefcase, Users, Heart, Lightbulb, Target, Book, Award, Sparkles } from "lucide-react";
+import { GraduationCap, Trophy, Briefcase, Users, Heart, Lightbulb, Target, Book, Award, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 
 const youthInitiatives = [
   {
@@ -79,31 +80,71 @@ const achievements = [
   { icon: Award, value: "50+", label: "Scholarships Awarded" }
 ];
 
-const testimonials = [
-  {
-    name: "Priya Sharma",
-    age: 22,
-    program: "Digital Skills Training",
-    quote: "The computer training program helped me land my first job. I'm now working as a junior developer at a tech company.",
-    image: "https://ui-avatars.com/api/?name=Priya+Sharma&background=ff8465&color=fff"
-  },
-  {
-    name: "Rahul Desai",
-    age: 20,
-    program: "Sports Development",
-    quote: "Thanks to the sports facility and coaching support, I represented our ward at the state-level badminton championship.",
-    image: "https://ui-avatars.com/api/?name=Rahul+Desai&background=ff8465&color=fff"
-  },
-  {
-    name: "Sneha Patil",
-    age: 19,
-    program: "Scholarship Recipient",
-    quote: "The scholarship program made it possible for me to continue my engineering education. Forever grateful for this opportunity.",
-    image: "https://ui-avatars.com/api/?name=Sneha+Patil&background=ff8465&color=fff"
-  }
-];
+interface YouthTestimonial {
+  name: string;
+  age?: number;
+  school?: string;
+  content: string;
+  photo?: string;
+  photoUrl?: string;
+}
 
-export function Youth({ isFullPage = false }: { isFullPage?: boolean }) {
+interface YouthClientProps {
+  testimonials: YouthTestimonial[];
+  isFullPage?: boolean;
+}
+
+export function YouthClient({ testimonials, isFullPage = false }: YouthClientProps) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const itemsToShow = 3;
+  const totalItems = testimonials.length;
+  const maxIndex = Math.max(0, totalItems - itemsToShow);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (!scrollContainerRef.current) return;
+
+    const container = scrollContainerRef.current;
+    const itemWidth = container.scrollWidth / totalItems;
+    const scrollAmount = itemWidth * itemsToShow;
+
+    if (direction === 'left') {
+      setCurrentIndex(prev => Math.max(0, prev - 1));
+      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else {
+      setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    if (!isAutoPlaying || totalItems <= itemsToShow) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => {
+        const next = prev >= maxIndex ? 0 : prev + 1;
+
+        if (scrollContainerRef.current) {
+          const container = scrollContainerRef.current;
+          const itemWidth = container.scrollWidth / totalItems;
+
+          if (next === 0) {
+            container.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            const scrollAmount = itemWidth * itemsToShow;
+            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+          }
+        }
+
+        return next;
+      });
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, maxIndex, totalItems, itemsToShow]);
+
   return (
     <section className={`${isFullPage ? "py-16 lg:py-24" : "py-16 lg:py-20"} bg-gradient-to-b from-white via-cream to-white`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -226,51 +267,121 @@ export function Youth({ isFullPage = false }: { isFullPage?: boolean }) {
         </div>
 
         {/* Testimonials Section */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <p className="text-coral mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
-              SUCCESS STORIES
-            </p>
-            <h2
-              className="text-charcoal"
-              style={{
-                fontSize: "clamp(32px, 4vw, 44px)",
-                fontWeight: 800,
-                fontFamily: "var(--font-family-serif)"
-              }}
-            >
-              Youth Voices
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-6 shadow-lg border-2 border-border hover:border-coral transition-all"
+        {testimonials.length > 0 && (
+          <div className="mb-16">
+            <div className="text-center mb-12">
+              <p className="text-coral mb-2" style={{ fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em" }}>
+                SUCCESS STORIES
+              </p>
+              <h2
+                className="text-charcoal"
+                style={{
+                  fontSize: "clamp(32px, 4vw, 44px)",
+                  fontWeight: 800,
+                  fontFamily: "var(--font-family-serif)"
+                }}
               >
-                <div className="flex items-center gap-4 mb-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-14 h-14 rounded-full"
-                  />
-                  <div>
-                    <p className="text-charcoal font-bold text-base">{testimonial.name}</p>
-                    <p className="text-charcoal-light text-sm">Age {testimonial.age} • {testimonial.program}</p>
-                  </div>
+                Youth Voices
+              </h2>
+            </div>
+
+            <div className="relative">
+              {/* Navigation Buttons */}
+              {totalItems > itemsToShow && (
+                <>
+                  <button
+                    onClick={() => {
+                      scroll('left');
+                      setIsAutoPlaying(false);
+                    }}
+                    disabled={currentIndex === 0}
+                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral"
+                    aria-label="Previous testimonials"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                  <button
+                    onClick={() => {
+                      scroll('right');
+                      setIsAutoPlaying(false);
+                    }}
+                    disabled={currentIndex >= maxIndex}
+                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral"
+                    aria-label="Next testimonials"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                </>
+              )}
+
+              {/* Scrollable Container */}
+              <div
+                ref={scrollContainerRef}
+                className="flex gap-6 overflow-x-hidden scroll-smooth"
+                onMouseEnter={() => setIsAutoPlaying(false)}
+                onMouseLeave={() => setIsAutoPlaying(true)}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <motion.div
+                    key={testimonial.name + index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-white rounded-2xl p-6 shadow-lg border-2 border-border hover:border-coral transition-all flex-shrink-0"
+                    style={{ width: 'calc(33.333% - 16px)', minWidth: '300px' }}
+                  >
+                    <div className="flex items-center gap-4 mb-4">
+                      <img
+                        src={testimonial.photo || testimonial.photoUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=ff8465&color=fff`}
+                        alt={testimonial.name}
+                        className="w-14 h-14 rounded-full object-cover"
+                      />
+                      <div>
+                        <p className="text-charcoal font-bold text-base">{testimonial.name}</p>
+                        <p className="text-charcoal-light text-sm">
+                          {testimonial.age && `Age ${testimonial.age}`}
+                          {testimonial.age && testimonial.school && ' • '}
+                          {testimonial.school}
+                        </p>
+                      </div>
+                    </div>
+                    <p className="text-charcoal-light italic text-sm leading-relaxed">
+                      "{testimonial.content}"
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Pagination Dots */}
+              {totalItems > itemsToShow && (
+                <div className="flex justify-center gap-2 mt-8">
+                  {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        setCurrentIndex(index);
+                        setIsAutoPlaying(false);
+                        if (scrollContainerRef.current) {
+                          const container = scrollContainerRef.current;
+                          const itemWidth = container.scrollWidth / totalItems;
+                          const scrollPosition = itemWidth * itemsToShow * index;
+                          container.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+                        }
+                      }}
+                      className={`h-2 rounded-full transition-all ${
+                        currentIndex === index
+                          ? 'bg-coral w-8'
+                          : 'bg-border w-2 hover:bg-coral/50'
+                      }`}
+                      aria-label={`Go to testimonial set ${index + 1}`}
+                    />
+                  ))}
                 </div>
-                <p className="text-charcoal-light italic text-sm leading-relaxed">
-                  "{testimonial.quote}"
-                </p>
-              </motion.div>
-            ))}
+              )}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Call to Action */}
         <motion.div

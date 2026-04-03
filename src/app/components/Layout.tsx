@@ -86,7 +86,7 @@ function Header() {
               </Link>
             ))}
             <a
-              href="tel:+919999999999"
+              href="tel:+918850866638"
               className="mt-2 flex items-center justify-center gap-2 px-4 py-3 bg-coral text-white rounded-lg"
               style={{ fontSize: "15px", fontWeight: 600, fontFamily: "var(--font-family-serif)" }}
             >
@@ -196,7 +196,7 @@ function Footer() {
               <div className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-1 text-coral shrink-0" />
                 <div>
-                  <p className="text-white/60" style={{ fontSize: "14px" }}>+91 99999 99999</p>
+                  <p className="text-white/60" style={{ fontSize: "14px" }}>+91 88508 66638</p>
                 </div>
               </div>
             </div>

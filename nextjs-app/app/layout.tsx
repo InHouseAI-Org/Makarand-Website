@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { Layout } from "./components/Layout";
 
 // Metadata for SEO optimization
 export const metadata: Metadata = {
@@ -100,7 +101,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="min-h-screen flex flex-col antialiased">
-        {children}
+        <Layout>{children}</Layout>
       </body>
     </html>
   );

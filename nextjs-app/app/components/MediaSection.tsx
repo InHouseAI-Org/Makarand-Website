@@ -1,98 +1,189 @@
-'use client';
-
-import { motion } from "motion/react";
-import { Award, Newspaper, Camera, Play, ExternalLink, Loader2 } from "lucide-react";
+import { Award, Newspaper, Camera, Play, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { IMAGES } from "./images";
-import { useYouTubeFeed, useInstagramFeed } from "../hooks/useSocialMedia";
+import { prisma } from "@/lib/prisma";
+import { MediaSectionClient } from "./MediaSectionClient";
+import { AwardCard } from "./AwardCard";
 
-const awards = [
-  {
-    title: "Best Corporator Award",
-    org: "Mumbai Municipal Corporation",
-    year: "2025",
-    description: "Recognized for outstanding contribution to ward development and citizen services.",
-  },
-  {
-    title: "Clean Ward Excellence",
-    org: "Swachh Bharat Mission",
-    year: "2024",
-    description: "Top ranking in cleanliness and sanitation standards among city wards.",
-  },
-  {
-    title: "Infrastructure Development Award",
-    org: "Urban Development Authority",
-    year: "2023",
-    description: "For completing all planned road and drainage projects ahead of schedule.",
-  },
-];
+export async function MediaSection() {
+  // Fetch all media items from database
+  const allMediaItems = await prisma.media.findMany({
+    where: {
+      published: true,
+    },
+    orderBy: {
+      publishedAt: 'desc',
+    },
+  });
 
-const pressItems = [
-  {
-    id: "ward-tops-road-repair",
-    title: "Ward Tops Mumbai in Road Repair Completion",
-    source: "Mumbai Mirror",
-    date: "Jan 2026",
-    image: IMAGES.roadConstruction,
-  },
-  {
-    id: "digital-governance-praised",
-    title: "Corporator's Digital Governance Push Praised",
-    source: "Times of India",
-    date: "Nov 2025",
-    image: IMAGES.press,
-  },
-  {
-    id: "community-park-model",
-    title: "Community Park Revival: A Model for Other Wards",
-    source: "Hindustan Times",
-    date: "Sep 2025",
-    image: IMAGES.park,
-  },
-];
+  // Filter by category
+  const awardsFromDB = allMediaItems.filter(item => item.category === 'award').slice(0, 6);
+  const pressItemsFromDB = allMediaItems.filter(item => item.category === 'press').slice(0, 6);
+  const videosFromDB = allMediaItems.filter(item => item.category === 'video').slice(0, 6);
 
-const galleryImages = [
-  { src: IMAGES.rally, alt: "Public rally" },
-  { src: IMAGES.community, alt: "Community gathering" },
-  { src: IMAGES.award, alt: "Award ceremony" },
-  { src: IMAGES.school, alt: "School visit" },
-  { src: IMAGES.cleanStreet, alt: "Clean-up drive" },
-  { src: IMAGES.park, alt: "Park inauguration" },
-];
+  // Convert awards to format expected by UI
+  const awards = awardsFromDB.map(award => {
+    console.log('Award from DB:', {
+      id: award.id,
+      title: award.title,
+      thumbnail: award.thumbnail,
+      category: award.category
+    });
+    return {
+      id: award.id,
+      title: award.title,
+      org: award.source || 'N/A',
+      year: new Date(award.publishedAt).getFullYear().toString(),
+      description: award.description || '',
+      image: award.thumbnail || undefined,
+    };
+  });
 
-const videos = [
-  { id: "ward-development-2025", title: "Ward Development Update 2025", thumbnail: IMAGES.roadConstruction, duration: "12:34" },
-  { id: "health-camp-highlights", title: "Community Health Camp Highlights", thumbnail: IMAGES.community, duration: "8:20" },
-  { id: "digital-classroom-launch", title: "School Digital Classroom Launch", thumbnail: IMAGES.school, duration: "5:45" },
-];
+  // Fallback awards if none in database
+  const defaultAwards = [
+    {
+      title: "Best Corporator Award",
+      org: "Mumbai Municipal Corporation",
+      year: "2025",
+      description: "Recognized for outstanding contribution to ward development and citizen services.",
+    },
+    {
+      title: "Clean Ward Excellence",
+      org: "Swachh Bharat Mission",
+      year: "2024",
+      description: "Top ranking in cleanliness and sanitation standards among city wards.",
+    },
+    {
+      title: "Infrastructure Development Award",
+      org: "Urban Development Authority",
+      year: "2023",
+      description: "For completing all planned road and drainage projects ahead of schedule.",
+    },
+  ];
 
-// YouTube video embeds - Add your YouTube video IDs here
-const youtubeEmbeds = [
-  { id: "3YjdF4cmab0", title: "Latest Update" },
-  { id: "dQw4w9WgXcQ", title: "Community Event" },
-  { id: "dQw4w9WgXcQ", title: "Ward Development" },
-];
+  const displayAwards = awards.length > 0 ? awards : defaultAwards;
 
-// Instagram post embeds - Add your Instagram post/reel IDs here
-const instagramEmbeds = [
-  { id: "DTW39YcDLNO", type: "reel" },
-  { id: "SAMPLE_POST_2", type: "p" },
-  { id: "SAMPLE_POST_3", type: "p" },
-];
+  console.log('=== AWARDS DEBUG ===');
+  console.log('Awards from DB count:', awards.length);
+  console.log('Using default awards:', awards.length === 0);
+  console.log('Display awards:', displayAwards.map(a => ({ title: a.title, image: a.image })));
 
-export function MediaSection() {
-  // API Configuration from environment variables
-  const YOUTUBE_API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY || "";
-  const YOUTUBE_CHANNEL_ID = import.meta.env.VITE_YOUTUBE_CHANNEL_ID || "";
-  const INSTAGRAM_ACCESS_TOKEN = import.meta.env.VITE_INSTAGRAM_ACCESS_TOKEN || "";
+  // Convert press items to format expected by UI
+  const pressItems = pressItemsFromDB.map(item => ({
+    id: item.id,
+    title: item.title,
+    source: item.source || 'N/A',
+    date: new Date(item.publishedAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
+    image: item.thumbnail || IMAGES.press,
+  }));
 
-  // Fetch data from APIs
-  const { videos: youtubeVideos, loading: youtubeLoading, error: youtubeError } = useYouTubeFeed(YOUTUBE_CHANNEL_ID, YOUTUBE_API_KEY);
-  const { posts: instagramPosts, loading: instagramLoading, error: instagramError } = useInstagramFeed(INSTAGRAM_ACCESS_TOKEN);
+  // Fallback press items if none in database
+  const defaultPressItems = [
+    {
+      id: "ward-tops-road-repair",
+      title: "Ward Tops Mumbai in Road Repair Completion",
+      source: "Mumbai Mirror",
+      date: "Jan 2026",
+      image: IMAGES.roadConstruction,
+    },
+    {
+      id: "digital-governance-praised",
+      title: "Corporator's Digital Governance Push Praised",
+      source: "Times of India",
+      date: "Nov 2025",
+      image: IMAGES.press,
+    },
+    {
+      id: "community-park-model",
+      title: "Community Park Revival: A Model for Other Wards",
+      source: "Hindustan Times",
+      date: "Sep 2025",
+      image: IMAGES.park,
+    },
+  ];
 
-  // Check if APIs are configured
-  const youtubeConfigured = YOUTUBE_API_KEY && YOUTUBE_CHANNEL_ID;
-  const instagramConfigured = !!INSTAGRAM_ACCESS_TOKEN;
+  const displayPressItems = pressItems.length > 0 ? pressItems : defaultPressItems;
+
+  // Convert videos to format expected by UI
+  const videos = videosFromDB.map(video => ({
+    id: video.id,
+    title: video.title,
+    thumbnail: video.thumbnail || IMAGES.community,
+    duration: "0:00", // Duration not in Media model
+  }));
+
+  // Fallback videos if none in database
+  const defaultVideos = [
+    { id: "ward-development-2025", title: "Ward Development Update 2025", thumbnail: IMAGES.roadConstruction, duration: "12:34" },
+    { id: "health-camp-highlights", title: "Community Health Camp Highlights", thumbnail: IMAGES.community, duration: "8:20" },
+    { id: "digital-classroom-launch", title: "School Digital Classroom Launch", thumbnail: IMAGES.school, duration: "5:45" },
+  ];
+
+  const displayVideos = videos.length > 0 ? videos : defaultVideos;
+  // Fetch gallery images from database
+  let galleryImagesFromDB = [];
+  try {
+    galleryImagesFromDB = await prisma.galleryImage.findMany({
+      where: {
+        isPublished: true,
+      },
+      orderBy: {
+        displayOrder: 'asc',
+      },
+      take: 6,
+    });
+  } catch (error) {
+    console.error('[MediaSection] Error fetching gallery images:', error);
+  }
+
+  // Convert to the format expected by the gallery
+  const galleryImages = galleryImagesFromDB.map(img => ({
+    src: img.imageUrl,
+    alt: img.altText,
+    caption: img.caption || undefined,
+  }));
+
+  // Fallback to default images if no gallery images in DB
+  const defaultGalleryImages = [
+    { src: IMAGES.rally, alt: "Public rally" },
+    { src: IMAGES.community, alt: "Community gathering" },
+    { src: IMAGES.award, alt: "Award ceremony" },
+    { src: IMAGES.school, alt: "School visit" },
+    { src: IMAGES.cleanStreet, alt: "Clean-up drive" },
+    { src: IMAGES.park, alt: "Park inauguration" },
+  ];
+
+  const displayGalleryImages = galleryImages.length > 0 ? galleryImages : defaultGalleryImages;
+
+  // Fetch social media posts from database
+  const socialMediaPosts = await prisma.socialMediaEmbed.findMany({
+    where: {
+      isPublished: true,
+    },
+    orderBy: [
+      { platform: 'asc' },
+      { displayOrder: 'asc' },
+      { createdAt: 'desc' }
+    ],
+    take: 6, // Max 3 per platform
+  });
+
+  const instagramEmbeds = socialMediaPosts
+    .filter(post => post.platform === 'instagram')
+    .slice(0, 3)
+    .map(post => ({
+      id: post.extractedId,
+      type: post.embedType,
+      title: post.title || undefined,
+    }));
+
+  const youtubeEmbeds = socialMediaPosts
+    .filter(post => post.platform === 'youtube')
+    .slice(0, 3)
+    .map(post => ({
+      id: post.extractedId,
+      title: post.title || 'Video',
+    }));
 
   return (
     <section className="py-20 lg:py-28 bg-cream">
@@ -111,48 +202,39 @@ export function MediaSection() {
         </div>
 
         {/* Awards */}
+        {displayAwards.length > 0 && (
         <div className="mb-20">
           <div className="flex items-center gap-3 mb-8">
             <Award className="w-6 h-6 text-coral" />
             <h3 className="text-charcoal" style={{ fontSize: "22px", fontWeight: 700 }}>Awards & Recognition</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {awards.map((item, index) => (
-              <motion.div
+            {displayAwards.map((item, index) => (
+              <AwardCard
                 key={item.title}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
-                className="bg-white p-8 border border-border hover:shadow-lg transition-all"
-                style={{ borderRadius: "28px" }}
-              >
-                <div className="w-12 h-12 rounded-full bg-coral-light flex items-center justify-center mb-4">
-                  <Award className="w-6 h-6 text-coral" />
-                </div>
-                <span className="text-coral" style={{ fontSize: "12px", fontWeight: 700 }}>{item.year}</span>
-                <h4 className="text-charcoal mt-1 mb-2" style={{ fontSize: "17px", fontWeight: 700 }}>{item.title}</h4>
-                <p className="text-charcoal-light mb-2" style={{ fontSize: "13px", fontWeight: 600 }}>{item.org}</p>
-                <p className="text-charcoal-light" style={{ fontSize: "14px", lineHeight: "1.6" }}>{item.description}</p>
-              </motion.div>
+                id={item.id}
+                title={item.title}
+                org={item.org}
+                year={item.year}
+                description={item.description}
+                image={item.image}
+              />
             ))}
           </div>
         </div>
+        )}
 
         {/* Press Coverage */}
+        {displayPressItems.length > 0 && (
         <div className="mb-20">
           <div className="flex items-center gap-3 mb-8">
             <Newspaper className="w-6 h-6 text-coral" />
             <h3 className="text-charcoal" style={{ fontSize: "22px", fontWeight: 700 }}>Press Coverage</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pressItems.map((item, index) => (
-              <motion.div
+            {displayPressItems.map((item, index) => (
+              <div
                 key={item.title}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
               >
                 <Link
                   href={`/media/press/${item.id}`}
@@ -175,159 +257,58 @@ export function MediaSection() {
                     </div>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
+        )}
 
         {/* Photo Gallery - Unique Pill-Shaped Layout */}
+        {displayGalleryImages.length > 0 && (
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-8">
             <Camera className="w-6 h-6 text-coral" />
             <h3 className="text-charcoal" style={{ fontSize: "20px", fontWeight: 700 }}>Photo Gallery</h3>
           </div>
 
-          {/* Pill-shaped gallery with varied sizes */}
-          <div className="relative">
-            {/* Row 1 - Large pills */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="group relative overflow-hidden cursor-pointer bg-white"
-                style={{
-                  borderRadius: "60px",
-                  height: "280px"
-                }}
-              >
-                <img src={galleryImages[0].src} alt={galleryImages[0].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
-                  <p className="text-white" style={{ fontSize: "16px", fontWeight: 600 }}>
-                    {galleryImages[0].alt}
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="group relative overflow-hidden cursor-pointer bg-white"
-                style={{
-                  borderRadius: "60px",
-                  height: "280px"
-                }}
-              >
-                <img src={galleryImages[1].src} alt={galleryImages[1].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
-                  <p className="text-white" style={{ fontSize: "16px", fontWeight: 600 }}>
-                    {galleryImages[1].alt}
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Row 2 - Mixed sizes */}
-            <div className="grid grid-cols-3 gap-4 mb-4">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+          {/* Pill-shaped gallery - 3x2 grid for 6 images */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {displayGalleryImages.slice(0, 6).map((image, index) => (
+              <div
+                key={index}
                 className="group relative overflow-hidden cursor-pointer bg-white"
                 style={{
                   borderRadius: "50px",
-                  height: "200px"
+                  height: "250px"
                 }}
               >
-                <img src={galleryImages[2].src} alt={galleryImages[2].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 md:p-8">
                   <p className="text-white" style={{ fontSize: "14px", fontWeight: 600 }}>
-                    {galleryImages[2].alt}
+                    {image.alt}
                   </p>
                 </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="col-span-2 group relative overflow-hidden cursor-pointer bg-white"
-                style={{
-                  borderRadius: "50px",
-                  height: "200px"
-                }}
-              >
-                <img src={galleryImages[3].src} alt={galleryImages[3].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <p className="text-white" style={{ fontSize: "14px", fontWeight: 600 }}>
-                    {galleryImages[3].alt}
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Row 3 - Small pills */}
-            <div className="grid grid-cols-2 gap-4">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="group relative overflow-hidden cursor-pointer bg-white"
-                style={{
-                  borderRadius: "50px",
-                  height: "180px"
-                }}
-              >
-                <img src={galleryImages[4].src} alt={galleryImages[4].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <p className="text-white" style={{ fontSize: "14px", fontWeight: 600 }}>
-                    {galleryImages[4].alt}
-                  </p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="group relative overflow-hidden cursor-pointer bg-white"
-                style={{
-                  borderRadius: "50px",
-                  height: "180px"
-                }}
-              >
-                <img src={galleryImages[5].src} alt={galleryImages[5].alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <p className="text-white" style={{ fontSize: "14px", fontWeight: 600 }}>
-                    {galleryImages[5].alt}
-                  </p>
-                </div>
-              </motion.div>
-            </div>
+              </div>
+            ))}
           </div>
         </div>
+        )}
 
         {/* Video Thumbnails */}
+        {displayVideos.length > 0 && (
         <div className="mb-20">
           <div className="flex items-center gap-3 mb-8">
             <Play className="w-6 h-6 text-coral" />
             <h3 className="text-charcoal" style={{ fontSize: "22px", fontWeight: 700 }}>Videos</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {videos.map((video, index) => (
-              <motion.div
+            {displayVideos.map((video, index) => (
+              <div
                 key={video.title}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
               >
                 <Link
                   href={`/media/video/${video.id}`}
@@ -351,10 +332,11 @@ export function MediaSection() {
                     </h4>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
+        )}
 
         {/* Social Media Embeds */}
         <div className="mb-20">
@@ -363,150 +345,41 @@ export function MediaSection() {
           </h3>
 
           {/* Instagram Embeds */}
-          <div className="mb-12">
-            <h4 className="text-charcoal mb-6" style={{ fontSize: "18px", fontWeight: 700 }}>Instagram Posts</h4>
+          {instagramEmbeds.length > 0 && (
+            <div className="mb-12">
+              <div className="flex items-center gap-3 mb-6">
+                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="url(#instagram-gradient)">
+                  <defs>
+                    <linearGradient id="instagram-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                      <stop offset="0%" style={{ stopColor: '#FED373', stopOpacity: 1 }} />
+                      <stop offset="15%" style={{ stopColor: '#F15245', stopOpacity: 1 }} />
+                      <stop offset="40%" style={{ stopColor: '#D92E7F', stopOpacity: 1 }} />
+                      <stop offset="75%" style={{ stopColor: '#9B36B7', stopOpacity: 1 }} />
+                      <stop offset="100%" style={{ stopColor: '#515ECF', stopOpacity: 1 }} />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <h4 className="text-charcoal" style={{ fontSize: "18px", fontWeight: 700 }}>Instagram</h4>
+              </div>
 
-            {!instagramConfigured ? (
-              // Fallback: Manual embeds when API not configured
-              <div>
-                <p className="text-center text-charcoal-light mb-6 text-sm">
-                  💡 Configure Instagram API to auto-fetch latest posts. See API_SETUP_GUIDE.md
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {instagramEmbeds.map((post, index) => (
-                    <motion.div
-                      key={post.id}
-                      initial={{ opacity: 0, y: 15 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex justify-center"
-                    >
-                      <iframe
-                        src={`https://www.instagram.com/${post.type}/${post.id}/embed`}
-                        className="w-full max-w-[540px] border-0 overflow-hidden rounded-2xl shadow-lg"
-                        style={{ minHeight: "600px" }}
-                        allowTransparency
-                        allow="encrypted-media"
-                        title={`Instagram ${post.type} ${index + 1}`}
-                      />
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            ) : instagramLoading ? (
-              <div className="flex items-center justify-center py-12">
-                <Loader2 className="w-8 h-8 text-coral animate-spin" />
-                <span className="ml-3 text-charcoal-light">Loading Instagram posts...</span>
-              </div>
-            ) : instagramError ? (
-              <div className="text-center py-8">
-                <p className="text-red-600 mb-4">{instagramError}</p>
-                <p className="text-charcoal-light text-sm">
-                  Check your Instagram Access Token or see API_SETUP_GUIDE.md
-                </p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {instagramPosts.map((post, index) => (
-                  <motion.div
-                    key={post.id}
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex justify-center"
-                  >
-                    <iframe
-                      src={`${post.permalink}embed`}
-                      className="w-full max-w-[540px] border-0 overflow-hidden rounded-2xl shadow-lg"
-                      style={{ minHeight: "600px" }}
-                      allowTransparency
-                      allow="encrypted-media"
-                      title={post.caption || `Instagram post ${index + 1}`}
-                    />
-                  </motion.div>
-                ))}
-              </div>
-            )}
-          </div>
+              <MediaSectionClient instagramEmbeds={instagramEmbeds} youtubeEmbeds={[]} type="instagram" />
+            </div>
+          )}
 
           {/* YouTube Embeds */}
-          <div>
-            <h4 className="text-charcoal mb-6" style={{ fontSize: "18px", fontWeight: 700 }}>Latest YouTube Videos</h4>
+          {youtubeEmbeds.length > 0 && (
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="#FF0000">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                <h4 className="text-charcoal" style={{ fontSize: "18px", fontWeight: 700 }}>YouTube</h4>
+              </div>
 
-            {!youtubeConfigured ? (
-              // Fallback: Manual embeds when API not configured
-              <div>
-                <p className="text-center text-charcoal-light mb-6 text-sm">
-                  💡 Configure YouTube API to auto-fetch latest videos. See API_SETUP_GUIDE.md
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {youtubeEmbeds.map((video, index) => (
-                    <motion.div
-                      key={video.id}
-                      initial={{ opacity: 0, y: 15 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      className="rounded-2xl overflow-hidden shadow-lg bg-white"
-                    >
-                      <iframe
-                        className="w-full aspect-video"
-                        src={`https://www.youtube.com/embed/${video.id}`}
-                        title={video.title}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                      <div className="p-4">
-                        <p className="text-charcoal" style={{ fontSize: "14px", fontWeight: 600 }}>
-                          {video.title}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            ) : youtubeLoading ? (
-              <div className="flex items-center justify-center py-12">
-                <Loader2 className="w-8 h-8 text-coral animate-spin" />
-                <span className="ml-3 text-charcoal-light">Loading YouTube videos...</span>
-              </div>
-            ) : youtubeError ? (
-              <div className="text-center py-8">
-                <p className="text-red-600 mb-4">{youtubeError}</p>
-                <p className="text-charcoal-light text-sm">
-                  Check your YouTube API Key and Channel ID or see API_SETUP_GUIDE.md
-                </p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {youtubeVideos.map((video, index) => (
-                  <motion.div
-                    key={video.id}
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="rounded-2xl overflow-hidden shadow-lg bg-white"
-                  >
-                    <iframe
-                      className="w-full aspect-video"
-                      src={`https://www.youtube.com/embed/${video.id}`}
-                      title={video.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                    <div className="p-4">
-                      <p className="text-charcoal line-clamp-2" style={{ fontSize: "14px", fontWeight: 600 }}>
-                        {video.title}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            )}
-          </div>
+              <MediaSectionClient instagramEmbeds={[]} youtubeEmbeds={youtubeEmbeds} type="youtube" />
+            </div>
+          )}
         </div>
       </div>
     </section>

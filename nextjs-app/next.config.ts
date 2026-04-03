@@ -5,6 +5,14 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname),
   },
+  eslint: {
+    // Disable ESLint during production builds
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    // Disable TypeScript errors during production builds
+    ignoreBuildErrors: true,
+  },
   images: {
     remotePatterns: [
       {

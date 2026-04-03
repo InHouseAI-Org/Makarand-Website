@@ -161,8 +161,7 @@ export function CitizenConnect() {
                   </div>
                   <div>
                     <p style={{ fontSize: "14px", fontWeight: 600 }}>Phone</p>
-                    <p className="text-white/60 mt-1" style={{ fontSize: "13px" }}>+91 99999 99999</p>
-                    <p className="text-white/60" style={{ fontSize: "13px" }}>+91 22 2222 2222</p>
+                    <p className="text-white/60 mt-1" style={{ fontSize: "13px" }}>+91 88508 66638</p>
                   </div>
                 </div>
 
@@ -196,7 +195,7 @@ export function CitizenConnect() {
 
               {/* WhatsApp Button */}
               <a
-                href="https://wa.me/919999999999"
+                href="https://wa.me/918850866638"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 flex items-center justify-center gap-2 w-full py-3 bg-[#25D366] text-white rounded-xl hover:bg-[#1fb855] transition-colors"

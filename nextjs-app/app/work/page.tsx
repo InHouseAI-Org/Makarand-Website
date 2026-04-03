@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { WorkImpact } from "../components/WorkImpact";
+import { prisma } from "@/lib/prisma";
 
 export const metadata: Metadata = {
   title: 'Work & Impact | Projects & Achievements',
@@ -15,6 +16,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function WorkPage() {
-  return <WorkImpact />;
+export default async function WorkPage() {
+  // Fetch projects from database
+  const projects = await prisma.project.findMany({
+    where: { published: true },
+    orderBy: { createdAt: 'desc' },
+  });
+
+  return <WorkImpact projects={projects} />;
 }

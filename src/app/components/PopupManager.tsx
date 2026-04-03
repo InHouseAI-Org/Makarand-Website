@@ -37,7 +37,7 @@ const popups: Popup[] = [
       title: "Have a Grievance?",
       description: "Reach out to us directly on WhatsApp for quick resolution of your concerns.",
       buttonText: "Chat on WhatsApp",
-      buttonLink: "https://wa.me/919999999999?text=Hello, I would like to raise a grievance regarding...",
+      buttonLink: "https://wa.me/918850866638?text=Hello, I would like to raise a grievance regarding...",
     },
   },
 ];

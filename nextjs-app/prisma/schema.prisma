@@ -1,0 +1,217 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  username  String   @unique
+}
+
+model Project {
+  id          String    @id @default(cuid())
+  title       String
+  description String
+  category    String
+  status      String    @default("ongoing")
+  budget      String?
+  location    String?
+  startDate   DateTime?
+  endDate     DateTime?
+  image       String?
+  images      String[]
+  highlights  String[]
+  impact      String?
+  published   Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  progress    Int?
+}
+
+model GovernmentProject {
+  id             String    @id @default(cuid())
+  title          String
+  description    String
+  department     String
+  status         String    @default("ongoing")
+  budget         String?
+  location       String?
+  startDate      DateTime?
+  completionDate DateTime?
+  beneficiaries  String?
+  image          String?
+  images         String[]
+  documents      String[]
+  published      Boolean   @default(true)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model WardOfficer {
+  id          String   @id @default(cuid())
+  name        String
+  designation String
+  department  String
+  phone       String?
+  email       String?
+  office      String?
+  timing      String?
+  photo       String?
+  priority    Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model PoliceStation {
+  id          String   @id @default(cuid())
+  stationName String
+  name        String
+  designation String
+  phone       String
+  priority    Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model FireStation {
+  id          String   @id @default(cuid())
+  stationName String
+  phone       String
+  priority    Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Media {
+  id          String   @id @default(cuid())
+  title       String
+  source      String?
+  url         String?
+  thumbnail   String?
+  description String?
+  publishedAt DateTime
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  category    String
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  role      String?
+  content   String?
+  rating    Int      @default(5)
+  photo     String?
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  type      String   @default("text")
+  videoUrl  String?
+  photoUrl  String?
+  video     String?
+}
+
+model Award {
+  id           String   @id @default(cuid())
+  title        String
+  organization String
+  year         String
+  description  String
+  iconType     String   @default("award")
+  displayOrder Int      @default(0)
+  isPublished  Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model PressItem {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  title           String
+  source          String
+  publicationDate DateTime
+  imageUrl        String?
+  excerpt         String?
+  fullContent     String?
+  externalLink    String?
+  displayOrder    Int      @default(0)
+  isPublished     Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model GalleryImage {
+  id           String   @id @default(cuid())
+  imageUrl     String
+  altText      String
+  caption      String?
+  category     String   @default("general")
+  displayOrder Int      @default(0)
+  isPublished  Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model VideoContent {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  title        String
+  thumbnailUrl String?
+  videoUrl     String?
+  youtubeId    String?
+  duration     String?
+  description  String?
+  category     String   @default("general")
+  displayOrder Int      @default(0)
+  isPublished  Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model SocialMediaEmbed {
+  id           String   @id @default(cuid())
+  platform     String
+  embedType    String   @default("post")
+  title        String?
+  displayOrder Int      @default(0)
+  isPublished  Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  description  String?
+  postUrl      String
+  extractedId  String
+
+  @@unique([platform, extractedId])
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String?
+  phone     String
+  subject   String?
+  message   String
+  category  String?
+  ward      String?
+  skills    String?
+  program   String?
+  formType  String   @default("contact")
+  status    String   @default("new")
+  read      Boolean  @default(false)
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GovernmentProjects } from "../components/GovernmentProjects";
+import { prisma } from "@/lib/prisma";
 
 export const metadata: Metadata = {
   title: 'Government Projects | Public Infrastructure & Schemes',
@@ -15,6 +16,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function GovernmentProjectsPage() {
-  return <GovernmentProjects />;
+export default async function GovernmentProjectsPage() {
+  // Fetch government projects from database
+  const projects = await prisma.governmentProject.findMany({
+    where: { published: true },
+    orderBy: { createdAt: 'desc' },
+  });
+
+  return <GovernmentProjects projects={projects} />;
 }

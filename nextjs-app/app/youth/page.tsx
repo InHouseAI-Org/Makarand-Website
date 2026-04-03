@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Youth from "../components/Youth";
+import { Youth } from "../components/Youth";
 
 export const metadata: Metadata = {
   title: 'Youth Programs | Empowering Tomorrow\'s Leaders',

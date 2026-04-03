@@ -1,27 +1,59 @@
 'use client';
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { useState } from "react";
 
 export function Hero() {
-  const [animationStage, setAnimationStage] = useState<"centered" | "split">("centered");
+  const [isDesktop, setIsDesktop] = useState(true); // Default to true to prevent flash
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 600);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   return (
     <>
       {/* Main Hero Section */}
       <section
-        className="relative overflow-hidden h-[95vh] flex items-center justify-center"
+        className="relative overflow-hidden flex items-center justify-center"
         style={{
-          backgroundImage: "url('ChatGPT Image Mar 10, 2026 at 06_13_51 PM.png')",
+          backgroundImage: "url('/ChatGPT Image Mar 10, 2026 at 06_13_51 PM.png')",
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "65% center",
+          height: isDesktop ? "95vh" : "110vh",
         }}
       >
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/8 to-transparent"></div>
+        {/* Mobile Background Override */}
+        {!isDesktop && (
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: "url('/Portrait of a smiling professional man.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center center",
+            }}
+          />
+        )}
 
-        <div className="relative z-10 max-w-7xl mx-auto w-full px-6 sm:px-8 lg:px-12">
+        {/* Gradient Overlay - Desktop */}
+        {isDesktop && (
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/8 to-transparent z-10"></div>
+        )}
+
+        {/* Gradient Overlay - Mobile */}
+        {!isDesktop && (
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/95 z-10"></div>
+        )}
+
+        <div className="relative z-20 max-w-7xl mx-auto w-full px-6 sm:px-8 lg:px-12">
+          {/* Desktop Layout */}
+          {isDesktop && (
           <div className="max-w-4xl">
 
             {/* Hashtag Badge */}
@@ -54,14 +86,19 @@ export function Hero() {
                 letterSpacing: "-0.02em",
                 color: "#1A1A1A",
                 fontFamily: "var(--font-family-serif)",
-                marginBottom: "28px"
+                marginBottom: "28px",
+                maxWidth: "50%"
               }}
             >
-              Committed to{" "}
-              <span className="text-coral" style={{ fontWeight: 900 }}>Development.</span>
+              <span style={{ display: "inline-block" }}>
+                Committed to{" "}
+                <span className="text-coral" style={{ fontWeight: 900 }}>Development.</span>
+              </span>
               <br />
-              Dedicated to{" "}
-              <span className="text-coral" style={{ fontWeight: 900 }}>Service.</span>
+              <span style={{ display: "inline-block" }}>
+                Dedicated to{" "}
+                <span className="text-coral" style={{ fontWeight: 900 }}>Service.</span>
+              </span>
             </motion.h1>
 
             {/* Description */}
@@ -87,13 +124,13 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-              className="flex flex-wrap gap-4"
+              className="flex gap-4"
             >
               <Link
                 href="/work"
-                className="inline-flex items-center justify-center px-9 py-4 bg-coral text-white rounded-full border-2 border-coral transition-all duration-300 hover:bg-transparent hover:text-coral shadow-xl hover:shadow-2xl hover:scale-105"
+                className="inline-flex items-center justify-center px-8 py-3.5 bg-coral text-white rounded-full border-2 border-coral transition-all duration-300 hover:bg-transparent hover:text-coral shadow-lg hover:shadow-xl hover:scale-105"
                 style={{
-                  fontSize: "15px",
+                  fontSize: "14px",
                   fontWeight: 700,
                   letterSpacing: "0.5px"
                 }}
@@ -102,9 +139,9 @@ export function Hero() {
               </Link>
               <Link
                 href="/connect"
-                className="inline-flex items-center justify-center px-9 py-4 text-coral rounded-full hover:bg-coral hover:text-white border-2 border-coral hover:scale-105 transition-all shadow-xl"
+                className="inline-flex items-center justify-center px-8 py-3.5 text-coral rounded-full hover:bg-coral hover:text-white border-2 border-coral hover:scale-105 transition-all shadow-lg"
                 style={{
-                  fontSize: "15px",
+                  fontSize: "14px",
                   fontWeight: 700,
                   letterSpacing: "0.5px"
                 }}
@@ -114,6 +151,107 @@ export function Hero() {
             </motion.div>
 
           </div>
+          )}
+
+          {/* Mobile Layout - Positioned at bottom to avoid face */}
+          {!isDesktop && (
+          <div className="w-full h-full flex flex-col justify-end pb-16">
+            <div style={{ marginTop: "50vh", textAlign: "center", padding: "0 20px" }}>
+            {/* Hashtag Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="mb-4"
+            >
+              <div className="inline-flex items-center px-5 py-2.5 bg-coral text-white rounded-full shadow-xl">
+                <span style={{
+                  fontSize: "14px",
+                  fontWeight: 800,
+                  letterSpacing: "0.05em"
+                }}>
+                  #PowerToPeople
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Main Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              style={{
+                fontSize: "clamp(32px, 10vw, 44px)",
+                fontWeight: 700,
+                lineHeight: "1.2",
+                letterSpacing: "-0.02em",
+                color: "#1A1A1A",
+                fontFamily: "var(--font-family-serif)",
+                marginBottom: "16px",
+              }}
+            >
+              <span style={{ display: "inline-block" }}>
+                Committed to{" "}
+                <span className="text-coral" style={{ fontWeight: 900 }}>Development.</span>
+              </span>
+              <br />
+              <span style={{ display: "inline-block" }}>
+                Dedicated to{" "}
+                <span className="text-coral" style={{ fontWeight: 900 }}>Service.</span>
+              </span>
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              style={{
+                fontSize: "15px",
+                lineHeight: "1.6",
+                fontWeight: 400,
+                color: "rgba(26, 26, 26, 0.9)",
+                marginBottom: "24px",
+              }}
+            >
+              Building a cleaner, safer, and more prosperous ward through
+              transparent governance and citizen engagement.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              className="flex flex-col gap-3"
+            >
+              <Link
+                href="/work"
+                className="inline-flex items-center justify-center px-8 py-3.5 bg-coral text-white rounded-full border-2 border-coral transition-all duration-300 hover:bg-transparent hover:text-coral shadow-xl hover:shadow-2xl"
+                style={{
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  letterSpacing: "0.5px"
+                }}
+              >
+                VIEW OUR WORK
+              </Link>
+              <Link
+                href="/connect"
+                className="inline-flex items-center justify-center px-8 py-3.5 text-coral rounded-full hover:bg-coral hover:text-white border-2 border-coral transition-all shadow-xl"
+                style={{
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  letterSpacing: "0.5px"
+                }}
+              >
+                SHARE YOUR CONCERN
+              </Link>
+            </motion.div>
+            </div>
+          </div>
+          )}
+
         </div>
       </section>
 

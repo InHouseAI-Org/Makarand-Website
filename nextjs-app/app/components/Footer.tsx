@@ -109,8 +109,8 @@ export function Footer() {
               <div className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-1 text-coral shrink-0" />
                 <div>
-                  <a href="tel:+919999999999" className="text-white/60 hover:text-coral transition-colors" style={{ fontSize: "14px" }}>
-                    +91 99999 99999
+                  <a href="tel:+918850866638" className="text-white/60 hover:text-coral transition-colors" style={{ fontSize: "14px" }}>
+                    +91 88508 66638
                   </a>
                 </div>
               </div>

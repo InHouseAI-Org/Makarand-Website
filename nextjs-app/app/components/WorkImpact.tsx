@@ -6,71 +6,25 @@ import Link from "next/link";
 import { CheckCircle2, Clock, ArrowUpRight, TrendingUp, Users, MapPin, Hammer } from "lucide-react";
 import { IMAGES } from "./images";
 
-const completedProjects = [
-  {
-    id: "road-reconstruction",
-    title: "Ward Road Reconstruction",
-    category: "Infrastructure",
-    image: IMAGES.roadConstruction,
-    budget: "₹2.5 Cr",
-    date: "Completed Dec 2025",
-    description: "Complete reconstruction of 12km of ward roads with modern drainage.",
-  },
-  {
-    id: "street-lighting",
-    title: "LED Street Lighting",
-    category: "Public Safety",
-    image: IMAGES.streetLights,
-    budget: "₹85 Lakh",
-    date: "Completed Oct 2025",
-    description: "Installation of 450+ LED street lights across the ward.",
-  },
-  {
-    id: "school-renovation",
-    title: "Municipal School Upgrades",
-    category: "Education",
-    image: IMAGES.school,
-    budget: "₹1.2 Cr",
-    date: "Completed Aug 2025",
-    description: "Renovation of 8 municipal schools with digital classrooms.",
-  },
-  {
-    id: "park-development",
-    title: "Community Park Revival",
-    category: "Community Welfare",
-    image: IMAGES.park,
-    budget: "₹65 Lakh",
-    date: "Completed Jun 2025",
-    description: "Transformed 3 neglected spaces into vibrant community parks.",
-  },
-];
-
-const ongoingProjects = [
-  {
-    id: "water-pipeline",
-    title: "Water Pipeline Replacement",
-    progress: 72,
-    expectedCompletion: "Mar 2026",
-    budget: "₹3.1 Cr",
-    image: IMAGES.waterPipeline,
-  },
-  {
-    id: "sanitation-drive",
-    title: "Sanitation Infrastructure Upgrade",
-    progress: 45,
-    expectedCompletion: "Jun 2026",
-    budget: "₹1.8 Cr",
-    image: IMAGES.cleanStreet,
-  },
-  {
-    id: "community-center",
-    title: "Community Center Construction",
-    progress: 30,
-    expectedCompletion: "Sep 2026",
-    budget: "₹2.2 Cr",
-    image: IMAGES.community,
-  },
-];
+type Project = {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  status: string;
+  progress: number | null;
+  budget: string | null;
+  location: string | null;
+  startDate: Date | null;
+  endDate: Date | null;
+  image: string | null;
+  images: string[];
+  highlights: string[];
+  impact: string | null;
+  published: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+};
 
 const impactStats = [
   { icon: TrendingUp, value: "₹15 Cr+", label: "Development Funds Utilized" },
@@ -81,8 +35,31 @@ const impactStats = [
 
 type Tab = "completed" | "ongoing" | "upcoming";
 
-export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
+// Fallback images mapping based on category
+const getCategoryImage = (category: string) => {
+  const categoryMap: Record<string, string> = {
+    "Infrastructure": IMAGES.roadConstruction,
+    "Public Safety": IMAGES.streetLights,
+    "Education": IMAGES.school,
+    "Community Welfare": IMAGES.community,
+    "Cleanliness & Sanitation": IMAGES.cleanStreet,
+  };
+  return categoryMap[category] || IMAGES.mumbai;
+};
+
+// Helper to format date
+const formatDate = (date: Date | null) => {
+  if (!date) return "";
+  return new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' }).format(new Date(date));
+};
+
+export function WorkImpact({ isFullPage = false, projects = [] }: { isFullPage?: boolean; projects?: Project[] }) {
   const [activeTab, setActiveTab] = useState<Tab>("completed");
+
+  // Separate projects by status
+  const completedProjects = projects.filter(p => p.status === "completed");
+  const ongoingProjects = projects.filter(p => p.status === "ongoing");
+  const upcomingProjects = projects.filter(p => p.status === "upcoming");
 
   return (
     <section className={`${isFullPage ? "py-16 lg:py-24" : "py-16 lg:py-20"} bg-cream`}>
@@ -152,7 +129,11 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
               >
                 <Link href={`/project/${project.id}`} className="group block bg-white rounded-xl overflow-hidden border border-border hover:shadow-lg transition-all">
                   <div className="relative h-48 overflow-hidden">
-                    <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img
+                      src={project.image || getCategoryImage(project.category)}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                     <div className="absolute top-3 left-3">
                       <span className="px-3 py-1 bg-coral-500 text-white rounded-full" style={{ fontSize: "11px", fontWeight: 700 }}>
                         Completed
@@ -165,11 +146,13 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
                       {project.title}
                     </h3>
                     <p className="text-charcoal-light mb-4" style={{ fontSize: "14px", lineHeight: "1.6" }}>
-                      {project.description}
+                      {project.description.length > 100 ? project.description.substring(0, 100) + '...' : project.description}
                     </p>
                     <div className="flex items-center justify-between pt-4 border-t border-border">
-                      <span className="text-charcoal-light" style={{ fontSize: "13px" }}>{project.date}</span>
-                      <span className="text-charcoal" style={{ fontSize: "14px", fontWeight: 700 }}>{project.budget}</span>
+                      <span className="text-charcoal-light" style={{ fontSize: "13px" }}>
+                        {project.endDate ? `Completed ${formatDate(project.endDate)}` : 'Completed'}
+                      </span>
+                      <span className="text-charcoal" style={{ fontSize: "14px", fontWeight: 700 }}>{project.budget || 'N/A'}</span>
                     </div>
                   </div>
                 </Link>
@@ -181,58 +164,63 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
         {/* Ongoing Projects */}
         {activeTab === "ongoing" && (
           <div className="space-y-4" id="ongoing">
-            {ongoingProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.08 }}
-              >
-                <Link href={`/project/${project.id}`} className="group block bg-white rounded-xl overflow-hidden border border-border hover:shadow-lg transition-all">
-                  <div className="flex flex-col md:flex-row">
-                    <div className="md:w-48 h-40 md:h-auto overflow-hidden">
-                      <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    </div>
-                    <div className="flex-1 p-5">
-                      <div className="flex items-start justify-between mb-3">
-                        <div>
-                          <h3 className="text-charcoal group-hover:text-coral-dark transition-colors" style={{ fontSize: "18px", fontWeight: 700 }}>
-                            {project.title}
-                          </h3>
-                          <p className="text-charcoal-light mt-1" style={{ fontSize: "13px" }}>
-                            Budget: {project.budget} &middot; Expected: {project.expectedCompletion}
-                          </p>
-                        </div>
-                        <span className="px-3 py-1 bg-coral-light text-coral-dark rounded-full shrink-0" style={{ fontSize: "12px", fontWeight: 700 }}>
-                          {project.progress}%
-                        </span>
-                      </div>
-                      <div className="w-full bg-cream-dark rounded-full h-3 mt-4">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${project.progress}%` }}
-                          transition={{ duration: 1, delay: 0.3 }}
-                          className="h-3 rounded-full bg-gradient-to-r from-coral to-coral-dark"
+            {ongoingProjects.map((project, index) => {
+              // Use progress from database, fallback to 50% if not set
+              const progress = project.progress || 50;
+
+              return (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.08 }}
+                >
+                  <Link href={`/project/${project.id}`} className="group block bg-white rounded-xl overflow-hidden border border-border hover:shadow-lg transition-all">
+                    <div className="flex flex-col md:flex-row">
+                      <div className="md:w-48 h-40 md:h-auto overflow-hidden">
+                        <img
+                          src={project.image || getCategoryImage(project.category)}
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
+                      <div className="flex-1 p-5">
+                        <div className="flex items-start justify-between mb-3">
+                          <div>
+                            <h3 className="text-charcoal group-hover:text-coral-dark transition-colors" style={{ fontSize: "18px", fontWeight: 700 }}>
+                              {project.title}
+                            </h3>
+                            <p className="text-charcoal-light mt-1" style={{ fontSize: "13px" }}>
+                              Budget: {project.budget || 'N/A'} {project.impact && `· ${project.impact}`}
+                            </p>
+                          </div>
+                          <span className="px-3 py-1 bg-coral-light text-coral-dark rounded-full shrink-0" style={{ fontSize: "12px", fontWeight: 700 }}>
+                            {progress}%
+                          </span>
+                        </div>
+                        <div className="w-full bg-cream-dark rounded-full h-3 mt-4">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${progress}%` }}
+                            transition={{ duration: 1, delay: 0.3 }}
+                            className="h-3 rounded-full bg-gradient-to-r from-coral to-coral-dark"
+                          />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+                  </Link>
+                </motion.div>
+              );
+            })}
           </div>
         )}
 
         {/* Upcoming */}
         {activeTab === "upcoming" && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { title: "Smart CCTV Network Expansion", timeline: "Q3 2026", budget: "₹1.5 Cr" },
-              { title: "Solar Panel Installation on Public Buildings", timeline: "Q4 2026", budget: "₹90 Lakh" },
-              { title: "Senior Citizen Wellness Center", timeline: "Q1 2027", budget: "₹75 Lakh" },
-            ].map((project, index) => (
+            {upcomingProjects.map((project, index) => (
               <motion.div
-                key={project.title}
+                key={project.id}
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.08 }}
@@ -242,9 +230,14 @@ export function WorkImpact({ isFullPage = false }: { isFullPage?: boolean }) {
                   <ArrowUpRight className="w-5 h-5 text-coral" />
                 </div>
                 <h3 className="text-charcoal mb-2" style={{ fontSize: "16px", fontWeight: 700 }}>{project.title}</h3>
+                <p className="text-charcoal-light mb-4" style={{ fontSize: "14px", lineHeight: "1.6" }}>
+                  {project.description.length > 80 ? project.description.substring(0, 80) + '...' : project.description}
+                </p>
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
-                  <span className="text-charcoal-light" style={{ fontSize: "13px" }}>Timeline: {project.timeline}</span>
-                  <span className="text-coral" style={{ fontSize: "14px", fontWeight: 700 }}>{project.budget}</span>
+                  <span className="text-charcoal-light" style={{ fontSize: "13px" }}>
+                    {project.startDate ? `Expected: ${formatDate(project.startDate)}` : 'Timeline: TBD'}
+                  </span>
+                  <span className="text-coral" style={{ fontSize: "14px", fontWeight: 700 }}>{project.budget || 'N/A'}</span>
                 </div>
               </motion.div>
             ))}

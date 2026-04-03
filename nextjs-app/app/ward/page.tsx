@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { WardInfo } from "../components/WardInfo";
+import { prisma } from "@/lib/prisma";
 
 export const metadata: Metadata = {
   title: 'A Ward Information | Mumbai Demographics & Services',
@@ -15,6 +16,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default function WardPage() {
-  return <WardInfo />;
+export default async function WardPage() {
+  // Fetch data from database
+  const [wardOfficers, policeStations, fireStations] = await Promise.all([
+    prisma.wardOfficer.findMany({
+      where: { active: true },
+      orderBy: { priority: 'asc' },
+    }),
+    prisma.policeStation.findMany({
+      where: { active: true },
+      orderBy: { priority: 'asc' },
+    }),
+    prisma.fireStation.findMany({
+      where: { active: true },
+      orderBy: { priority: 'asc' },
+    }),
+  ]);
+
+  return <WardInfo wardOfficers={wardOfficers} policeStations={policeStations} fireStations={fireStations} />;
 }

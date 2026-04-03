@@ -5,186 +5,30 @@ import { FileText, Download, ExternalLink, Calendar, IndianRupee, MapPin, CheckC
 
 type ProjectStatus = "completed" | "ongoing" | "approved" | "proposed";
 
-interface ProjectAttachment {
-  name: string;
-  type: string;
-  url: string;
-  size: string;
-}
-
-interface GovernmentProject {
+type ProjectFromDB = {
   id: string;
   title: string;
   description: string;
-  category: string;
-  status: ProjectStatus;
-  budget: string;
-  location: string;
-  startDate: string;
-  completionDate?: string;
-  expectedCompletion?: string;
-  progress?: number;
-  beneficiaries: string;
-  keyFeatures: string[];
-  attachments: ProjectAttachment[];
-}
+  department: string;
+  status: string;
+  budget: string | null;
+  location: string | null;
+  startDate: Date | null;
+  completionDate: Date | null;
+  beneficiaries: string | null;
+  image: string | null;
+  images: string[];
+  documents: string[];
+  published: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+};
 
-const projects: GovernmentProject[] = [
-  {
-    id: "road-infra-2024",
-    title: "Ward Road Infrastructure Upgrade - Phase 2",
-    description: "Comprehensive road reconstruction project covering major arterial roads with modern drainage systems, footpath upgrades, and street lighting improvements.",
-    category: "Infrastructure",
-    status: "ongoing",
-    budget: "₹4.2 Crores",
-    location: "Multiple locations across Ward 226",
-    startDate: "January 2025",
-    expectedCompletion: "September 2026",
-    progress: 45,
-    beneficiaries: "25,000+ residents",
-    keyFeatures: [
-      "8.5 km road resurfacing with premium bitumen",
-      "Underground drainage system installation",
-      "LED street lighting with smart controls",
-      "Wheelchair-accessible footpaths",
-      "Tree plantation along roads"
-    ],
-    attachments: [
-      { name: "Project Proposal.pdf", type: "PDF", url: "#", size: "2.4 MB" },
-      { name: "Budget Allocation.pdf", type: "PDF", url: "#", size: "1.2 MB" },
-      { name: "Engineering Drawings.pdf", type: "PDF", url: "#", size: "8.5 MB" },
-      { name: "Progress Report Q1.pdf", type: "PDF", url: "#", size: "3.1 MB" }
-    ]
-  },
-  {
-    id: "water-supply-2025",
-    title: "24x7 Water Supply Enhancement Project",
-    description: "Installation of new water pipelines, overhead tanks, and pumping stations to ensure round-the-clock water supply to all households in the ward.",
-    category: "Water & Sanitation",
-    status: "ongoing",
-    budget: "₹3.8 Crores",
-    location: "Entire Ward 226",
-    startDate: "March 2025",
-    expectedCompletion: "December 2026",
-    progress: 30,
-    beneficiaries: "40,000+ residents",
-    keyFeatures: [
-      "15 km new pipeline network",
-      "3 overhead water tanks (capacity: 5 lakh liters each)",
-      "Smart water metering system",
-      "Leak detection and prevention systems",
-      "Water quality monitoring stations"
-    ],
-    attachments: [
-      { name: "Technical Proposal.pdf", type: "PDF", url: "#", size: "4.2 MB" },
-      { name: "Site Survey Report.pdf", type: "PDF", url: "#", size: "2.8 MB" },
-      { name: "Environmental Clearance.pdf", type: "PDF", url: "#", size: "1.5 MB" }
-    ]
-  },
-  {
-    id: "school-modern-2024",
-    title: "Municipal Schools Modernization Program",
-    description: "Comprehensive upgrade of 8 municipal schools with smart classrooms, digital libraries, science labs, and improved infrastructure.",
-    category: "Education",
-    status: "completed",
-    budget: "₹2.6 Crores",
-    location: "8 schools across Ward 226",
-    startDate: "June 2024",
-    completionDate: "January 2026",
-    beneficiaries: "3,500+ students",
-    keyFeatures: [
-      "Smart classrooms with digital boards",
-      "Computer labs with 200+ computers",
-      "Science laboratories with modern equipment",
-      "Digital libraries with e-learning resources",
-      "Renovated classrooms and furniture",
-      "Sports facilities and playgrounds"
-    ],
-    attachments: [
-      { name: "Project Report.pdf", type: "PDF", url: "#", size: "3.6 MB" },
-      { name: "Completion Certificate.pdf", type: "PDF", url: "#", size: "0.8 MB" },
-      { name: "Photo Documentation.pdf", type: "PDF", url: "#", size: "12.4 MB" },
-      { name: "Impact Assessment.pdf", type: "PDF", url: "#", size: "2.1 MB" }
-    ]
-  },
-  {
-    id: "solid-waste-2025",
-    title: "Integrated Solid Waste Management System",
-    description: "Modern waste collection, segregation, and processing system with door-to-door collection, recycling units, and composting facilities.",
-    category: "Sanitation & Environment",
-    status: "ongoing",
-    budget: "₹1.9 Crores",
-    location: "Ward 226",
-    startDate: "April 2025",
-    expectedCompletion: "August 2026",
-    progress: 55,
-    beneficiaries: "Entire ward population",
-    keyFeatures: [
-      "GPS-tracked waste collection vehicles",
-      "Ward-level waste segregation center",
-      "Organic waste composting unit",
-      "Plastic recycling facility",
-      "E-waste collection points",
-      "Public awareness campaigns"
-    ],
-    attachments: [
-      { name: "Implementation Plan.pdf", type: "PDF", url: "#", size: "2.9 MB" },
-      { name: "Equipment Specifications.pdf", type: "PDF", url: "#", size: "1.7 MB" },
-      { name: "Monthly Progress Report.pdf", type: "PDF", url: "#", size: "1.3 MB" }
-    ]
-  },
-  {
-    id: "community-health-2026",
-    title: "Community Health Center Establishment",
-    description: "Construction of a modern primary health center with OPD, diagnostic facilities, pharmacy, and 24x7 emergency services.",
-    category: "Healthcare",
-    status: "approved",
-    budget: "₹5.2 Crores",
-    location: "Central Ward 226",
-    startDate: "June 2026",
-    expectedCompletion: "December 2027",
-    beneficiaries: "50,000+ residents",
-    keyFeatures: [
-      "30-bed primary health center",
-      "OPD with 6 consultation rooms",
-      "Diagnostic lab with modern equipment",
-      "Pharmacy with essential medicines",
-      "24x7 emergency and ambulance services",
-      "Maternal and child health wing"
-    ],
-    attachments: [
-      { name: "Detailed Project Report.pdf", type: "PDF", url: "#", size: "6.8 MB" },
-      { name: "Architectural Plans.pdf", type: "PDF", url: "#", size: "9.2 MB" },
-      { name: "Budget Breakdown.pdf", type: "PDF", url: "#", size: "1.4 MB" },
-      { name: "Approval Letter.pdf", type: "PDF", url: "#", size: "0.5 MB" }
-    ]
-  },
-  {
-    id: "smart-street-2026",
-    title: "Smart Street Infrastructure Project",
-    description: "Installation of smart street furniture including intelligent lighting, CCTV cameras, WiFi hotspots, and digital information kiosks.",
-    category: "Smart City",
-    status: "proposed",
-    budget: "₹3.5 Crores",
-    location: "Major roads in Ward 226",
-    startDate: "September 2026",
-    expectedCompletion: "March 2027",
-    beneficiaries: "All ward residents",
-    keyFeatures: [
-      "500+ smart LED street lights",
-      "100+ CCTV cameras with AI monitoring",
-      "Public WiFi hotspots at 20 locations",
-      "Digital information and wayfinding kiosks",
-      "Smart parking sensors",
-      "Integrated command and control center"
-    ],
-    attachments: [
-      { name: "Concept Proposal.pdf", type: "PDF", url: "#", size: "4.1 MB" },
-      { name: "Technology Specifications.pdf", type: "PDF", url: "#", size: "3.3 MB" },
-      { name: "Cost Estimates.pdf", type: "PDF", url: "#", size: "1.8 MB" }
-    ]
-  }
-];
+// Helper to format date
+const formatDate = (date: Date | null) => {
+  if (!date) return "";
+  return new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(new Date(date));
+};
 
 const statusConfig = {
   completed: { label: "Completed", color: "bg-green-500", icon: CheckCircle2 },
@@ -193,7 +37,7 @@ const statusConfig = {
   proposed: { label: "Proposed", color: "bg-purple-500", icon: AlertCircle }
 };
 
-export function GovernmentProjects({ isFullPage = false }: { isFullPage?: boolean }) {
+export function GovernmentProjects({ isFullPage = false, projects = [] }: { isFullPage?: boolean; projects?: ProjectFromDB[] }) {
   return (
     <section className={`${isFullPage ? "py-16 lg:py-24" : "py-16 lg:py-20"} bg-gradient-to-b from-cream via-white to-cream`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -252,7 +96,7 @@ export function GovernmentProjects({ isFullPage = false }: { isFullPage?: boolea
                           {statusInfo.label}
                         </span>
                         <span className="px-4 py-2 bg-white text-coral rounded-full text-sm font-bold border-2 border-coral/30">
-                          {project.category}
+                          {project.department}
                         </span>
                       </div>
                       <h2 className="text-charcoal text-3xl font-bold mb-3" style={{ fontFamily: "var(--font-family-serif)" }}>
@@ -272,7 +116,7 @@ export function GovernmentProjects({ isFullPage = false }: { isFullPage?: boolea
                       </div>
                       <div>
                         <p className="text-charcoal-light text-xs">Budget</p>
-                        <p className="text-charcoal font-bold text-sm">{project.budget}</p>
+                        <p className="text-charcoal font-bold text-sm">{project.budget || 'N/A'}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -281,7 +125,7 @@ export function GovernmentProjects({ isFullPage = false }: { isFullPage?: boolea
                       </div>
                       <div>
                         <p className="text-charcoal-light text-xs">Location</p>
-                        <p className="text-charcoal font-bold text-sm">{project.location.split(',')[0]}</p>
+                        <p className="text-charcoal font-bold text-sm">{project.location ? project.location.split(',')[0] : 'N/A'}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -290,7 +134,7 @@ export function GovernmentProjects({ isFullPage = false }: { isFullPage?: boolea
                       </div>
                       <div>
                         <p className="text-charcoal-light text-xs">Started</p>
-                        <p className="text-charcoal font-bold text-sm">{project.startDate}</p>
+                        <p className="text-charcoal font-bold text-sm">{formatDate(project.startDate) || 'N/A'}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -299,60 +143,50 @@ export function GovernmentProjects({ isFullPage = false }: { isFullPage?: boolea
                       </div>
                       <div>
                         <p className="text-charcoal-light text-xs">Beneficiaries</p>
-                        <p className="text-charcoal font-bold text-sm">{project.beneficiaries.split(' ')[0]}</p>
+                        <p className="text-charcoal font-bold text-sm">{project.beneficiaries ? project.beneficiaries.split(' ')[0] : 'N/A'}</p>
                       </div>
                     </div>
                   </div>
 
-                  {/* Progress Bar for Ongoing Projects */}
-                  {project.status === "ongoing" && project.progress !== undefined && (
-                    <div className="mt-6">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-charcoal-light text-sm font-semibold">Project Progress</span>
-                        <span className="text-coral text-sm font-bold">{project.progress}%</span>
-                      </div>
-                      <div className="w-full bg-white rounded-full h-3 border border-coral/20">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${project.progress}%` }}
-                          transition={{ duration: 1, delay: 0.5 }}
-                          className="h-3 rounded-full bg-gradient-to-r from-coral to-coral-dark"
-                        />
-                      </div>
-                    </div>
-                  )}
                 </div>
 
                 {/* Project Body */}
                 <div className="p-8">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {/* Key Features */}
-                    <div>
+                  {/* Project Images */}
+                  {project.images.length > 0 && (
+                    <div className="mb-8">
                       <h3 className="text-charcoal text-xl font-bold mb-4 flex items-center gap-2">
                         <CheckCircle2 className="w-5 h-5 text-coral" />
-                        Key Features
+                        Project Gallery
                       </h3>
-                      <ul className="space-y-3">
-                        {project.keyFeatures.map((feature, i) => (
-                          <li key={i} className="flex items-start gap-3">
-                            <div className="w-2 h-2 rounded-full bg-coral mt-2 shrink-0"></div>
-                            <span className="text-charcoal-light text-sm leading-relaxed">{feature}</span>
-                          </li>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        {project.images.map((image, i) => (
+                          <div key={i} className="rounded-xl overflow-hidden">
+                            <img
+                              src={image}
+                              alt={`${project.title} - ${i + 1}`}
+                              className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                            />
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
+                  )}
 
-                    {/* Attachments */}
+                  {/* Attachments */}
+                  {project.documents.length > 0 && (
                     <div>
                       <h3 className="text-charcoal text-xl font-bold mb-4 flex items-center gap-2">
                         <FileText className="w-5 h-5 text-coral" />
                         Project Documents
                       </h3>
-                      <div className="space-y-3">
-                        {project.attachments.map((attachment, i) => (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {project.documents.map((doc, i) => (
                           <motion.a
                             key={i}
-                            href={attachment.url}
+                            href={doc}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.3, delay: i * 0.1 }}
@@ -364,11 +198,9 @@ export function GovernmentProjects({ isFullPage = false }: { isFullPage?: boolea
                               </div>
                               <div>
                                 <p className="text-charcoal font-semibold text-sm group-hover:text-coral transition-colors">
-                                  {attachment.name}
+                                  Document {i + 1}
                                 </p>
-                                <p className="text-charcoal-light text-xs">
-                                  {attachment.type} • {attachment.size}
-                                </p>
+                                <p className="text-charcoal-light text-xs">PDF</p>
                               </div>
                             </div>
                             <Download className="w-5 h-5 text-charcoal-light group-hover:text-coral transition-colors" />
@@ -376,35 +208,31 @@ export function GovernmentProjects({ isFullPage = false }: { isFullPage?: boolea
                         ))}
                       </div>
                     </div>
-                  </div>
+                  )}
 
                   {/* Timeline Info */}
-                  <div className="mt-8 pt-6 border-t border-border">
-                    <div className="flex flex-wrap items-center gap-6 text-sm">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4 text-coral" />
-                        <span className="text-charcoal-light">
-                          Started: <span className="text-charcoal font-semibold">{project.startDate}</span>
-                        </span>
+                  {(project.startDate || project.completionDate) && (
+                    <div className="mt-8 pt-6 border-t border-border">
+                      <div className="flex flex-wrap items-center gap-6 text-sm">
+                        {project.startDate && (
+                          <div className="flex items-center gap-2">
+                            <Calendar className="w-4 h-4 text-coral" />
+                            <span className="text-charcoal-light">
+                              Started: <span className="text-charcoal font-semibold">{formatDate(project.startDate)}</span>
+                            </span>
+                          </div>
+                        )}
+                        {project.completionDate && (
+                          <div className="flex items-center gap-2">
+                            <CheckCircle2 className="w-4 h-4 text-green-500" />
+                            <span className="text-charcoal-light">
+                              Completed: <span className="text-charcoal font-semibold">{formatDate(project.completionDate)}</span>
+                            </span>
+                          </div>
+                        )}
                       </div>
-                      {project.completionDate && (
-                        <div className="flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-green-500" />
-                          <span className="text-charcoal-light">
-                            Completed: <span className="text-charcoal font-semibold">{project.completionDate}</span>
-                          </span>
-                        </div>
-                      )}
-                      {project.expectedCompletion && (
-                        <div className="flex items-center gap-2">
-                          <Clock className="w-4 h-4 text-coral" />
-                          <span className="text-charcoal-light">
-                            Expected: <span className="text-charcoal font-semibold">{project.expectedCompletion}</span>
-                          </span>
-                        </div>
-                      )}
                     </div>
-                  </div>
+                  )}
                 </div>
               </motion.div>
             );

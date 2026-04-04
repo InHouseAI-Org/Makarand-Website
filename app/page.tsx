@@ -6,6 +6,9 @@ import { WorkImpactPreview } from "./components/WorkImpactPreview";
 import { TestimonialsPreview } from "./components/TestimonialsPreview";
 import { MediaPreview } from "./components/MediaPreview";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'Makarand Narwekar | Mumbai Corporator | Transforming Communities',
   description: 'Makarand Narwekar - Mumbai Corporator dedicated to transforming our ward through transparent governance, sustainable development, and citizen-first service. Member of BJP serving Colaba & Fort area.',

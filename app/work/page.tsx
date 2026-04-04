@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { WorkImpact } from "../components/WorkImpact";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'Work & Impact | Projects & Achievements',
   description: 'Explore the work done by Makarand Narwekar including infrastructure projects, community initiatives, social welfare programs, and measurable impact in Mumbai\'s A Ward.',

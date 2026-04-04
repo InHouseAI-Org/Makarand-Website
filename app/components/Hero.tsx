@@ -23,7 +23,7 @@ export function Hero() {
       <section
         className="relative overflow-hidden flex items-center justify-center"
         style={{
-          backgroundImage: "url('/ChatGPT Image Mar 10, 2026 at 06_13_51 PM.png')",
+          backgroundImage: "url('/hero-desktop-image.png')",
           backgroundSize: "cover",
           backgroundPosition: "65% center",
           height: isDesktop ? "95vh" : "110vh",

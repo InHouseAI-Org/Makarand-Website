@@ -96,54 +96,45 @@ interface YouthClientProps {
 
 export function YouthClient({ testimonials, isFullPage = false }: YouthClientProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const itemsToShow = 3;
   const totalItems = testimonials.length;
-  const maxIndex = Math.max(0, totalItems - itemsToShow);
+  const totalSlides = Math.ceil(totalItems / itemsToShow);
 
-  const scroll = (direction: 'left' | 'right') => {
+  const scrollToSlide = (slideIndex: number) => {
     if (!scrollContainerRef.current) return;
 
     const container = scrollContainerRef.current;
-    const itemWidth = container.scrollWidth / totalItems;
-    const scrollAmount = itemWidth * itemsToShow;
+    const slideWidth = container.offsetWidth;
+    const scrollPosition = slideIndex * slideWidth;
 
-    if (direction === 'left') {
-      setCurrentIndex(prev => Math.max(0, prev - 1));
-      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    } else {
-      setCurrentIndex(prev => Math.min(maxIndex, prev + 1));
-      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
+    container.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    const newSlide = direction === 'left'
+      ? Math.max(0, currentSlide - 1)
+      : Math.min(totalSlides - 1, currentSlide + 1);
+
+    setCurrentSlide(newSlide);
+    scrollToSlide(newSlide);
   };
 
   useEffect(() => {
-    if (!isAutoPlaying || totalItems <= itemsToShow) return;
+    if (!isAutoPlaying || totalSlides <= 1) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex(prev => {
-        const next = prev >= maxIndex ? 0 : prev + 1;
-
-        if (scrollContainerRef.current) {
-          const container = scrollContainerRef.current;
-          const itemWidth = container.scrollWidth / totalItems;
-
-          if (next === 0) {
-            container.scrollTo({ left: 0, behavior: 'smooth' });
-          } else {
-            const scrollAmount = itemWidth * itemsToShow;
-            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-          }
-        }
-
+      setCurrentSlide(prev => {
+        const next = prev >= totalSlides - 1 ? 0 : prev + 1;
+        scrollToSlide(next);
         return next;
       });
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isAutoPlaying, maxIndex, totalItems, itemsToShow]);
+  }, [isAutoPlaying, totalSlides]);
 
   return (
     <section className={`${isFullPage ? "py-16 lg:py-24" : "py-16 lg:py-20"} bg-gradient-to-b from-white via-cream to-white`}>
@@ -287,15 +278,15 @@ export function YouthClient({ testimonials, isFullPage = false }: YouthClientPro
 
             <div className="relative">
               {/* Navigation Buttons */}
-              {totalItems > itemsToShow && (
+              {totalSlides > 1 && (
                 <>
                   <button
                     onClick={() => {
                       scroll('left');
                       setIsAutoPlaying(false);
                     }}
-                    disabled={currentIndex === 0}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral"
+                    disabled={currentSlide === 0}
+                    className="absolute left-[-60px] top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral"
                     aria-label="Previous testimonials"
                   >
                     <ChevronLeft className="w-6 h-6" />
@@ -305,8 +296,8 @@ export function YouthClient({ testimonials, isFullPage = false }: YouthClientPro
                       scroll('right');
                       setIsAutoPlaying(false);
                     }}
-                    disabled={currentIndex >= maxIndex}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral"
+                    disabled={currentSlide >= totalSlides - 1}
+                    className="absolute right-[-60px] top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral"
                     aria-label="Next testimonials"
                   >
                     <ChevronRight className="w-6 h-6" />
@@ -317,9 +308,10 @@ export function YouthClient({ testimonials, isFullPage = false }: YouthClientPro
               {/* Scrollable Container */}
               <div
                 ref={scrollContainerRef}
-                className="flex gap-6 overflow-x-hidden scroll-smooth"
+                className="flex gap-6 overflow-x-scroll overflow-y-hidden scroll-smooth scrollbar-hide snap-x snap-mandatory"
                 onMouseEnter={() => setIsAutoPlaying(false)}
                 onMouseLeave={() => setIsAutoPlaying(true)}
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
                 {testimonials.map((testimonial, index) => (
                   <motion.div
@@ -328,7 +320,7 @@ export function YouthClient({ testimonials, isFullPage = false }: YouthClientPro
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-white rounded-2xl p-6 shadow-lg border-2 border-border hover:border-coral transition-all flex-shrink-0"
+                    className="bg-white rounded-2xl p-6 shadow-lg border-2 border-border hover:border-coral transition-all flex-shrink-0 snap-start"
                     style={{ width: 'calc(33.333% - 16px)', minWidth: '300px' }}
                   >
                     <div className="flex items-center gap-4 mb-4">
@@ -354,27 +346,22 @@ export function YouthClient({ testimonials, isFullPage = false }: YouthClientPro
               </div>
 
               {/* Pagination Dots */}
-              {totalItems > itemsToShow && (
+              {totalSlides > 1 && (
                 <div className="flex justify-center gap-2 mt-8">
-                  {Array.from({ length: maxIndex + 1 }).map((_, index) => (
+                  {Array.from({ length: totalSlides }).map((_, index) => (
                     <button
                       key={index}
                       onClick={() => {
-                        setCurrentIndex(index);
+                        setCurrentSlide(index);
                         setIsAutoPlaying(false);
-                        if (scrollContainerRef.current) {
-                          const container = scrollContainerRef.current;
-                          const itemWidth = container.scrollWidth / totalItems;
-                          const scrollPosition = itemWidth * itemsToShow * index;
-                          container.scrollTo({ left: scrollPosition, behavior: 'smooth' });
-                        }
+                        scrollToSlide(index);
                       }}
                       className={`h-2 rounded-full transition-all ${
-                        currentIndex === index
+                        currentSlide === index
                           ? 'bg-coral w-8'
                           : 'bg-border w-2 hover:bg-coral/50'
                       }`}
-                      aria-label={`Go to testimonial set ${index + 1}`}
+                      aria-label={`Go to slide ${index + 1}`}
                     />
                   ))}
                 </div>

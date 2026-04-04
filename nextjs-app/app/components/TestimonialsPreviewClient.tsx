@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { Quote, Star, ChevronLeft, ChevronRight, Play } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface Testimonial {
   name: string;
@@ -26,13 +26,16 @@ interface TestimonialsPreviewClientProps {
 }
 
 export function TestimonialsPreviewClient({ testimonials, videoTestimonials }: TestimonialsPreviewClientProps) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const [showVideo, setShowVideo] = useState<number | null>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isVideoPaused, setIsVideoPaused] = useState(false);
-  const itemsPerPage = 3;
-  const totalPages = Math.ceil(testimonials.length / itemsPerPage);
+
+  const itemsToShow = 3;
+  const totalItems = testimonials.length;
+  const totalSlides = Math.ceil(totalItems / itemsToShow);
   const totalVideoPages = videoTestimonials.length;
 
   // Render star rating
@@ -49,16 +52,39 @@ export function TestimonialsPreviewClient({ testimonials, videoTestimonials }: T
     );
   };
 
-  // Auto-scroll text testimonials every 3 seconds
+  const scrollToSlide = (slideIndex: number) => {
+    if (!scrollContainerRef.current) return;
+
+    const container = scrollContainerRef.current;
+    const slideWidth = container.offsetWidth;
+    const scrollPosition = slideIndex * slideWidth;
+
+    container.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    const newSlide = direction === 'left'
+      ? Math.max(0, currentSlide - 1)
+      : Math.min(totalSlides - 1, currentSlide + 1);
+
+    setCurrentSlide(newSlide);
+    scrollToSlide(newSlide);
+  };
+
+  // Auto-scroll text testimonials every 5 seconds
   useEffect(() => {
-    if (isPaused || totalPages <= 1) return;
+    if (!isAutoPlaying || totalSlides <= 1) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % totalPages);
-    }, 3000);
+      setCurrentSlide(prev => {
+        const next = prev >= totalSlides - 1 ? 0 : prev + 1;
+        scrollToSlide(next);
+        return next;
+      });
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, [isPaused, totalPages]);
+  }, [isAutoPlaying, totalSlides]);
 
   // Auto-scroll video testimonials every 3 seconds
   useEffect(() => {
@@ -72,17 +98,6 @@ export function TestimonialsPreviewClient({ testimonials, videoTestimonials }: T
     return () => clearInterval(interval);
   }, [isVideoPaused, totalVideoPages]);
 
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % totalPages);
-    setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 5000);
-  };
-
-  const goToPrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
-    setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 5000);
-  };
 
   const goToNextVideo = () => {
     setCurrentVideoIndex((prev) => (prev + 1) % totalVideoPages);
@@ -97,11 +112,6 @@ export function TestimonialsPreviewClient({ testimonials, videoTestimonials }: T
     setIsVideoPaused(true);
     setTimeout(() => setIsVideoPaused(false), 5000);
   };
-
-  const currentTestimonials = testimonials.slice(
-    currentIndex * itemsPerPage,
-    (currentIndex + 1) * itemsPerPage
-  );
 
   const currentVideoTestimonial = videoTestimonials[currentVideoIndex];
 
@@ -251,37 +261,53 @@ export function TestimonialsPreviewClient({ testimonials, videoTestimonials }: T
           </div>
         )}
 
-        {/* Testimonial Cards with Navigation */}
+        {/* Testimonial Cards with Horizontal Scroll */}
         <div className="relative">
-          {/* Left Arrow */}
-          {totalPages > 1 && (
-            <button
-              onClick={goToPrev}
-              className="absolute left-[-60px] top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white hover:bg-cream p-3 rounded-full shadow-lg transition-all border border-border"
-              aria-label="Previous testimonials"
-            >
-              <ChevronLeft className="w-6 h-6 text-charcoal" />
-            </button>
+          {/* Navigation Buttons */}
+          {totalSlides > 1 && (
+            <>
+              <button
+                onClick={() => {
+                  scroll('left');
+                  setIsAutoPlaying(false);
+                }}
+                disabled={currentSlide === 0}
+                className="absolute left-[-60px] top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral"
+                aria-label="Previous testimonials"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button
+                onClick={() => {
+                  scroll('right');
+                  setIsAutoPlaying(false);
+                }}
+                disabled={currentSlide >= totalSlides - 1}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral"
+                aria-label="Next testimonials"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </>
           )}
 
-          {/* Right Arrow */}
-          {totalPages > 1 && (
-            <button
-              onClick={goToNext}
-              className="absolute right-[-60px] top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white hover:bg-cream p-3 rounded-full shadow-lg transition-all border border-border"
-              aria-label="Next testimonials"
-            >
-              <ChevronRight className="w-6 h-6 text-charcoal" />
-            </button>
-          )}
-
-          {/* Testimonials Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {currentTestimonials.map((item, index) => (
+          {/* Scrollable Container */}
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-6 overflow-x-scroll overflow-y-hidden scroll-smooth scrollbar-hide snap-x snap-mandatory"
+            onMouseEnter={() => setIsAutoPlaying(false)}
+            onMouseLeave={() => setIsAutoPlaying(true)}
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {testimonials.map((item, index) => (
               <motion.div
-                key={`${currentIndex}-${index}`}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="bg-gradient-to-br from-cream to-white border border-border rounded-2xl p-6 hover:shadow-xl transition-all"
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-gradient-to-br from-cream to-white border border-border rounded-2xl p-6 hover:shadow-xl transition-all flex-shrink-0 snap-start"
+                style={{ width: 'calc(33.333% - 16px)', minWidth: '300px' }}
               >
                 <div className="flex items-start justify-between mb-4">
                   <Quote className="w-8 h-8 text-coral/30" />
@@ -302,29 +328,29 @@ export function TestimonialsPreviewClient({ testimonials, videoTestimonials }: T
               </motion.div>
             ))}
           </div>
-        </div>
 
-        {/* Pagination Dots */}
-        {totalPages > 1 && (
-          <div className="flex justify-center gap-2 mt-8">
-            {Array.from({ length: totalPages }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setCurrentIndex(index);
-                  setIsPaused(true);
-                  setTimeout(() => setIsPaused(false), 5000);
-                }}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentIndex
-                    ? 'bg-coral w-8'
-                    : 'bg-coral/30 hover:bg-coral/50'
-                }`}
-                aria-label={`Go to page ${index + 1}`}
-              />
-            ))}
-          </div>
-        )}
+          {/* Pagination Dots */}
+          {totalSlides > 1 && (
+            <div className="flex justify-center gap-2 mt-8">
+              {Array.from({ length: totalSlides }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setCurrentSlide(index);
+                    setIsAutoPlaying(false);
+                    scrollToSlide(index);
+                  }}
+                  className={`h-2 rounded-full transition-all ${
+                    currentSlide === index
+                      ? 'bg-coral w-8'
+                      : 'bg-border w-2 hover:bg-coral/50'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );

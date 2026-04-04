@@ -23,7 +23,7 @@ export function Hero() {
       <section
         className="relative overflow-hidden flex items-center justify-center"
         style={{
-          backgroundImage: "url('/hero-desktop-image.png')",
+          backgroundImage: "url('/hero-desktop-image.webp')",
           backgroundSize: "cover",
           backgroundPosition: "65% center",
           height: isDesktop ? "95vh" : "110vh",
@@ -34,7 +34,7 @@ export function Hero() {
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: "url('/Portrait of a smiling professional man.png')",
+              backgroundImage: "url('/Portrait of a smiling professional man.webp')",
               backgroundSize: "cover",
               backgroundPosition: "center center",
             }}

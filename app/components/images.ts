@@ -1,5 +1,5 @@
 export const IMAGES = {
-  portrait: "/Users/manavbathija/Desktop/InHouse AI/Makarand/Makarand Narwekar Website Design/makarand-image.jpeg",
+  portrait: "/makarand-image.webp",
   roadConstruction: "https://images.unsplash.com/photo-1708358131361-93680cf7b4cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyb2FkJTIwY29uc3RydWN0aW9uJTIwaW5mcmFzdHJ1Y3R1cmUlMjBJbmRpYXxlbnwxfHx8fDE3NzE0MDU3MDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
   community: "https://images.unsplash.com/photo-1760021373658-fa9b85560526?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21tdW5pdHklMjBnYXRoZXJpbmclMjBJbmRpYSUyMGNlbGVicmF0aW9ufGVufDF8fHx8MTc3MTQwNTcwOHww&ixlib=rb-4.1.0&q=80&w=1080",
   rally: "https://images.unsplash.com/photo-1722512289833-c014f2bd556a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwdWJsaWMlMjByYWxseSUyMEluZGlhJTIwY3Jvd2R8ZW58MXx8fHwxNzcxNDA1NzA4fDA&ixlib=rb-4.1.0&q=80&w=1080",

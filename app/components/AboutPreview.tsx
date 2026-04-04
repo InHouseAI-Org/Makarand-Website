@@ -28,7 +28,7 @@ export function AboutPreview() {
             className="relative overflow-hidden shadow-2xl"
             style={{ borderRadius: "48px" }}
           >
-            <img src="/From activism to governance journey.png" alt="Community service" className="w-full aspect-[4/3] object-cover" />
+            <img src="/From activism to governance journey.webp" alt="Community service" className="w-full aspect-[4/3] object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
               <p className="text-white/80" style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "0.05em" }}>LEADERSHIP PHILOSOPHY</p>

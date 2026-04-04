@@ -73,7 +73,7 @@ export function About({ isFullPage = false }: { isFullPage?: boolean }) {
                 viewport={{ once: true }}
                 className="relative rounded-2xl overflow-hidden shadow-xl"
               >
-                <img src="/From activism to governance journey.png" alt="Community service" className="w-full aspect-[4/5] object-cover" />
+                <img src="/From activism to governance journey.webp" alt="Community service" className="w-full aspect-[4/5] object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <p className="text-white/80" style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "0.05em" }}>LEADERSHIP PHILOSOPHY</p>

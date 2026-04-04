@@ -10,7 +10,7 @@ const globalForPrisma = globalThis as unknown as {
 // Create PostgreSQL connection pool
 if (!globalForPrisma.pool) {
   globalForPrisma.pool = new Pool({
-    connectionString: process.env.DATABASE_URL
+    connectionString: process.env.DATABASE_URL,
   });
 }
 
@@ -18,8 +18,10 @@ const pool = globalForPrisma.pool;
 const adapter = new PrismaPg(pool);
 
 export const prisma =
-  globalForPrisma.prisma ?? new PrismaClient({
+  globalForPrisma.prisma ??
+  new PrismaClient({
     adapter,
+    log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
   });
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;

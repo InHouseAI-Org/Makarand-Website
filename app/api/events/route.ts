@@ -4,12 +4,25 @@ import { prisma } from '@/lib/prisma';
 // GET all active events
 export async function GET() {
   try {
-    const events = await prisma.event.findMany({
+    const now = new Date();
+
+    // First, automatically deactivate any past events
+    await prisma.event.updateMany({
       where: {
         active: true,
         eventDate: {
-          gte: new Date(), // Only future events
+          lt: now,
         },
+      },
+      data: {
+        active: false,
+      },
+    });
+
+    // Then fetch only active events (past events are now inactive)
+    const events = await prisma.event.findMany({
+      where: {
+        active: true,
       },
       orderBy: [
         { priority: 'desc' },

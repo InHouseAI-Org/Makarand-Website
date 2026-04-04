@@ -13,18 +13,9 @@ export async function WorkImpactPreview() {
     take: 3,
   });
 
-  console.log('=== WORK IMPACT PREVIEW SERVER DEBUG ===');
-  console.log('Total projects fetched:', projectsFromDB.length);
+
   projectsFromDB.forEach((project, index) => {
-    console.log(`Project ${index + 1}:`, {
-      id: project.id,
-      title: project.title,
-      category: project.category,
-      status: project.status,
-      image: project.image,
-      hasImage: !!project.image,
-      imageLength: project.image?.length
-    });
+    
   });
 
   // Calculate impact stats from database

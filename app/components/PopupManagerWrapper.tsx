@@ -5,12 +5,23 @@ export async function PopupManagerWrapper() {
   // Fetch active events from database
   const now = new Date();
 
-  const events = await prisma.event.findMany({
+  // First, automatically deactivate any past events
+  await prisma.event.updateMany({
     where: {
       active: true,
       eventDate: {
-        gte: now, // Only future events
+        lt: now,
       },
+    },
+    data: {
+      active: false,
+    },
+  });
+
+  // Then fetch only active events (past events are now inactive)
+  const events = await prisma.event.findMany({
+    where: {
+      active: true,
     },
     orderBy: [
       { priority: 'desc' },

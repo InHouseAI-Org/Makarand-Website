@@ -13,6 +13,21 @@ export default async function EventsPage() {
     redirect("/admin/login");
   }
 
+  const now = new Date();
+
+  // Automatically deactivate past events
+  await prisma.event.updateMany({
+    where: {
+      active: true,
+      eventDate: {
+        lt: now,
+      },
+    },
+    data: {
+      active: false,
+    },
+  });
+
   const events = await prisma.event.findMany({
     orderBy: [
       { eventDate: 'asc' },
@@ -112,6 +127,13 @@ export default async function EventsPage() {
                         Priority: {event.priority}
                       </span>
                     </div>
+                    {new Date(event.eventDate) < now && (
+                      <div className="flex items-center gap-2">
+                        <span className="px-3 py-1 rounded-full bg-gray-200 text-gray-600 font-semibold" style={{ fontSize: '12px' }}>
+                          Past Event
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
 

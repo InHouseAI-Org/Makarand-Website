@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone, MapPin, Facebook, Instagram, Youtube, Linkedin } from "lucide-react";
-import { PopupManager } from "./PopupManager";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -262,7 +261,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <Footer />
-      <PopupManager />
     </div>
   );
 }

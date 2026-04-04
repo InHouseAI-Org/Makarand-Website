@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
-import { Home, FolderKanban, Building2, Users, Newspaper, MessageSquare, Share2, Image, LogOut, Inbox, Menu, X } from 'lucide-react';
+import { Home, FolderKanban, Building2, Users, Newspaper, MessageSquare, Share2, Image, LogOut, Inbox, Menu, X, Calendar } from 'lucide-react';
 
 export function AdminNav({ session }: { session: any }) {
   const pathname = usePathname();
@@ -24,6 +24,7 @@ export function AdminNav({ session }: { session: any }) {
   const navItems = [
     { href: '/admin', label: 'Dashboard', icon: Home },
     { href: '/admin/contact-submissions', label: 'Submissions', icon: Inbox },
+    { href: '/admin/events', label: 'Events', icon: Calendar },
     { href: '/admin/projects', label: 'Projects', icon: FolderKanban },
     { href: '/admin/government-projects', label: 'Gov Projects', icon: Building2 },
     { href: '/admin/ward-officers', label: 'Ward Officers', icon: Users },
@@ -74,11 +75,10 @@ export function AdminNav({ session }: { session: any }) {
               {isDesktop && (
                 <button
                   onClick={() => signOut({ callbackUrl: '/admin/login' })}
-                  className="flex items-center gap-2 px-4 py-2 text-red-600 hover:bg-red-50 rounded-xl transition-all"
-                  style={{ fontSize: '13px' }}
+                  className="flex items-center justify-center p-2 text-red-600 hover:bg-red-50 rounded-xl transition-all"
+                  title="Logout"
                 >
-                  <LogOut className="w-4 h-4" />
-                  Logout
+                  <LogOut className="w-5 h-5" />
                 </button>
               )}
 

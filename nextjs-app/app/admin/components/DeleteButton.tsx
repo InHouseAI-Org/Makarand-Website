@@ -6,8 +6,8 @@ import { Trash2 } from 'lucide-react';
 
 interface DeleteButtonProps {
   id: string;
-  type: 'project' | 'governmentProject' | 'wardOfficer' | 'media' | 'testimonial' | 'gallery' | 'socialMedia' | 'youthTestimonial';
-  title: string;
+  type: 'project' | 'governmentProject' | 'wardOfficer' | 'media' | 'testimonial' | 'gallery' | 'socialMedia' | 'youthTestimonial' | 'event';
+  title?: string;
 }
 
 export function DeleteButton({ id, type, title }: DeleteButtonProps) {
@@ -15,14 +15,19 @@ export function DeleteButton({ id, type, title }: DeleteButtonProps) {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDelete = async () => {
-    if (!confirm(`Are you sure you want to delete "${title}"? This action cannot be undone.`)) {
+    const confirmMessage = title
+      ? `Are you sure you want to delete "${title}"? This action cannot be undone.`
+      : 'Are you sure you want to delete this item? This action cannot be undone.';
+
+    if (!confirm(confirmMessage)) {
       return;
     }
 
     setIsDeleting(true);
 
     try {
-      const response = await fetch(`/api/admin/${type}/${id}`, {
+      const apiPath = type === 'event' ? `/api/events/${id}` : `/api/admin/${type}/${id}`;
+      const response = await fetch(apiPath, {
         method: 'DELETE',
       });
 

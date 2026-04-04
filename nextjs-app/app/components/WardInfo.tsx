@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { MapPin, Building, Info, FileText, Phone, Hospital, GraduationCap, Bus, Users, Shield, Flame } from "lucide-react";
 import { IMAGES } from "./images";
+import { WardAMap } from "./WardAMap";
 
 type WardOfficer = {
   id: string;
@@ -92,22 +93,8 @@ export function WardInfo({
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative rounded-2xl overflow-hidden bg-cream border border-border"
           >
-            <img src={IMAGES.mumbai} alt="Ward aerial view" className="w-full h-80 lg:h-full object-cover opacity-80" />
-            <div className="absolute inset-0 bg-charcoal/30 flex items-center justify-center">
-              <div className="text-center text-white p-6">
-                <MapPin className="w-12 h-12 mx-auto mb-4 text-coral" />
-                <p style={{ fontSize: "20px", fontWeight: 700 }}>Ward Map</p>
-                <p className="text-white/70 mt-2" style={{ fontSize: "14px" }}>
-                  Interactive ward map coming soon
-                </p>
-                <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-lg">
-                  <Info className="w-4 h-4" />
-                  <span style={{ fontSize: "13px" }}>Colaba Division, South Mumbai</span>
-                </div>
-              </div>
-            </div>
+            <WardAMap />
           </motion.div>
 
           <motion.div

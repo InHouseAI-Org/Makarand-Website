@@ -286,7 +286,7 @@ export function YouthClient({ testimonials, isFullPage = false }: YouthClientPro
                       setIsAutoPlaying(false);
                     }}
                     disabled={currentSlide === 0}
-                    className="absolute left-[-60px] top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral"
+                    className="hidden lg:flex absolute left-[-60px] top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral items-center justify-center"
                     aria-label="Previous testimonials"
                   >
                     <ChevronLeft className="w-6 h-6" />
@@ -297,7 +297,7 @@ export function YouthClient({ testimonials, isFullPage = false }: YouthClientPro
                       setIsAutoPlaying(false);
                     }}
                     disabled={currentSlide >= totalSlides - 1}
-                    className="absolute right-[-60px] top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral"
+                    className="hidden lg:flex absolute right-[-60px] top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral items-center justify-center"
                     aria-label="Next testimonials"
                   >
                     <ChevronRight className="w-6 h-6" />

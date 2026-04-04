@@ -153,7 +153,7 @@ export function TestimonialsPreviewClient({ testimonials, videoTestimonials }: T
               {totalVideoPages > 1 && (
                 <button
                   onClick={goToPrevVideo}
-                  className="absolute left-[-80px] top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-coral hover:bg-coral-dark p-3 rounded-full shadow-lg transition-all border border-border"
+                  className="hidden lg:flex absolute left-[-80px] top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-coral hover:bg-coral-dark p-3 rounded-full shadow-lg transition-all border border-border items-center justify-center"
                   aria-label="Previous video testimonial"
                 >
                   <ChevronLeft className="w-6 h-6 text-white" />
@@ -164,7 +164,7 @@ export function TestimonialsPreviewClient({ testimonials, videoTestimonials }: T
               {totalVideoPages > 1 && (
                 <button
                   onClick={goToNextVideo}
-                  className="absolute right-[-80px] top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-coral hover:bg-coral-dark p-3 rounded-full shadow-lg transition-all border border-border"
+                  className="hidden lg:flex absolute right-[-80px] top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-coral hover:bg-coral-dark p-3 rounded-full shadow-lg transition-all border border-border items-center justify-center"
                   aria-label="Next video testimonial"
                 >
                   <ChevronRight className="w-6 h-6 text-white" />
@@ -272,7 +272,7 @@ export function TestimonialsPreviewClient({ testimonials, videoTestimonials }: T
                   setIsAutoPlaying(false);
                 }}
                 disabled={currentSlide === 0}
-                className="absolute left-[-60px] top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral"
+                className="hidden lg:flex absolute left-[-60px] top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral items-center justify-center"
                 aria-label="Previous testimonials"
               >
                 <ChevronLeft className="w-6 h-6" />
@@ -283,7 +283,7 @@ export function TestimonialsPreviewClient({ testimonials, videoTestimonials }: T
                   setIsAutoPlaying(false);
                 }}
                 disabled={currentSlide >= totalSlides - 1}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral"
+                className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white shadow-xl rounded-full p-3 hover:bg-coral hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-charcoal border-2 border-border hover:border-coral items-center justify-center"
                 aria-label="Next testimonials"
               >
                 <ChevronRight className="w-6 h-6" />

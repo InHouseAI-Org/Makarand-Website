@@ -7,7 +7,7 @@ import { Eye, EyeOff } from 'lucide-react';
 interface TogglePublishButtonProps {
   id: string;
   published: boolean;
-  type: 'project' | 'governmentProject' | 'wardOfficer' | 'media' | 'testimonial' | 'gallery' | 'socialMedia' | 'youthTestimonial';
+  type: 'project' | 'governmentProject' | 'wardOfficer' | 'media' | 'testimonial' | 'gallery' | 'socialMedia' | 'youthTestimonial' | 'event';
 }
 
 export function TogglePublishButton({ id, published, type }: TogglePublishButtonProps) {
@@ -18,15 +18,27 @@ export function TogglePublishButton({ id, published, type }: TogglePublishButton
     setIsToggling(true);
 
     try {
-      // Gallery and socialMedia use 'isPublished' field, others use 'published'
-      const fieldName = (type === 'gallery' || type === 'socialMedia') ? 'isPublished' : 'published';
+      // Gallery and socialMedia use 'isPublished' field, events use 'active', others use 'published'
+      let fieldName = 'published';
+      if (type === 'gallery' || type === 'socialMedia') {
+        fieldName = 'isPublished';
+      } else if (type === 'event') {
+        fieldName = 'active';
+      }
 
-      const response = await fetch(`/api/admin/${type}/${id}/publish`, {
-        method: 'PATCH',
+      const apiPath = type === 'event'
+        ? `/api/events/${id}`
+        : `/api/admin/${type}/${id}/publish`;
+
+      const response = await fetch(apiPath, {
+        method: type === 'event' ? 'PUT' : 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ [fieldName]: !published }),
+        body: JSON.stringify(type === 'event'
+          ? { [fieldName]: !published }
+          : { [fieldName]: !published }
+        ),
       });
 
       if (response.ok) {

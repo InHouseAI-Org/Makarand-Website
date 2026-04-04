@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Layout } from "./components/Layout";
+import { PopupManagerWrapper } from "./components/PopupManagerWrapper";
 
 // Metadata for SEO optimization
 export const metadata: Metadata = {
@@ -91,7 +92,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <head>
         {/* Additional meta tags */}
         <meta name="geo.region" content="IN-MH" />
@@ -100,8 +101,9 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="min-h-screen flex flex-col antialiased">
+      <body className="min-h-screen flex flex-col antialiased overflow-x-hidden">
         <Layout>{children}</Layout>
+        <PopupManagerWrapper />
       </body>
     </html>
   );

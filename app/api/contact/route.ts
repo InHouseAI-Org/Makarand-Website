@@ -4,7 +4,6 @@ import { prisma } from '@/lib/prisma';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    console.log('Received contact submission:', body);
 
     const {
       name,
@@ -58,7 +57,6 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    console.log('Contact submission created:', submission.id);
     return NextResponse.json({ success: true, id: submission.id }, { status: 201 });
   } catch (error) {
     console.error('Error saving contact submission:', error);

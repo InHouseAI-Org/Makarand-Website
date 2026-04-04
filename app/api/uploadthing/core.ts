@@ -38,8 +38,6 @@ export const ourFileRouter = {
       return await authMiddleware();
     })
     .onUploadComplete(async ({ metadata, file }) => {
-      console.log("Image upload complete for userId:", metadata.userId);
-      console.log("File URL:", file.url);
 
       // Return data that will be sent to the client
       return {
@@ -65,8 +63,6 @@ export const ourFileRouter = {
       return await authMiddleware();
     })
     .onUploadComplete(async ({ metadata, file }) => {
-      console.log("Document upload complete for userId:", metadata.userId);
-      console.log("File URL:", file.url);
 
       // Return data that will be sent to the client
       return {
@@ -92,8 +88,6 @@ export const ourFileRouter = {
       return await authMiddleware();
     })
     .onUploadComplete(async ({ metadata, file }) => {
-      console.log("Thumbnail upload complete for userId:", metadata.userId);
-      console.log("File URL:", file.url);
 
       return {
         uploadedBy: metadata.userId,
@@ -118,8 +112,6 @@ export const ourFileRouter = {
       return await authMiddleware();
     })
     .onUploadComplete(async ({ metadata, file }) => {
-      console.log("Profile photo upload complete for userId:", metadata.userId);
-      console.log("File URL:", file.url);
 
       return {
         uploadedBy: metadata.userId,
@@ -144,8 +136,6 @@ export const ourFileRouter = {
       return await authMiddleware();
     })
     .onUploadComplete(async ({ metadata, file }) => {
-      console.log("Video upload complete for userId:", metadata.userId);
-      console.log("File URL:", file.url);
 
       return {
         uploadedBy: metadata.userId,

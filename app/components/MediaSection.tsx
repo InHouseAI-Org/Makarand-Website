@@ -23,12 +23,6 @@ export async function MediaSection() {
 
   // Convert awards to format expected by UI
   const awards = awardsFromDB.map(award => {
-    console.log('Award from DB:', {
-      id: award.id,
-      title: award.title,
-      thumbnail: award.thumbnail,
-      category: award.category
-    });
     return {
       id: award.id,
       title: award.title,
@@ -63,10 +57,6 @@ export async function MediaSection() {
 
   const displayAwards = awards.length > 0 ? awards : defaultAwards;
 
-  console.log('=== AWARDS DEBUG ===');
-  console.log('Awards from DB count:', awards.length);
-  console.log('Using default awards:', awards.length === 0);
-  console.log('Display awards:', displayAwards.map(a => ({ title: a.title, image: a.image })));
 
   // Convert press items to format expected by UI
   const pressItems = pressItemsFromDB.map(item => ({

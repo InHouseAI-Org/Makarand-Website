@@ -15,15 +15,15 @@ interface AwardCardProps {
 export function AwardCard({ id, title, org, year, description, image }: AwardCardProps) {
   const router = useRouter();
 
-  console.log('AwardCard rendered:', { title, image, hasImage: !!image });
+
 
   const handleClick = () => {
-    console.log('Award card clicked, id:', id);
+
     if (id) {
-      console.log('Navigating to:', `/media/award/${id}`);
+
       router.push(`/media/award/${id}`);
     } else {
-      console.log('No id provided, cannot navigate');
+
     }
   };
 

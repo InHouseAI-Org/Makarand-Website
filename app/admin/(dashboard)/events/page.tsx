@@ -72,14 +72,14 @@ export default async function EventsPage() {
               key={event.id}
               className="bg-white rounded-2xl border-2 border-border p-6 hover:shadow-lg transition-all group"
             >
-              <div className="flex flex-col lg:flex-row lg:items-center gap-4">
+              <div className="flex flex-col lg:flex-row lg:items-center gap-4" style={{ flexDirection: 'row' }}>
                 {/* Event Info */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-start gap-3 mb-2">
-                    <div className="w-12 h-12 bg-coral-light rounded-xl flex items-center justify-center shrink-0">
+                <div className="flex-1 min-w-0" style={{ flexDirection: 'row' }}>
+                  <div className="flex items-start gap-3 mb-2" style={{ flexDirection: 'row' }}>
+                    <div className="w-12 h-12 bg-coral-light rounded-xl flex items-center justify-center shrink-0" style={{ flexDirection: 'row' }}>
                       <Calendar className="w-6 h-6 text-coral" />
                     </div>
-                    <div className="flex-1 min-w-0">
+                    <div className="flex-1 min-w-0" style={{ flexDirection: 'row' }}>
                       <h3 className="text-charcoal font-bold mb-1 truncate" style={{ fontSize: '18px', fontFamily: 'var(--font-family-serif)' }}>
                         {event.title}
                       </h3>
@@ -90,7 +90,7 @@ export default async function EventsPage() {
                   </div>
 
                   {/* Event Details */}
-                  <div className="flex flex-wrap gap-3 ml-15 mt-3">
+                  <div className="flex flex-wrap gap-3 ml-15 mt-3" style={{ flexDirection: 'row' }}>
                     <div className="flex items-center gap-2 text-charcoal-light" style={{ fontSize: '13px' }}>
                       <Calendar className="w-4 h-4" />
                       {new Date(event.eventDate).toLocaleDateString('en-US', {
@@ -116,7 +116,7 @@ export default async function EventsPage() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex lg:flex-col items-center gap-3 lg:border-l lg:border-border lg:pl-6">
+                <div className="flex lg:flex-col items-center gap-3 lg:border-l lg:border-border lg:pl-6" style={{ flexDirection: 'row' }}>
                   <TogglePublishButton
                     id={event.id}
                     published={event.active}

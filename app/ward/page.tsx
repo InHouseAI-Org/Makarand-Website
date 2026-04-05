@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { WardInfo } from "../components/WardInfo";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'A Ward Information | Mumbai Demographics & Services',
   description: 'Complete information about Mumbai\'s A Ward including demographics, boundaries, civic services, facilities, and important contact information for residents.',

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { YouthClient } from "../components/YouthClient";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Youth Programs | Empowering Tomorrow\'s Leaders',
   description: 'Youth development programs, educational initiatives, skill training, sports activities, and opportunities for young people in Mumbai. Empowering the next generation of leaders.',

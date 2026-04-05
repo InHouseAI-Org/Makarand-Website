@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { GovernmentProjects } from "../components/GovernmentProjects";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Government Projects | Public Infrastructure & Schemes',
   description: 'Details of government projects, public infrastructure development, welfare schemes, and municipal initiatives undertaken in Mumbai\'s A Ward under Makarand Narwekar\'s leadership.',

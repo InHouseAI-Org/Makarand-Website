@@ -3,6 +3,8 @@ import { ProjectDetail } from "../../components/ProjectDetail";
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 
+export const dynamic = 'force-dynamic';
+
 type Props = {
   params: Promise<{ id: string }>;
 };

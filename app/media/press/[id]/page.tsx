@@ -4,6 +4,8 @@ import Link from "next/link";
 import { ArrowLeft, Calendar, ExternalLink, Newspaper } from "lucide-react";
 import type { Metadata } from "next";
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
   const pressItem = await prisma.media.findUnique({

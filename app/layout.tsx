@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 import "./globals.css";
 import { Layout } from "./components/Layout";
 import { PopupManagerWrapper } from "./components/PopupManagerWrapper";
@@ -103,7 +104,9 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="min-h-screen flex flex-col antialiased overflow-x-hidden">
-        <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
+        <Suspense fallback={null}>
+          <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
+        </Suspense>
         <Layout>{children}</Layout>
         <PopupManagerWrapper />
       </body>

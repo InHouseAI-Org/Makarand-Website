@@ -46,3 +46,24 @@ next-env.d.ts
 /MN Work List
 MN Report .pdf
 officer list A ward.pdf
+
+# Database seeding scripts and SQL files (local development only)
+*.sql
+neon-*.sql
+run-sql-in-neon.ts
+upload-images-to-uploadthing.ts
+
+# Database documentation and guides (local reference)
+DATABASE_POPULATION_GUIDE.md
+DATABASE_READY_SUMMARY.md
+FINAL_SQL_CHECKLIST.md
+RUN_SQL_IN_NEON.md
+PROJECT_IMAGE_MAPPING.md
+
+# Excel files and spreadsheets
+*.xlsx
+*.xls
+
+# Backup files
+*.bak
+*.backup

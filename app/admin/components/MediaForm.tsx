@@ -341,7 +341,9 @@ export function MediaForm({ initialData, isEdit = false }: MediaFormProps) {
               <div>
                 <input
                   type="url"
-                  {...register('url')}
+                  {...register('url', {
+                    onChange: (e) => setUploadedVideo(e.target.value)
+                  })}
                   className="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
                   placeholder={
                     selectedCategory === 'press'
@@ -446,7 +448,9 @@ export function MediaForm({ initialData, isEdit = false }: MediaFormProps) {
               <div>
                 <input
                   type="url"
-                  {...register('thumbnail')}
+                  {...register('thumbnail', {
+                    onChange: (e) => setUploadedThumbnail(e.target.value)
+                  })}
                   className="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-coral focus:border-transparent"
                   placeholder="https://example.com/image.jpg"
                 />

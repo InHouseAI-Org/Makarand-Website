@@ -10,7 +10,7 @@ import bcrypt from 'bcryptjs';
 export async function POST(request: Request) {
   try {
     // Check if any admin users already exist
-    const existingAdmin = await prisma.user.findFirst();
+    const existingAdmin = await prisma.admin.findFirst();
 
     if (existingAdmin) {
       return NextResponse.json(
@@ -21,7 +21,7 @@ export async function POST(request: Request) {
 
     // Get credentials from request body
     const body = await request.json();
-    const { username, password } = body;
+    const { username, password, email, name } = body;
 
     if (!username || !password) {
       return NextResponse.json(
@@ -42,10 +42,12 @@ export async function POST(request: Request) {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create the admin user
-    const admin = await prisma.user.create({
+    const admin = await prisma.admin.create({
       data: {
         username,
         password: hashedPassword,
+        email: email || `${username}@admin.local`,
+        name: name || username,
       },
     });
 

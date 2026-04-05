@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+export const dynamic = 'force-dynamic';
 import { redirect } from "next/navigation";
 import { SocialMediaForm } from "@/app/admin/components/SocialMediaForm";
 

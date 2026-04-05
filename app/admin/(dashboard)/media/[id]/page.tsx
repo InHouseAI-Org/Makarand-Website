@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+export const dynamic = 'force-dynamic';
 import { redirect, notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { MediaForm } from "@/app/admin/components/MediaForm";

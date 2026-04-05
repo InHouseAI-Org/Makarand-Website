@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Play } from "lucide-react";
 import type { Metadata } from "next";
+import { generateSEO, KEYWORDS, combineKeywords } from "@/lib/seo";
 
 export const dynamic = 'force-dynamic';
 
@@ -18,10 +19,21 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     };
   }
 
-  return {
-    title: `${video.title} | Videos`,
-    description: video.description || `Watch: ${video.title}`,
-  };
+  const ogImageUrl = `/api/og?title=${encodeURIComponent(video.title)}&description=${encodeURIComponent('Watch Makarand Narwekar in action')}&type=press`;
+
+  return generateSEO({
+    title: `${video.title} | Makarand Narwekar Video`,
+    description: video.description || `Watch Makarand Narwekar: ${video.title}. See Mumbai's dynamic Corporator in action, delivering results and connecting with the community. Part of Makarand Narwekar's comprehensive media coverage.`,
+    keywords: combineKeywords(
+      KEYWORDS.base,
+      ['Video', 'Media Coverage', video.title, 'Makarand Narwekar Videos', 'Mumbai Corporator Video']
+    ),
+    canonical: `/media/video/${id}`,
+    ogImage: ogImageUrl,
+    ogType: 'article',
+    publishedTime: video.publishedAt.toISOString(),
+    modifiedTime: video.updatedAt.toISOString(),
+  });
 }
 
 export default async function VideoDetailPage({ params }: { params: Promise<{ id: string }> }) {

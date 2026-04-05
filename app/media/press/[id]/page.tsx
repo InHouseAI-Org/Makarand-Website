@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Calendar, ExternalLink, Newspaper } from "lucide-react";
 import type { Metadata } from "next";
+import { generateSEO, KEYWORDS, combineKeywords, generateArticleSchema } from "@/lib/seo";
 
 export const dynamic = 'force-dynamic';
 
@@ -18,10 +19,22 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     };
   }
 
-  return {
+  const ogImageUrl = `/api/og?title=${encodeURIComponent(pressItem.title)}&description=${encodeURIComponent((pressItem.description || pressItem.title).substring(0, 100))}&type=press`;
+
+  return generateSEO({
     title: `${pressItem.title} | Press Coverage`,
-    description: pressItem.description || `Press coverage: ${pressItem.title}`,
-  };
+    description: pressItem.description || `Read press coverage about ${pressItem.title} featuring Makarand Narwekar's work in Mumbai.`,
+    keywords: combineKeywords(
+      KEYWORDS.base,
+      ['Press Coverage', 'Media', 'News', pressItem.source || 'Mumbai News', 'Corporator News']
+    ),
+    canonical: `/media/press/${id}`,
+    ogImage: ogImageUrl,
+    ogType: 'article',
+    publishedTime: pressItem.publishedAt.toISOString(),
+    modifiedTime: pressItem.updatedAt.toISOString(),
+    authors: [pressItem.source || 'Media'],
+  });
 }
 
 export default async function PressDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -48,6 +61,17 @@ export default async function PressDetailPage({ params }: { params: Promise<{ id
     },
   });
 
+  // Generate Article schema for press coverage
+  const articleSchema = generateArticleSchema({
+    headline: pressItem.title,
+    description: pressItem.description || pressItem.title,
+    image: pressItem.thumbnail || '/og-image.jpg',
+    datePublished: pressItem.publishedAt.toISOString(),
+    dateModified: pressItem.updatedAt.toISOString(),
+    author: pressItem.source || 'Media',
+    url: `/media/press/${id}`,
+  });
+
   const formatDate = (date: Date) => {
     return new Date(date).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -57,7 +81,14 @@ export default async function PressDetailPage({ params }: { params: Promise<{ id
   };
 
   return (
-    <div className="min-h-screen bg-cream py-20">
+    <>
+      {/* Article Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
+      <div className="min-h-screen bg-cream py-20">
       <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Back Button */}
         <Link
@@ -235,6 +266,7 @@ export default async function PressDetailPage({ params }: { params: Promise<{ id
           </Link>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

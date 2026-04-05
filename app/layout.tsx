@@ -5,6 +5,12 @@ import { Layout } from "./components/Layout";
 import { PopupManagerWrapper } from "./components/PopupManagerWrapper";
 import { GoogleAnalytics } from "./components/GoogleAnalytics";
 import { ErrorBoundaryHandler } from "./components/ErrorBoundaryHandler";
+import {
+  generateOrganizationSchema,
+  generatePersonSchema,
+  generateWebSiteSchema,
+  generateLocalGovernmentSchema,
+} from "@/lib/seo";
 
 // Metadata for SEO optimization
 export const metadata: Metadata = {
@@ -13,23 +19,28 @@ export const metadata: Metadata = {
     default: 'Makarand Narwekar | Mumbai Corporator | Transforming Communities',
     template: '%s | Makarand Narwekar'
   },
-  description: 'Makarand Narwekar - Mumbai Corporator dedicated to transforming our ward through transparent governance, sustainable development, and citizen-first service. Member of Bharatiya Janata Party (BJP).',
+  description: 'Makarand Narwekar - Dynamic Mumbai Corporator and BJP leader transforming A Ward through visionary governance, infrastructure excellence, and unwavering commitment to citizen welfare. Your trusted representative for Colaba and Fort areas.',
   keywords: [
     'Makarand Narwekar',
-    'Mumbai Corporator',
-    'BJP Mumbai',
-    'Colaba',
-    'A Ward Mumbai',
-    'Ward Development',
-    'Mumbai Politics',
-    'Community Service',
-    'Transparent Governance',
-    'Sustainable Development',
-    'Bharatiya Janata Party',
-    'Municipal Corporation Mumbai',
-    'Fort Mumbai',
-    'Youth Development',
-    'Infrastructure Development'
+    'Makarand Narwekar Mumbai',
+    'Makarand Narwekar Corporator',
+    'Makarand Narwekar BJP',
+    'Mumbai Corporator Makarand Narwekar',
+    'BJP Makarand Narwekar',
+    'Corporator A Ward Mumbai',
+    'Colaba Corporator',
+    'Fort Mumbai Corporator',
+    'Makarand Narwekar Projects',
+    'Makarand Narwekar Achievements',
+    'Mumbai Ward Development Makarand Narwekar',
+    'Bharatiya Janata Party Mumbai Makarand Narwekar',
+    'Makarand Narwekar Infrastructure',
+    'Makarand Narwekar Youth Programs',
+    'Makarand Narwekar Community Service',
+    'Best Corporator Mumbai',
+    'Mumbai Leader Makarand Narwekar',
+    'Makarand Narwekar Vision',
+    'Makarand Narwekar Contact'
   ],
   authors: [{ name: 'Makarand Narwekar' }],
   creator: 'Makarand Narwekar',
@@ -43,22 +54,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://makarandnarwekar.com',
-    siteName: 'Makarand Narwekar',
-    title: 'Makarand Narwekar | Mumbai Corporator | Transforming Communities',
-    description: 'Dedicated to transforming our ward through transparent governance, sustainable development, and citizen-first service.',
+    siteName: 'Makarand Narwekar - Official Website',
+    title: 'Makarand Narwekar | Mumbai Corporator | Transforming A Ward with Vision & Action',
+    description: 'Makarand Narwekar - Your dynamic Mumbai Corporator delivering results. From infrastructure projects to youth empowerment, experience leadership that transforms communities. BJP leader committed to excellence.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Makarand Narwekar - Mumbai Corporator',
+        alt: 'Makarand Narwekar - Mumbai Corporator & BJP Leader',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Makarand Narwekar | Mumbai Corporator',
-    description: 'Dedicated to transforming our ward through transparent governance and citizen-first service.',
+    title: 'Makarand Narwekar | Mumbai Corporator & Community Leader',
+    description: 'Makarand Narwekar - Transforming A Ward through visionary leadership. Infrastructure, youth programs, community service. Your trusted representative.',
     creator: '@MNarwekar',
     images: ['/twitter-image.jpg'],
   },
@@ -94,6 +105,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Generate structured data schemas
+  const organizationSchema = generateOrganizationSchema();
+  const personSchema = generatePersonSchema();
+  const websiteSchema = generateWebSiteSchema();
+  const localGovSchema = generateLocalGovernmentSchema();
+
   return (
     <html lang="en" className="overflow-x-hidden">
       <head>
@@ -103,6 +120,30 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
+
+        {/* Structured Data - Organization */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+
+        {/* Structured Data - Person */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+
+        {/* Structured Data - WebSite */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+
+        {/* Structured Data - Local Government */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localGovSchema) }}
+        />
       </head>
       <body className="min-h-screen flex flex-col antialiased overflow-x-hidden">
         <ErrorBoundaryHandler />

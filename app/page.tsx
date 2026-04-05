@@ -10,13 +10,39 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export const metadata: Metadata = {
-  title: 'Makarand Narwekar | Mumbai Corporator | Transforming Communities',
-  description: 'Makarand Narwekar - Mumbai Corporator dedicated to transforming our ward through transparent governance, sustainable development, and citizen-first service. Member of BJP serving Colaba & Fort area.',
+  title: 'Makarand Narwekar | Mumbai Corporator | Transforming Communities with Vision & Leadership',
+  description: 'Makarand Narwekar - Mumbai\'s dynamic Corporator and BJP leader delivering transformative results in A Ward. Award-winning infrastructure projects, innovative youth programs, and transparent governance. Your trusted representative for Colaba & Fort. Experience leadership that makes a difference.',
+  keywords: [
+    'Makarand Narwekar',
+    'Makarand Narwekar Mumbai',
+    'Mumbai Corporator Makarand Narwekar',
+    'BJP Makarand Narwekar',
+    'Colaba Corporator Makarand Narwekar',
+    'A Ward Leader',
+    'Makarand Narwekar Projects',
+    'Best Mumbai Corporator',
+    'Makarand Narwekar Contact',
+    'Fort Mumbai Representative'
+  ],
   openGraph: {
-    title: 'Makarand Narwekar | Mumbai Corporator',
-    description: 'Dedicated to transforming our ward through transparent governance and sustainable development.',
+    title: 'Makarand Narwekar | Mumbai Corporator Transforming A Ward',
+    description: 'Meet Makarand Narwekar - Mumbai\'s dynamic BJP Corporator delivering real results. Infrastructure excellence, youth empowerment, community transformation. Your trusted A Ward representative.',
     url: 'https://makarandnarwekar.com',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Makarand Narwekar - Mumbai Corporator & BJP Leader',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Makarand Narwekar | Mumbai Corporator',
+    description: 'Makarand Narwekar - Transforming A Ward with visionary leadership. Infrastructure. Youth. Community.',
+    creator: '@MNarwekar',
   },
   alternates: {
     canonical: 'https://makarandnarwekar.com',
@@ -28,7 +54,19 @@ export default function HomePage() {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Makarand Narwekar',
-    jobTitle: 'Corporator',
+    alternateName: ['Makarand', 'Narwekar', 'Corporator Makarand Narwekar'],
+    description: 'Dynamic Mumbai Corporator and BJP leader transforming A Ward through visionary infrastructure projects, innovative youth programs, and transparent citizen-first governance. Award-winning public servant dedicated to community excellence.',
+    jobTitle: 'Municipal Corporator - A Ward',
+    worksFor: {
+      '@type': 'GovernmentOrganization',
+      name: 'Municipal Corporation of Greater Mumbai',
+      alternateName: 'MCGM',
+    },
+    memberOf: {
+      '@type': 'Organization',
+      name: 'Bharatiya Janata Party',
+      alternateName: 'BJP',
+    },
     affiliation: {
       '@type': 'Organization',
       name: 'Bharatiya Janata Party',
@@ -41,7 +79,22 @@ export default function HomePage() {
       postalCode: '400005',
       addressCountry: 'IN',
     },
+    areaServed: {
+      '@type': 'AdministrativeArea',
+      name: 'A Ward - Colaba and Fort, Mumbai',
+    },
+    knowsAbout: [
+      'Infrastructure Development',
+      'Urban Planning',
+      'Youth Empowerment',
+      'Community Development',
+      'Municipal Governance',
+      'Public Administration',
+      'Civic Leadership',
+      'Social Welfare'
+    ],
     url: 'https://makarandnarwekar.com',
+    image: 'https://makarandnarwekar.com/makarand-portrait.jpg',
     sameAs: [
       'https://www.facebook.com/MakarandNarwekarOfficial/',
       'https://x.com/MNarwekar',

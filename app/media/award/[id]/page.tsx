@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Award, Calendar, ExternalLink, Trophy, Star } from "lucide-react";
 import type { Metadata } from "next";
+import { generateSEO, KEYWORDS, combineKeywords } from "@/lib/seo";
 
 export const dynamic = 'force-dynamic';
 
@@ -18,10 +19,29 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     };
   }
 
-  return {
-    title: `${award.title} | Awards & Recognition`,
-    description: award.description || `Award: ${award.title}`,
-  };
+  const ogImageUrl = `/api/og?title=${encodeURIComponent(award.title)}&description=${encodeURIComponent('Makarand Narwekar Recognition')}&type=award`;
+
+  return generateSEO({
+    title: `${award.title} | Makarand Narwekar Award & Recognition`,
+    description: award.description || `Makarand Narwekar receives ${award.title}. Recognition of his outstanding leadership, dedication, and transformative impact in Mumbai's A Ward. Celebrating excellence in public service by award-winning Corporator Makarand Narwekar.`,
+    keywords: combineKeywords(
+      KEYWORDS.base,
+      [
+        'Awards',
+        'Recognition',
+        award.title,
+        'Makarand Narwekar Awards',
+        'Makarand Narwekar Recognition',
+        'Award-Winning Corporator',
+        'Mumbai Leader Recognition'
+      ]
+    ),
+    canonical: `/media/award/${id}`,
+    ogImage: ogImageUrl,
+    ogType: 'article',
+    publishedTime: award.publishedAt.toISOString(),
+    modifiedTime: award.updatedAt.toISOString(),
+  });
 }
 
 export default async function AwardDetailPage({ params }: { params: Promise<{ id: string }> }) {

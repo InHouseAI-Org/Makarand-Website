@@ -14,6 +14,7 @@ export const { GET, POST } = createRouteHandler({
 
   // Optional: Add custom configuration
   config: {
+    token: process.env.UPLOADTHING_TOKEN,
     // uploadthingId and uploadthingSecret are automatically read from env variables
     // UPLOADTHING_APP_ID and UPLOADTHING_SECRET
   },

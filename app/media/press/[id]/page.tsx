@@ -35,6 +35,19 @@ export default async function PressDetailPage({ params }: { params: Promise<{ id
     notFound();
   }
 
+  // Get 3 random press items excluding the current one
+  const relatedPress = await prisma.media.findMany({
+    where: {
+      category: 'press',
+      published: true,
+      id: { not: id },
+    },
+    take: 3,
+    orderBy: {
+      publishedAt: 'desc',
+    },
+  });
+
   const formatDate = (date: Date) => {
     return new Date(date).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -154,11 +167,64 @@ export default async function PressDetailPage({ params }: { params: Promise<{ id
           </div>
         </div>
 
-        {/* Related Articles */}
+        {/* More Press Coverage */}
+        {relatedPress.length > 0 && (
+          <div className="mt-16">
+            <h2 className="text-charcoal mb-6" style={{ fontSize: '24px', fontWeight: 700, fontFamily: 'var(--font-family-serif)' }}>
+              More Press Coverage
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {relatedPress.map((item) => (
+                <Link
+                  key={item.id}
+                  href={`/media/press/${item.id}`}
+                  className="group bg-white rounded-2xl border border-border overflow-hidden hover:shadow-xl transition-all duration-300"
+                >
+                  {/* Thumbnail */}
+                  {item.thumbnail && (
+                    <div className="aspect-video w-full overflow-hidden bg-gray-100">
+                      <img
+                        src={item.thumbnail}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  )}
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Newspaper className="w-4 h-4 text-coral" />
+                      <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded-full" style={{ fontSize: '11px', fontWeight: 600 }}>
+                        Press
+                      </span>
+                    </div>
+
+                    <h3 className="text-charcoal mb-2 line-clamp-2 group-hover:text-coral transition-colors" style={{ fontSize: '16px', fontWeight: 700 }}>
+                      {item.title}
+                    </h3>
+
+                    {item.source && (
+                      <p className="text-charcoal-light mb-2" style={{ fontSize: '13px' }}>
+                        {item.source}
+                      </p>
+                    )}
+
+                    <div className="flex items-center gap-2 text-charcoal-light">
+                      <Calendar className="w-3 h-3" />
+                      <span style={{ fontSize: '12px' }}>
+                        {formatDate(item.publishedAt)}
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* View All Link */}
         <div className="mt-12">
-          <h2 className="text-charcoal mb-6" style={{ fontSize: '24px', fontWeight: 700, fontFamily: 'var(--font-family-serif)' }}>
-            More Press Coverage
-          </h2>
           <Link
             href="/media#press-coverage"
             className="inline-flex items-center gap-2 text-coral hover:underline"

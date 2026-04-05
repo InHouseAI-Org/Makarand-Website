@@ -161,9 +161,9 @@ export function WorkImpact({ isFullPage = false, projects = [] }: { isFullPage?:
           </div>
         )}
 
-        {/* Ongoing Projects */}
+        {/* Ongoing Projects Grid */}
         {activeTab === "ongoing" && (
-          <div className="space-y-4" id="ongoing">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6" id="ongoing">
             {ongoingProjects.map((project, index) => {
               // Use progress from database, fallback to 50% if not set
               const progress = project.progress || 50;
@@ -176,36 +176,49 @@ export function WorkImpact({ isFullPage = false, projects = [] }: { isFullPage?:
                   transition={{ delay: index * 0.08 }}
                 >
                   <Link href={`/project/${project.id}`} className="group block bg-white rounded-xl overflow-hidden border border-border hover:shadow-lg transition-all">
-                    <div className="flex flex-col md:flex-row">
-                      <div className="md:w-48 h-40 md:h-auto overflow-hidden">
-                        <img
-                          src={project.image || getCategoryImage(project.category)}
-                          alt={project.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={project.image || getCategoryImage(project.category)}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute top-3 left-3">
+                        <span className="px-3 py-1 bg-orange-500 text-white rounded-full" style={{ fontSize: "11px", fontWeight: 700 }}>
+                          In Progress
+                        </span>
                       </div>
-                      <div className="flex-1 p-5">
-                        <div className="flex items-start justify-between mb-3">
-                          <div>
-                            <h3 className="text-charcoal group-hover:text-coral-dark transition-colors" style={{ fontSize: "18px", fontWeight: 700 }}>
-                              {project.title}
-                            </h3>
-                            <p className="text-charcoal-light mt-1" style={{ fontSize: "13px" }}>
-                              Budget: {project.budget || 'N/A'} {project.impact && `· ${project.impact}`}
-                            </p>
-                          </div>
-                          <span className="px-3 py-1 bg-coral-light text-coral-dark rounded-full shrink-0" style={{ fontSize: "12px", fontWeight: 700 }}>
-                            {progress}%
-                          </span>
-                        </div>
-                        <div className="w-full bg-cream-dark rounded-full h-3 mt-4">
+                      <div className="absolute top-3 right-3">
+                        <span className="px-3 py-1 bg-white/90 text-charcoal rounded-full" style={{ fontSize: "12px", fontWeight: 700 }}>
+                          {progress}%
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-5">
+                      <span className="text-coral" style={{ fontSize: "12px", fontWeight: 600 }}>{project.category}</span>
+                      <h3 className="text-charcoal mt-1 mb-2 group-hover:text-coral-dark transition-colors" style={{ fontSize: "18px", fontWeight: 700 }}>
+                        {project.title}
+                      </h3>
+                      <p className="text-charcoal-light mb-4" style={{ fontSize: "14px", lineHeight: "1.6" }}>
+                        {project.description.length > 100 ? project.description.substring(0, 100) + '...' : project.description}
+                      </p>
+
+                      {/* Progress Bar */}
+                      <div className="mb-4">
+                        <div className="w-full bg-cream-dark rounded-full h-2">
                           <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: `${progress}%` }}
                             transition={{ duration: 1, delay: 0.3 }}
-                            className="h-3 rounded-full bg-gradient-to-r from-coral to-coral-dark"
+                            className="h-2 rounded-full bg-gradient-to-r from-orange-500 to-coral"
                           />
                         </div>
+                      </div>
+
+                      <div className="flex items-center justify-between pt-4 border-t border-border">
+                        <span className="text-charcoal-light" style={{ fontSize: "13px" }}>
+                          {project.startDate ? `Started ${formatDate(project.startDate)}` : 'In Progress'}
+                        </span>
+                        <span className="text-charcoal" style={{ fontSize: "14px", fontWeight: 700 }}>{project.budget || 'N/A'}</span>
                       </div>
                     </div>
                   </Link>

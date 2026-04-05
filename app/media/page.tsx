@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { MediaSection } from "../components/MediaSection";
 
+// Force dynamic rendering to fetch fresh data
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'Media Coverage | News, Videos & Social Media',
   description: 'Latest media coverage, news articles, videos, social media updates, and press releases about Makarand Narwekar\'s work and community initiatives.',

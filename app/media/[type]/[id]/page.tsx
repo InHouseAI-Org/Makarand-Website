@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { MediaDetail } from "../../../components/MediaDetail";
 
+// Force dynamic rendering to fetch fresh data
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 type Props = {
   params: Promise<{ type: string; id: string }>;
 };

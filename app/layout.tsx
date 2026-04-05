@@ -4,6 +4,7 @@ import "./globals.css";
 import { Layout } from "./components/Layout";
 import { PopupManagerWrapper } from "./components/PopupManagerWrapper";
 import { GoogleAnalytics } from "./components/GoogleAnalytics";
+import { ErrorBoundaryHandler } from "./components/ErrorBoundaryHandler";
 
 // Metadata for SEO optimization
 export const metadata: Metadata = {
@@ -104,6 +105,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="min-h-screen flex flex-col antialiased overflow-x-hidden">
+        <ErrorBoundaryHandler />
         <Suspense fallback={null}>
           <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
         </Suspense>

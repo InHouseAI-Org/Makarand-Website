@@ -38,6 +38,7 @@ export function MediaForm({ initialData, isEdit = false }: MediaFormProps) {
     handleSubmit,
     watch,
     setValue,
+    control,
     formState: { errors },
   } = useForm<MediaFormData>({
     defaultValues: initialData || {

@@ -52,6 +52,7 @@ export function GovernmentProjectForm({ initialData, isEdit = false }: Governmen
     register,
     handleSubmit,
     setValue,
+    control,
     formState: { errors },
   } = useForm<GovernmentProjectFormData>({
     defaultValues: initialData || {

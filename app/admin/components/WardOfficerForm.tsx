@@ -30,6 +30,7 @@ export function WardOfficerForm({ initialData, isEdit = false }: WardOfficerForm
   const [error, setError] = useState('');
 
   const {
+    control,
     register,
     handleSubmit,
     watch,

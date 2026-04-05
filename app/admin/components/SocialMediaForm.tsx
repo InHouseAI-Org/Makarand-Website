@@ -27,6 +27,7 @@ export function SocialMediaForm({ initialData, isEdit = false, initialPlatform }
   const [error, setError] = useState('');
 
   const {
+    control,
     register,
     handleSubmit,
     watch,

@@ -30,6 +30,16 @@ export default async function DashboardLayout({
           {children}
         </div>
       </main>
+      <footer className="fixed bottom-0 right-0 p-3">
+        <a
+          href="https://wa.me/919607048300"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs text-charcoal/20 hover:text-charcoal/40 transition-colors"
+        >
+          Griffin Marketing
+        </a>
+      </footer>
     </div>
   );
 }

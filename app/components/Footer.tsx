@@ -136,6 +136,15 @@ export function Footer() {
           <p className="text-white/40" style={{ fontSize: "13px" }}>
             &copy; {new Date().getFullYear()} Makarand Narwekar. All rights reserved.
           </p>
+          <a
+            href="https://wa.me/919607048300"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/30 hover:text-white/50 transition-colors"
+            style={{ fontSize: "12px" }}
+          >
+            Powered by Griffin Marketing
+          </a>
         </div>
       </div>
     </footer>

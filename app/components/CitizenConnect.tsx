@@ -469,6 +469,9 @@ export function CitizenConnect() {
                  formMode === "youth" ? "Submit Enrollment" :
                  "Sign Up as Volunteer"}
               </button>
+              <p className="mt-3 text-charcoal/30 text-center md:text-left" style={{ fontSize: "11px" }}>
+                Website by <a href="https://wa.me/919607048300" target="_blank" rel="noopener noreferrer" className="hover:text-charcoal/50 transition-colors">Griffin Marketing</a>
+              </p>
             </motion.form>
           </div>
         </div>

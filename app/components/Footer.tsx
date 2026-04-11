@@ -43,9 +43,15 @@ export function Footer() {
                 <p className="text-white/60" style={{ fontSize: "12px", fontFamily: "var(--font-family-serif)" }}>Corporator</p>
               </div>
             </div>
-            <p className="text-white/60 mb-6" style={{ fontSize: "14px", lineHeight: "1.7" }}>
+            <p className="text-white/60 mb-4" style={{ fontSize: "14px", lineHeight: "1.7" }}>
               Dedicated to transforming our ward through transparent governance, sustainable development, and citizen-first service.
             </p>
+            {/* Narwekars Citizen Help Line in Footer */}
+            <div className="mb-6 p-4 bg-white/5 rounded-lg border border-white/10">
+              <p className="text-white/90 mb-2" style={{ fontSize: "14px", fontWeight: 600 }}>
+                Narwekars Citizen Help Line
+              </p>
+            </div>
             <div className="flex gap-3">
               {socialLinks.map((social, i) => {
                 const Icon = social.icon;

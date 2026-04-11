@@ -116,12 +116,22 @@ export function generateOrganizationSchema() {
       postalCode: '400005',
       addressCountry: 'IN',
     },
-    contactPoint: {
-      '@type': 'ContactPoint',
-      contactType: 'Public Office',
-      areaServed: 'Mumbai',
-      availableLanguage: ['English', 'Hindi', 'Marathi'],
-    },
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'Public Office',
+        areaServed: 'Mumbai',
+        availableLanguage: ['English', 'Hindi', 'Marathi'],
+      },
+      {
+        '@type': 'ContactPoint',
+        contactType: 'Customer Service',
+        name: 'Narwekars Citizen Help Line',
+        description: 'Dedicated citizen support and assistance line for all ward-related queries and concerns',
+        areaServed: 'Mumbai',
+        availableLanguage: ['English', 'Hindi', 'Marathi'],
+      }
+    ],
     sameAs: [
       'https://www.facebook.com/MakarandNarwekarOfficial/',
       'https://x.com/MNarwekar',

@@ -104,11 +104,34 @@ export default function HomePage() {
     ],
   };
 
+  const helpLineSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Narwekars Citizen Help Line',
+    description: 'Dedicated citizen support and assistance service for all ward-related queries, grievances, and concerns. Available to connect residents with our office for prompt resolution.',
+    provider: {
+      '@type': 'Person',
+      name: 'Makarand Narwekar',
+      jobTitle: 'Municipal Corporator - A Ward',
+    },
+    serviceType: 'Citizen Support and Assistance',
+    areaServed: {
+      '@type': 'AdministrativeArea',
+      name: 'A Ward - Colaba and Fort, Mumbai',
+    },
+    availableLanguage: ['English', 'Hindi', 'Marathi'],
+    url: 'https://makarandnarwekar.com/connect',
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(helpLineSchema) }}
       />
       <Hero />
       <AboutPreview />

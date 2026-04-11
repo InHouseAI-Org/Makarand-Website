@@ -111,13 +111,33 @@ export function Hero() {
                 lineHeight: "1.7",
                 fontWeight: 400,
                 color: "rgba(26, 26, 26, 0.8)",
-                marginBottom: "36px",
+                marginBottom: "20px",
                 maxWidth: "620px"
               }}
             >
               Building a cleaner, safer, and more prosperous ward through
               transparent governance and citizen engagement.
             </motion.p>
+
+            {/* Narwekars Citizen Help Line */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+              style={{
+                marginBottom: "36px",
+                maxWidth: "620px"
+              }}
+            >
+              <p style={{
+                fontSize: "clamp(15px, 1.6vw, 18px)",
+                fontWeight: 600,
+                color: "#1A1A1A",
+                marginBottom: "8px"
+              }}>
+                <span className="text-coral"></span> Narwekars Citizen Help Line
+              </p>
+            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div
@@ -211,12 +231,38 @@ export function Hero() {
                 lineHeight: "1.6",
                 fontWeight: 400,
                 color: "rgba(26, 26, 26, 0.9)",
-                marginBottom: "24px",
+                marginBottom: "16px",
               }}
             >
               Building a cleaner, safer, and more prosperous ward through
               transparent governance and citizen engagement.
             </motion.p>
+
+            {/* Narwekars Citizen Help Line - Mobile */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+              style={{
+                marginBottom: "24px",
+              }}
+            >
+              <p style={{
+                fontSize: "15px",
+                fontWeight: 600,
+                color: "#1A1A1A",
+                marginBottom: "6px"
+              }}>
+                <span className="text-coral">📞</span> Narwekars Citizen Help Line
+              </p>
+              <p style={{
+                fontSize: "13px",
+                color: "rgba(26, 26, 26, 0.8)",
+                lineHeight: "1.5"
+              }}>
+                Our dedicated help line is available to address your concerns promptly.
+              </p>
+            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div

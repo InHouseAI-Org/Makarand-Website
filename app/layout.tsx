@@ -42,12 +42,14 @@ export const metadata: Metadata = {
     'Makarand Narwekar Vision',
     'Makarand Narwekar Contact'
   ],
-  authors: [{ name: 'Manav Bathija' }],
-  creator: 'Manav Bathija',
-  publisher: 'Manav Bathija',
+  authors: [{ name: 'Makarand Narwekar' }],
+  creator: 'Makarand Narwekar',
+  publisher: 'Makarand Narwekar',
   other: {
     'developer': 'Griffin Marketing',
     'developer-contact': 'https://wa.me/919607048300',
+    'citizen-helpline': 'Narwekars Citizen Help Line',
+    'helpline-service': 'Citizen Support and Assistance',
   },
   formatDetection: {
     email: false,

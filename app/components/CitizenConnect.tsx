@@ -139,9 +139,19 @@ export function CitizenConnect() {
             We're Here to Listen
           </h2>
           <p className="text-charcoal-light" style={{ fontSize: "16px", lineHeight: "1.7" }}>
-            Reach out to us with suggestions, grievances, or if you'd like to volunteer. 
+            Reach out to us with suggestions, grievances, or if you'd like to volunteer.
             Every voice matters in building a better ward.
           </p>
+
+          {/* Narwekars Citizen Help Line */}
+          <div className="mt-8 p-6 bg-coral-light rounded-xl border-2 border-coral/30">
+            <p style={{ fontSize: "18px", fontWeight: 700, color: "#1A1A1A", marginBottom: "8px" }}>
+              📞 Narwekars Citizen Help Line
+            </p>
+            <p style={{ fontSize: "15px", color: "rgba(26, 26, 26, 0.8)", lineHeight: "1.6" }}>
+              Your direct line to our office for immediate assistance. Available to help with queries, concerns, and guidance for all ward-related matters.
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

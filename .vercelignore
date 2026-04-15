@@ -1,0 +1,42 @@
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Environment variables (use Vercel dashboard instead)
+.env
+.env.local
+.env*.local
+
+# Build output
+.next
+out
+build
+dist
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation and notes
+*.md
+!README.md
+*.pdf
+*.xlsx
+
+# Database and scripts
+*.sql
+scripts/
+prisma/migrations/
+
+# Temporary files
+*.tmp
+*.log
+.temp

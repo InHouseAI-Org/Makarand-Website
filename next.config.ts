@@ -23,8 +23,21 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'scontent.cdninstagram.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'utfs.io',
+      },
+      {
+        protocol: 'https',
+        hostname: 'uploadthing.com',
+      },
     ],
   },
+  // Vercel-specific optimizations
+  poweredByHeader: false,
+  compress: true,
+  // Ensure Prisma client is available in serverless functions
+  serverExternalPackages: ['@prisma/client', 'prisma'],
 };
 
 export default nextConfig;

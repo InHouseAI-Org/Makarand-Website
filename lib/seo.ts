@@ -126,8 +126,8 @@ export function generateOrganizationSchema() {
       {
         '@type': 'ContactPoint',
         contactType: 'Customer Service',
-        name: 'Narwekars Citizen Help Line',
-        description: 'Dedicated citizen support and assistance line for all ward-related queries and concerns',
+        name: 'Makarand S Narwekar Corp',
+        description: 'Dedicated citizen support and assistance for all ward-related queries and concerns',
         areaServed: 'Mumbai',
         availableLanguage: ['English', 'Hindi', 'Marathi'],
       }

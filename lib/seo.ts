@@ -6,7 +6,7 @@
 import { Metadata } from 'next';
 
 const SITE_URL = 'https://makarandnarwekar.com';
-const SITE_NAME = 'Narwekars Citizen Help Line';
+const SITE_NAME = 'Makarand S Narwekar Corporator';
 const TWITTER_HANDLE = '@MNarwekar';
 
 export interface SEOConfig {
@@ -126,7 +126,7 @@ export function generateOrganizationSchema() {
       {
         '@type': 'ContactPoint',
         contactType: 'Customer Service',
-        name: 'Narwekars Citizen Help Line',
+        name: 'Makarand S Narwekar Corporator',
         description: 'Dedicated citizen support and assistance for all ward-related queries and concerns',
         areaServed: 'Mumbai',
         availableLanguage: ['English', 'Hindi', 'Marathi'],

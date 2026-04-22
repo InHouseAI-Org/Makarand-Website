@@ -38,7 +38,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 flex-shrink-0">
             <p className="text-charcoal" style={{ fontSize: "16px", fontWeight: 800, letterSpacing: "-0.01em", fontFamily: "var(--font-family-serif)" }}>
-              NARWEKARS CITIZEN HELP LINE
+              MAKARAND S NARWEKAR CORPORATOR
             </p>
           </Link>
 

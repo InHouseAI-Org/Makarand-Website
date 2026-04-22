@@ -62,10 +62,10 @@ export function About({ isFullPage = false }: { isFullPage?: boolean }) {
             from community volunteer to ward corporator.
           </p>
 
-          {/* Narwekars Citizen Help Line */}
+          {/* Makarand S Narwekar Corporator */}
           <div className="mt-8 p-5 bg-white rounded-xl border border-coral/20 shadow-sm">
             <p style={{ fontSize: "16px", fontWeight: 600, color: "#1A1A1A", marginBottom: "6px" }}>
-              <span className="text-coral">📞</span> Narwekars Citizen Help Line
+              <span className="text-coral">📞</span> Makarand S Narwekar Corporator
             </p>
             <p style={{ fontSize: "14px", color: "rgba(26, 26, 26, 0.7)", lineHeight: "1.6" }}>
               Reach out to us anytime for assistance, guidance, or to share your concerns. Our dedicated help line ensures every citizen's voice is heard.

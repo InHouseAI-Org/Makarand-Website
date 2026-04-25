@@ -143,10 +143,10 @@ export function CitizenConnect() {
             Every voice matters in building a better ward.
           </p>
 
-          {/* Makarand S Narwekar Corporator */}
+          {/* Adv Narwekar Corporator */}
           <div className="mt-8 p-6 bg-coral-light rounded-xl border-2 border-coral/30">
             <p style={{ fontSize: "18px", fontWeight: 700, color: "#1A1A1A", marginBottom: "8px" }}>
-              📞 Makarand S Narwekar Corporator
+              📞 Adv Narwekar Corporator
             </p>
             <p style={{ fontSize: "15px", color: "rgba(26, 26, 26, 0.8)", lineHeight: "1.6" }}>
               Your direct line to our office for immediate assistance. Available to help with queries, concerns, and guidance for all ward-related matters.

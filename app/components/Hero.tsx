@@ -119,7 +119,7 @@ export function Hero() {
               transparent governance and citizen engagement.
             </motion.p>
 
-            {/* Makarand S Narwekar Corporator */}
+            {/* Adv Narwekar Corporator */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -135,7 +135,7 @@ export function Hero() {
                 color: "#1A1A1A",
                 marginBottom: "8px"
               }}>
-                <span className="text-coral"></span> Makarand S Narwekar Corporator
+                <span className="text-coral"></span> Adv Narwekar Corporator
               </p>
             </motion.div>
 
@@ -238,7 +238,7 @@ export function Hero() {
               transparent governance and citizen engagement.
             </motion.p>
 
-            {/* Makarand S Narwekar Corporator - Mobile */}
+            {/* Adv Narwekar Corporator - Mobile */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -253,7 +253,7 @@ export function Hero() {
                 color: "#1A1A1A",
                 marginBottom: "6px"
               }}>
-                <span className="text-coral">📞</span> Makarand S Narwekar Corporator
+                <span className="text-coral">📞</span> Adv Narwekar Corporator
               </p>
               <p style={{
                 fontSize: "13px",

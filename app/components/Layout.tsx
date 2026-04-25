@@ -38,7 +38,7 @@ function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <p className="text-charcoal" style={{ fontSize: "18px", fontWeight: 800, letterSpacing: "-0.01em", fontFamily: "var(--font-family-serif)" }}>
-              Makarand S Narwekar Corporator
+              Adv Narwekar Corporator
             </p>
           </Link>
 
@@ -154,10 +154,10 @@ function Footer() {
             <p className="text-white/60 mb-4" style={{ fontSize: "14px", lineHeight: "1.7" }}>
               Dedicated to transforming our ward through transparent governance, sustainable development, and citizen-first service.
             </p>
-            {/* Makarand S Narwekar Corporator in Footer */}
+            {/* Adv Narwekar Corporator in Footer */}
             <div className="mb-6 p-4 bg-white/5 rounded-lg border border-white/10">
               <p className="text-white/90 mb-2" style={{ fontSize: "14px", fontWeight: 600 }}>
-                Makarand S Narwekar Corporator
+                Adv Narwekar Corporator
               </p>
             </div>
             <div className="flex gap-3">
@@ -245,7 +245,7 @@ function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-white/40" style={{ fontSize: "13px" }}>
-            &copy; 2026 Makarand S Narwekar Corporator. All rights reserved.
+            &copy; 2026 Adv Narwekar Corporator. All rights reserved.
           </p>
           <a
             href="https://wa.me/919607048300"

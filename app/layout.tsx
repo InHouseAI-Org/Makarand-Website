@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   other: {
     'developer': 'Griffin Marketing',
     'developer-contact': 'https://wa.me/919607048300',
-    'organization': 'Makarand S Narwekar Corporator',
+    'organization': 'Adv Narwekar Corporator',
     'service-type': 'Citizen Support and Assistance',
   },
   formatDetection: {

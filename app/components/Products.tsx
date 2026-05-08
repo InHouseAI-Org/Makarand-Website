@@ -36,9 +36,6 @@ export function Products() {
                 <h3 className="text-charcoal" style={{ fontSize: "20px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
                   Adv Makarand S Narwekar
                 </h3>
-                <p className="text-charcoal-light mt-2" style={{ fontSize: "14px" }}>
-                  Mumbai Corporator
-                </p>
               </div>
             </div>
           </motion.div>

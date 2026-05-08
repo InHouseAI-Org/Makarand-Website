@@ -46,10 +46,10 @@ export function Footer() {
             <p className="text-white/60 mb-4" style={{ fontSize: "14px", lineHeight: "1.7" }}>
               Dedicated to transforming our ward through transparent governance, sustainable development, and citizen-first service.
             </p>
-            {/* Adv Narwekar Corporator in Footer */}
+            {/* Adv Makarand S Narwekar in Footer */}
             <div className="mb-6 p-4 bg-white/5 rounded-lg border border-white/10">
               <p className="text-white/90 mb-2" style={{ fontSize: "14px", fontWeight: 600 }}>
-                Adv Narwekar Corporator
+                Adv Makarand S Narwekar
               </p>
             </div>
             <div className="flex gap-3">

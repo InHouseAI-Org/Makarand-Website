@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Hero } from "./components/Hero";
 import { AboutPreview } from "./components/AboutPreview";
+import { Products } from "./components/Products";
 import { VisionPreview } from "./components/VisionPreview";
 import { WorkImpactPreview } from "./components/WorkImpactPreview";
 import { TestimonialsPreview } from "./components/TestimonialsPreview";
@@ -107,7 +108,7 @@ export default function HomePage() {
   const helpLineSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Adv Narwekar Corporator',
+    name: 'Adv Makarand S Narwekar',
     description: 'Dedicated citizen support and assistance service for all ward-related queries, grievances, and concerns. Available to connect residents with our office for prompt resolution.',
     provider: {
       '@type': 'Person',
@@ -135,6 +136,7 @@ export default function HomePage() {
       />
       <Hero />
       <AboutPreview />
+      <Products />
       <VisionPreview />
       <WorkImpactPreview />
       <MediaPreview />

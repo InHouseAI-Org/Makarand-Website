@@ -49,7 +49,7 @@ export function Footer() {
             {/* Adv Makarand S Narwekar in Footer */}
             <div className="mb-6 p-4 bg-white/5 rounded-lg border border-white/10">
               <p className="text-white/90 mb-2" style={{ fontSize: "14px", fontWeight: 600 }}>
-                Adv Makarand S Narwekar
+                Advocate Makarand Narwekar
               </p>
             </div>
             <div className="flex gap-3">

@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Adv Makarand S Narwekar - Mumbai Corporator',
+    name: 'Advocate Makarand Narwekar - Mumbai Corporator',
     short_name: 'Narwekar Corp',
-    description: 'Adv Makarand S Narwekar - Official website of Mumbai Corporator serving A Ward. Dedicated to transparent governance and community development.',
+    description: 'Advocate Makarand Narwekar - Official website of Mumbai Corporator serving A Ward. Dedicated to transparent governance and community development.',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

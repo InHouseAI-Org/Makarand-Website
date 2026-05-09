@@ -126,7 +126,7 @@ export function generateOrganizationSchema() {
       {
         '@type': 'ContactPoint',
         contactType: 'Customer Service',
-        name: 'Adv Narwekar Corporator',
+        name: 'Advocate Makarand Narwekar',
         description: 'Dedicated citizen support and assistance for all ward-related queries and concerns',
         areaServed: 'Mumbai',
         availableLanguage: ['English', 'Hindi', 'Marathi'],

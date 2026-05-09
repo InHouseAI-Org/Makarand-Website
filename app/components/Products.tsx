@@ -26,7 +26,7 @@ export function Products() {
               <div className="relative aspect-[4/5] overflow-hidden">
                 <img
                   src="/Portrait of a smiling professional man.webp"
-                  alt="Adv Makarand S Narwekar"
+                  alt="Advocate Makarand Narwekar"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -34,7 +34,7 @@ export function Products() {
               {/* Name */}
               <div className="p-6 text-center">
                 <h3 className="text-charcoal" style={{ fontSize: "20px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
-                  Adv Makarand S Narwekar
+                  Advocate Makarand Narwekar
                 </h3>
               </div>
             </div>

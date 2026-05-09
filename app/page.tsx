@@ -108,7 +108,7 @@ export default function HomePage() {
   const helpLineSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Adv Makarand S Narwekar',
+    name: 'Advocate Makarand Narwekar',
     description: 'Dedicated citizen support and assistance service for all ward-related queries, grievances, and concerns. Available to connect residents with our office for prompt resolution.',
     provider: {
       '@type': 'Person',

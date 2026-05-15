@@ -34,7 +34,7 @@ export function Products() {
               {/* Name */}
               <div className="p-6 text-center">
                 <h3 className="text-charcoal" style={{ fontSize: "20px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
-                  Advocate Makarand Narwekar
+                  Makarand Narwekar
                 </h3>
               </div>
             </div>

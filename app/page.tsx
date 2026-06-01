@@ -54,8 +54,8 @@ export default function HomePage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Makarand Narwekar',
-    alternateName: ['Makarand', 'Narwekar', 'Corporator Makarand Narwekar'],
+    name: 'Corporator Makarand Narwekar',
+    alternateName: ['Makarand', 'Narwekar', 'Makarand Narwekar'],
     description: 'Dynamic Mumbai Corporator and BJP leader transforming A Ward through visionary infrastructure projects, innovative youth programs, and transparent citizen-first governance. Award-winning public servant dedicated to community excellence.',
     jobTitle: 'Municipal Corporator - A Ward',
     worksFor: {
@@ -108,11 +108,11 @@ export default function HomePage() {
   const helpLineSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Advocate Makarand Narwekar',
+    name: 'Corporator Makarand Narwekar',
     description: 'Dedicated citizen support and assistance service for all ward-related queries, grievances, and concerns. Available to connect residents with our office for prompt resolution.',
     provider: {
       '@type': 'Person',
-      name: 'Makarand Narwekar',
+      name: 'Corporator Makarand Narwekar',
       jobTitle: 'Municipal Corporator - A Ward',
     },
     serviceType: 'Citizen Support and Assistance',

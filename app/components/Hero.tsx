@@ -135,7 +135,7 @@ export function Hero() {
                 color: "#1A1A1A",
                 marginBottom: "8px"
               }}>
-                <span className="text-coral"></span> Adv Narwekar Corporator
+                <span className="text-coral"></span> Corporator Makarand Narwekar
               </p>
             </motion.div>
 
@@ -253,7 +253,7 @@ export function Hero() {
                 color: "#1A1A1A",
                 marginBottom: "6px"
               }}>
-                <span className="text-coral">📞</span> Adv Narwekar Corporator
+                <span className="text-coral">📞</span> Corporator Makarand Narwekar
               </p>
               <p style={{
                 fontSize: "13px",
@@ -321,7 +321,7 @@ export function Hero() {
               className="text-charcoal-light max-w-2xl mx-auto"
               style={{ fontSize: "18px", lineHeight: "1.6" }}
             >
-              Makarand Narwekar supports ward development, infrastructure,
+              Corporator Makarand Narwekar supports ward development, infrastructure,
               and community welfare initiatives.
             </p>
           </div>

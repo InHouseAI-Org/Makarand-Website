@@ -6,7 +6,7 @@
 import { Metadata } from 'next';
 
 const SITE_URL = 'https://makarandnarwekar.com';
-const SITE_NAME = 'Adv Narwekar Corporator';
+const SITE_NAME = 'Corporator Makarand Narwekar';
 const TWITTER_HANDLE = '@MNarwekar';
 
 export interface SEOConfig {
@@ -35,7 +35,7 @@ export function generateSEO(config: SEOConfig): Metadata {
     ogType = 'website',
     publishedTime,
     modifiedTime,
-    authors = ['Makarand Narwekar'],
+    authors = ['Corporator Makarand Narwekar'],
     noindex = false,
   } = config;
 
@@ -107,7 +107,7 @@ export function generateOrganizationSchema() {
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
     description:
-      'Office of Mumbai Corporator Makarand Narwekar - Dedicated to transparent governance, sustainable development, and citizen-first service.',
+      'Office of Corporator Makarand Narwekar - Dedicated to transparent governance, sustainable development, and citizen-first service.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Ground Floor, Ajanta Apartment, Shaheed Bhagat Singh Road',
@@ -126,7 +126,7 @@ export function generateOrganizationSchema() {
       {
         '@type': 'ContactPoint',
         contactType: 'Customer Service',
-        name: 'Advocate Makarand Narwekar',
+        name: 'Corporator Makarand Narwekar',
         description: 'Dedicated citizen support and assistance for all ward-related queries and concerns',
         areaServed: 'Mumbai',
         availableLanguage: ['English', 'Hindi', 'Marathi'],
@@ -149,7 +149,7 @@ export function generatePersonSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Makarand Narwekar',
+    name: 'Corporator Makarand Narwekar',
     jobTitle: 'Corporator',
     affiliation: {
       '@type': 'Organization',
@@ -185,10 +185,10 @@ export function generateWebSiteSchema() {
     name: SITE_NAME,
     url: SITE_URL,
     description:
-      'Official website of Makarand Narwekar, Mumbai Corporator dedicated to transforming communities through transparent governance and sustainable development.',
+      'Official website of Corporator Makarand Narwekar, Mumbai Corporator dedicated to transforming communities through transparent governance and sustainable development.',
     publisher: {
       '@type': 'Person',
-      name: 'Makarand Narwekar',
+      name: 'Corporator Makarand Narwekar',
     },
     potentialAction: {
       '@type': 'SearchAction',
@@ -241,7 +241,7 @@ export function generateArticleSchema(config: ArticleSchemaConfig) {
     dateModified: config.dateModified || config.datePublished,
     author: {
       '@type': 'Person',
-      name: config.author || 'Makarand Narwekar',
+      name: config.author || 'Corporator Makarand Narwekar',
     },
     publisher: {
       '@type': 'Organization',
@@ -282,7 +282,7 @@ export function generateLocalGovernmentSchema() {
     },
     member: {
       '@type': 'Person',
-      name: 'Makarand Narwekar',
+      name: 'Corporator Makarand Narwekar',
       jobTitle: 'Elected Corporator',
     },
   };
@@ -328,7 +328,7 @@ export function generateEventSchema(config: EventSchemaConfig) {
     image: config.image ? (config.image.startsWith('http') ? config.image : `${SITE_URL}${config.image}`) : undefined,
     organizer: {
       '@type': 'Person',
-      name: 'Makarand Narwekar',
+      name: 'Corporator Makarand Narwekar',
       url: SITE_URL,
     },
     ...(config.url && {

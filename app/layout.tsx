@@ -16,8 +16,8 @@ import {
 export const metadata: Metadata = {
   metadataBase: new URL('https://makarandnarwekar.com'),
   title: {
-    default: 'Makarand Narwekar | Mumbai Corporator | Transforming Communities',
-    template: '%s | Makarand Narwekar'
+    default: 'Corporator Makarand Narwekar | Mumbai Corporator | Transforming Communities',
+    template: '%s | Corporator Makarand Narwekar'
   },
   description: 'Makarand Narwekar - Dynamic Mumbai Corporator and BJP leader transforming A Ward through visionary governance, infrastructure excellence, and unwavering commitment to citizen welfare. Your trusted representative for Colaba and Fort areas.',
   keywords: [
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   other: {
     'developer': 'Griffin Marketing',
     'developer-contact': 'https://wa.me/919607048300',
-    'organization': 'Advocate Makarand Narwekar',
+    'organization': 'Corporator Makarand Narwekar',
     'service-type': 'Citizen Support and Assistance',
   },
   formatDetection: {
@@ -60,8 +60,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://makarandnarwekar.com',
-    siteName: 'Makarand Narwekar - Official Website',
-    title: 'Makarand Narwekar | Mumbai Corporator | Transforming A Ward with Vision & Action',
+    siteName: 'Corporator Makarand Narwekar - Official Website',
+    title: 'Corporator Makarand Narwekar | Mumbai Corporator | Transforming A Ward with Vision & Action',
     description: 'Makarand Narwekar - Your dynamic Mumbai Corporator delivering results. From infrastructure projects to youth empowerment, experience leadership that transforms communities. BJP leader committed to excellence.',
     images: [
       {

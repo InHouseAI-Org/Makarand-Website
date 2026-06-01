@@ -39,17 +39,16 @@ export function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-4">
               <div>
-                <p style={{ fontSize: "16px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>Makarand Narwekar</p>
-                <p className="text-white/60" style={{ fontSize: "12px", fontFamily: "var(--font-family-serif)" }}>Corporator</p>
+                <p style={{ fontSize: "16px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>Corporator Makarand Narwekar</p>
               </div>
             </div>
             <p className="text-white/60 mb-4" style={{ fontSize: "14px", lineHeight: "1.7" }}>
               Dedicated to transforming our ward through transparent governance, sustainable development, and citizen-first service.
             </p>
-            {/* Adv Makarand S Narwekar in Footer */}
+            {/* Corporator Makarand Narwekar in Footer */}
             <div className="mb-6 p-4 bg-white/5 rounded-lg border border-white/10">
               <p className="text-white/90 mb-2" style={{ fontSize: "14px", fontWeight: 600 }}>
-                Advocate Makarand Narwekar
+                Corporator Makarand Narwekar
               </p>
             </div>
             <div className="flex gap-3">
@@ -140,7 +139,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-white/40" style={{ fontSize: "13px" }}>
-            &copy; {new Date().getFullYear()} Makarand Narwekar. All rights reserved.
+            &copy; {new Date().getFullYear()} Corporator Makarand Narwekar. All rights reserved.
           </p>
           <a
             href="https://wa.me/919607048300"

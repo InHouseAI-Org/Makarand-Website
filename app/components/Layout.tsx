@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone, MapPin, Facebook, Instagram, Youtube, Linkedin } from "lucide-react";
+import { LoadingBar } from "./LoadingBar";
 
 const navLinks = [
   { label: "Home", path: "/" },
@@ -106,7 +107,7 @@ function Header() {
               </Link>
             ))}
             <a
-              href="tel:+918850866638"
+              href="tel:+919137791597"
               className="mt-2 flex items-center justify-center gap-2 px-4 py-3 bg-coral text-white rounded-lg"
               style={{ fontSize: "15px", fontWeight: 600, fontFamily: "var(--font-family-serif)" }}
             >
@@ -153,12 +154,7 @@ function Footer() {
             <p className="text-white/60 mb-4" style={{ fontSize: "14px", lineHeight: "1.7" }}>
               Dedicated to transforming our ward through transparent governance, sustainable development, and citizen-first service.
             </p>
-            {/* Corporator Makarand Narwekar in Footer */}
-            <div className="mb-6 p-4 bg-white/5 rounded-lg border border-white/10">
-              <p className="text-white/90 mb-2" style={{ fontSize: "14px", fontWeight: 600 }}>
-                Corporator Makarand Narwekar
-              </p>
-            </div>
+            
             <div className="flex gap-3">
               {socialLinks.map((social, i) => {
                 const Icon = social.icon;
@@ -221,7 +217,7 @@ function Footer() {
               <div className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-1 text-coral shrink-0" />
                 <div>
-                  <p className="text-white/60" style={{ fontSize: "14px" }}>+91 88508 66638</p>
+                  <p className="text-white/60" style={{ fontSize: "14px" }}>+91 91377 91597</p>
                 </div>
               </div>
             </div>
@@ -270,6 +266,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <LoadingBar />
       <Header />
       <main className="flex-1" key={pathname}>
         {children}

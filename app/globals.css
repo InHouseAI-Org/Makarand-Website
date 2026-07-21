@@ -230,4 +230,26 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+  /* Performance optimizations */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Hardware acceleration for animations */
+  .motion-reduce {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Optimize rendering */
+  img {
+    content-visibility: auto;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
 }

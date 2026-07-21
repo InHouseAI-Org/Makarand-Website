@@ -71,7 +71,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   const articleSchema = generateArticleSchema({
     headline: project.title,
     description: project.description,
-    image: project.thumbnail || '/og-image.jpg',
+    image: project.thumbnail || '/og-image.png',
     datePublished: project.createdAt.toISOString(),
     dateModified: project.updatedAt.toISOString(),
     url: `/project/${id}`,

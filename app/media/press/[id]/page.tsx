@@ -65,7 +65,7 @@ export default async function PressDetailPage({ params }: { params: Promise<{ id
   const articleSchema = generateArticleSchema({
     headline: pressItem.title,
     description: pressItem.description || pressItem.title,
-    image: pressItem.thumbnail || '/og-image.jpg',
+    image: pressItem.thumbnail || '/og-image.png',
     datePublished: pressItem.publishedAt.toISOString(),
     dateModified: pressItem.updatedAt.toISOString(),
     author: pressItem.source || 'Media',

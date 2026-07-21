@@ -10,12 +10,19 @@ export async function WorkImpactPreview() {
     orderBy: {
       createdAt: 'desc',
     },
-    take: 3,
   });
 
+  // Sort to show ongoing projects first, then completed, then planned
+  const sortedProjects = projectsFromDB.sort((a, b) => {
+    const statusOrder = { ongoing: 0, completed: 1, planned: 2 };
+    const aOrder = statusOrder[a.status as keyof typeof statusOrder] ?? 3;
+    const bOrder = statusOrder[b.status as keyof typeof statusOrder] ?? 3;
+    return aOrder - bOrder;
+  }).slice(0, 3);
 
-  projectsFromDB.forEach((project, index) => {
-    
+
+  sortedProjects.forEach((project, index) => {
+
   });
 
   // Calculate impact stats from database
@@ -80,7 +87,7 @@ export async function WorkImpactPreview() {
   ];
 
   // Transform featured projects from Project table
-  const featuredProjects = projectsFromDB.map(project => ({
+  const featuredProjects = sortedProjects.map(project => ({
     id: project.id,
     title: project.title,
     category: project.category,

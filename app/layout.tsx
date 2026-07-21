@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     description: 'Makarand Narwekar - Your dynamic Mumbai Corporator delivering results. From infrastructure projects to youth empowerment, experience leadership that transforms communities. BJP leader committed to excellence.',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Makarand Narwekar - Mumbai Corporator & BJP Leader',
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     title: 'Makarand Narwekar | Mumbai Corporator & Community Leader',
     description: 'Makarand Narwekar - Transforming A Ward through visionary leadership. Infrastructure, youth programs, community service. Your trusted representative.',
     creator: '@MNarwekar',
-    images: ['/twitter-image.jpg'],
+    images: ['/twitter-image.png'],
   },
   robots: {
     index: true,
@@ -97,6 +97,10 @@ export const metadata: Metadata = {
     canonical: 'https://makarandnarwekar.com',
   },
   category: 'politics',
+  icons: {
+    icon: '/favicon.png',
+    apple: '/apple-touch-icon.png',
+  },
 };
 
 export const viewport: Viewport = {
@@ -123,7 +127,7 @@ export default function RootLayout({
         {/* Additional meta tags */}
         <meta name="geo.region" content="IN-MH" />
         <meta name="geo.placename" content="Mumbai" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
 

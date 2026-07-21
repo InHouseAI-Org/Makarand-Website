@@ -49,6 +49,7 @@ export function Header() {
                 <Link
                   key={link.path}
                   href={link.path}
+                  prefetch={true}
                   className={`transition-colors whitespace-nowrap ${
                     pathname === link.path
                       ? "text-coral"
@@ -94,6 +95,7 @@ export function Header() {
               <Link
                 key={link.path}
                 href={link.path}
+                prefetch={true}
                 onClick={() => setMobileOpen(false)}
                 className={`px-4 py-3 rounded-full transition-colors text-center ${
                   pathname === link.path
@@ -106,7 +108,7 @@ export function Header() {
               </Link>
             ))}
             <a
-              href="tel:+918850866638"
+              href="tel:+919137791597"
               className="mt-2 flex items-center justify-center gap-2 px-4 py-3 bg-coral text-white rounded-lg"
               style={{ fontSize: "15px", fontWeight: 600, fontFamily: "var(--font-family-serif)" }}
             >

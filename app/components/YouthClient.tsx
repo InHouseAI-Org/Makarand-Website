@@ -323,24 +323,17 @@ export function YouthClient({ testimonials, isFullPage = false }: YouthClientPro
                     className="bg-white rounded-2xl p-6 shadow-lg border-2 border-border hover:border-coral transition-all flex-shrink-0 snap-start"
                     style={{ width: 'calc(33.333% - 16px)', minWidth: '300px' }}
                   >
-                    <div className="flex items-center gap-4 mb-4">
-                      <img
-                        src={testimonial.photo || testimonial.photoUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=ff8465&color=fff`}
-                        alt={testimonial.name}
-                        className="w-14 h-14 rounded-full object-cover"
-                      />
-                      <div>
-                        <p className="text-charcoal font-bold text-base">{testimonial.name}</p>
-                        <p className="text-charcoal-light text-sm">
-                          {testimonial.age && `Age ${testimonial.age}`}
-                          {testimonial.age && testimonial.school && ' • '}
-                          {testimonial.school}
-                        </p>
-                      </div>
-                    </div>
-                    <p className="text-charcoal-light italic text-sm leading-relaxed">
+                    <p className="text-charcoal-light italic text-sm leading-relaxed mb-4">
                       "{testimonial.content}"
                     </p>
+                    <div className="pt-4 border-t border-border">
+                      <p className="text-charcoal font-bold text-base">{testimonial.name}</p>
+                      <p className="text-charcoal-light text-sm">
+                        {testimonial.age && `Age ${testimonial.age}`}
+                        {testimonial.age && testimonial.school && ' • '}
+                        {testimonial.school}
+                      </p>
+                    </div>
                   </motion.div>
                 ))}
               </div>

@@ -45,12 +45,6 @@ export function Footer() {
             <p className="text-white/60 mb-4" style={{ fontSize: "14px", lineHeight: "1.7" }}>
               Dedicated to transforming our ward through transparent governance, sustainable development, and citizen-first service.
             </p>
-            {/* Corporator Makarand Narwekar in Footer */}
-            <div className="mb-6 p-4 bg-white/5 rounded-lg border border-white/10">
-              <p className="text-white/90 mb-2" style={{ fontSize: "14px", fontWeight: 600 }}>
-                Corporator Makarand Narwekar
-              </p>
-            </div>
             <div className="flex gap-3">
               {socialLinks.map((social, i) => {
                 const Icon = social.icon;
@@ -114,8 +108,8 @@ export function Footer() {
               <div className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-1 text-coral shrink-0" />
                 <div>
-                  <a href="tel:+918850866638" className="text-white/60 hover:text-coral transition-colors" style={{ fontSize: "14px" }}>
-                    +91 88508 66638
+                  <a href="tel:+919137791597" className="text-white/60 hover:text-coral transition-colors" style={{ fontSize: "14px" }}>
+                    +91 91377 91597
                   </a>
                 </div>
               </div>

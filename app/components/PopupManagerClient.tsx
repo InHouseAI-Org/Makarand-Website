@@ -26,7 +26,7 @@ const whatsappConfig = {
   title: "Have a Grievance?",
   description: "Reach out to us directly on WhatsApp for quick resolution of your concerns.",
   buttonText: "Chat on WhatsApp",
-  buttonLink: "https://wa.me/918850866638?text=Hello, I would like to raise a grievance regarding...",
+  buttonLink: "https://wa.me/919137839951?text=Hello, I would like to raise a grievance regarding...",
 };
 
 export function PopupManagerClient({ events: dbEvents }: PopupManagerClientProps) {

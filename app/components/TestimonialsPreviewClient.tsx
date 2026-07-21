@@ -316,14 +316,9 @@ export function TestimonialsPreviewClient({ testimonials, videoTestimonials }: T
                 <p className="text-charcoal-light mb-6" style={{ fontSize: "15px", lineHeight: "1.7", fontStyle: "italic" }}>
                   &quot;{item.quote}&quot;
                 </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full overflow-hidden bg-coral/10">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <p className="text-charcoal font-bold" style={{ fontSize: "15px" }}>{item.name}</p>
-                    <p className="text-charcoal-light" style={{ fontSize: "13px" }}>{item.role}</p>
-                  </div>
+                <div>
+                  <p className="text-charcoal font-bold" style={{ fontSize: "15px" }}>{item.name}</p>
+                  <p className="text-charcoal-light" style={{ fontSize: "13px" }}>{item.role}</p>
                 </div>
               </motion.div>
             ))}

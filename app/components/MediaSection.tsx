@@ -191,29 +191,6 @@ export async function MediaSection() {
           </p>
         </div>
 
-        {/* Awards */}
-        {displayAwards.length > 0 && (
-        <div className="mb-20">
-          <div className="flex items-center gap-3 mb-8">
-            <Award className="w-6 h-6 text-coral" />
-            <h3 className="text-charcoal" style={{ fontSize: "22px", fontWeight: 700 }}>Awards & Recognition</h3>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {displayAwards.map((item, index) => (
-              <AwardCard
-                key={item.title}
-                id={item.id}
-                title={item.title}
-                org={item.org}
-                year={item.year}
-                description={item.description}
-                image={item.image}
-              />
-            ))}
-          </div>
-        </div>
-        )}
-
         {/* Press Coverage */}
         {displayPressItems.length > 0 && (
         <div className="mb-20">
@@ -289,7 +266,7 @@ export async function MediaSection() {
         )}
 
         {/* Video Thumbnails */}
-        {displayVideos.length > 0 && (
+        {/* {displayVideos.length > 0 && (
         <div className="mb-20">
           <div className="flex items-center gap-3 mb-8">
             <Play className="w-6 h-6 text-coral" />
@@ -326,7 +303,7 @@ export async function MediaSection() {
             ))}
           </div>
         </div>
-        )}
+        )} */}
 
         {/* Social Media Embeds */}
         <div className="mb-20">
@@ -371,6 +348,29 @@ export async function MediaSection() {
             </div>
           )}
         </div>
+
+        {/* Awards */}
+        {displayAwards.length > 0 && (
+        <div className="mb-20">
+          <div className="flex items-center gap-3 mb-8">
+            <Award className="w-6 h-6 text-coral" />
+            <h3 className="text-charcoal" style={{ fontSize: "22px", fontWeight: 700 }}>Awards & Recognition</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {displayAwards.map((item, index) => (
+              <AwardCard
+                key={item.title}
+                id={item.id}
+                title={item.title}
+                org={item.org}
+                year={item.year}
+                description={item.description}
+                image={item.image}
+              />
+            ))}
+          </div>
+        </div>
+        )}
       </div>
     </section>
   );

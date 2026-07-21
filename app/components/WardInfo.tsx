@@ -97,16 +97,16 @@ export function WardInfo({
             <WardAMap />
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <h3 className="text-charcoal mb-6" style={{ fontSize: "22px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
+            <h3 className="text-charcoal text-center mb-6" style={{ fontSize: "22px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
               Key Landmarks
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
               {landmarks.map((item) => (
                 <div key={item.name} className="flex items-start gap-3 bg-cream rounded-xl p-4 border border-border">
                   <div className="w-10 h-10 rounded-lg bg-coral-light flex items-center justify-center shrink-0">
@@ -119,11 +119,11 @@ export function WardInfo({
                 </div>
               ))}
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
 
         {/* Development Blueprint */}
-        <div className="bg-charcoal rounded-2xl p-8 lg:p-12 mb-16 text-white">
+        {/* <div className="bg-charcoal rounded-2xl p-8 lg:p-12 mb-16 text-white">
           <div className="max-w-3xl mx-auto text-center">
             <FileText className="w-10 h-10 text-coral mx-auto mb-4" />
             <h3 className="mb-4" style={{ fontSize: "24px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>
@@ -147,7 +147,7 @@ export function WardInfo({
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Citizen Services */}
         <h3 className="text-charcoal text-center mb-8" style={{ fontSize: "22px", fontWeight: 700, fontFamily: "var(--font-family-serif)" }}>

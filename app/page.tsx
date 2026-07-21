@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "./components/Hero";
 import { AboutPreview } from "./components/AboutPreview";
-import { Products } from "./components/Products";
 import { VisionPreview } from "./components/VisionPreview";
 import { WorkImpactPreview } from "./components/WorkImpactPreview";
 import { TestimonialsPreview } from "./components/TestimonialsPreview";
@@ -32,7 +31,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Makarand Narwekar - Mumbai Corporator & BJP Leader',
@@ -44,6 +43,7 @@ export const metadata: Metadata = {
     title: 'Makarand Narwekar | Mumbai Corporator',
     description: 'Makarand Narwekar - Transforming A Ward with visionary leadership. Infrastructure. Youth. Community.',
     creator: '@MNarwekar',
+    images: ['/twitter-image.png'],
   },
   alternates: {
     canonical: 'https://makarandnarwekar.com',
@@ -136,7 +136,6 @@ export default function HomePage() {
       />
       <Hero />
       <AboutPreview />
-      <Products />
       <VisionPreview />
       <WorkImpactPreview />
       <MediaPreview />

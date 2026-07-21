@@ -144,14 +144,14 @@ export function CitizenConnect() {
           </p>
 
           {/* Corporator Makarand Narwekar */}
-          <div className="mt-8 p-6 bg-coral-light rounded-xl border-2 border-coral/30">
+          {/* <div className="mt-8 p-6 bg-coral-light rounded-xl border-2 border-coral/30">
             <p style={{ fontSize: "18px", fontWeight: 700, color: "#1A1A1A", marginBottom: "8px" }}>
               📞 Corporator Makarand Narwekar
             </p>
             <p style={{ fontSize: "15px", color: "rgba(26, 26, 26, 0.8)", lineHeight: "1.6" }}>
               Your direct line to our office for immediate assistance. Available to help with queries, concerns, and guidance for all ward-related matters.
             </p>
-          </div>
+          </div> */}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -228,7 +228,7 @@ export function CitizenConnect() {
 
               {/* WhatsApp Button */}
               <a
-                href="https://wa.me/918850866638"
+                href="https://wa.me/919137839951"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 flex items-center justify-center gap-2 w-full py-3 bg-[#25D366] text-white rounded-xl hover:bg-[#1fb855] transition-colors"

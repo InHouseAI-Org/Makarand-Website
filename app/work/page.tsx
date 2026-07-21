@@ -30,9 +30,17 @@ export const metadata: Metadata = generateSEO({
 
 export default async function WorkPage() {
   // Fetch projects from database
-  const projects = await prisma.project.findMany({
+  const projectsFromDB = await prisma.project.findMany({
     where: { published: true },
     orderBy: { createdAt: 'desc' },
+  });
+
+  // Sort to show ongoing projects first, then completed, then planned
+  const projects = projectsFromDB.sort((a, b) => {
+    const statusOrder = { ongoing: 0, completed: 1, planned: 2 };
+    const aOrder = statusOrder[a.status as keyof typeof statusOrder] ?? 3;
+    const bOrder = statusOrder[b.status as keyof typeof statusOrder] ?? 3;
+    return aOrder - bOrder;
   });
 
   return <WorkImpact projects={projects} />;

@@ -161,12 +161,9 @@ export function TestimonialsClient({ testimonials, videoTestimonial }: Testimoni
               <p className="text-charcoal-light mb-6" style={{ fontSize: "15px", lineHeight: "1.7", fontStyle: "italic" }}>
                 &quot;{item.quote}&quot;
               </p>
-              <div className="flex items-center gap-3 pt-4 border-t border-border">
-                <img src={item.image} alt={item.name} className="w-11 h-11 rounded-full object-cover" />
-                <div>
-                  <p className="text-charcoal" style={{ fontSize: "14px", fontWeight: 700 }}>{item.name}</p>
-                  <p className="text-charcoal-light" style={{ fontSize: "12px" }}>{item.role}</p>
-                </div>
+              <div className="pt-4 border-t border-border">
+                <p className="text-charcoal" style={{ fontSize: "14px", fontWeight: 700 }}>{item.name}</p>
+                <p className="text-charcoal-light" style={{ fontSize: "12px" }}>{item.role}</p>
               </div>
             </motion.div>
           ))}

@@ -32,12 +32,21 @@ const nextConfig: NextConfig = {
         hostname: 'uploadthing.com',
       },
     ],
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60,
   },
   // Vercel-specific optimizations
   poweredByHeader: false,
   compress: true,
   // Ensure Prisma client is available in serverless functions
   serverExternalPackages: ['@prisma/client', 'prisma'],
+  // Performance optimizations
+  swcMinify: true,
+  reactStrictMode: true,
+  // Optimize chunking
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'motion/react'],
+  },
 };
 
 export default nextConfig;

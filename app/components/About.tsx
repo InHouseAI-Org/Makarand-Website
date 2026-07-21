@@ -61,16 +61,6 @@ export function About({ isFullPage = false }: { isFullPage?: boolean }) {
             A story of dedication, service, and unwavering commitment to the people -
             from community volunteer to ward corporator.
           </p>
-
-          {/* Corporator Makarand Narwekar */}
-          <div className="mt-8 p-5 bg-white rounded-xl border border-coral/20 shadow-sm">
-            <p style={{ fontSize: "16px", fontWeight: 600, color: "#1A1A1A", marginBottom: "6px" }}>
-              <span className="text-coral">📞</span> Corporator Makarand Narwekar
-            </p>
-            <p style={{ fontSize: "14px", color: "rgba(26, 26, 26, 0.7)", lineHeight: "1.6" }}>
-              Reach out to us anytime for assistance, guidance, or to share your concerns. Our dedicated help line ensures every citizen's voice is heard.
-            </p>
-          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">

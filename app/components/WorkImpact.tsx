@@ -54,7 +54,7 @@ const formatDate = (date: Date | null) => {
 };
 
 export function WorkImpact({ isFullPage = false, projects = [] }: { isFullPage?: boolean; projects?: Project[] }) {
-  const [activeTab, setActiveTab] = useState<Tab>("completed");
+  const [activeTab, setActiveTab] = useState<Tab>("ongoing");
 
   // Separate projects by status
   const completedProjects = projects.filter(p => p.status === "completed");
@@ -97,8 +97,8 @@ export function WorkImpact({ isFullPage = false, projects = [] }: { isFullPage?:
         {/* Tabs */}
         <div className="flex flex-wrap gap-2 mb-8">
           {[
-            { key: "completed" as Tab, label: "Completed", icon: CheckCircle2 },
             { key: "ongoing" as Tab, label: "Ongoing", icon: Clock },
+            { key: "completed" as Tab, label: "Completed", icon: CheckCircle2 },
             { key: "upcoming" as Tab, label: "Upcoming", icon: ArrowUpRight },
           ].map((tab) => (
             <button

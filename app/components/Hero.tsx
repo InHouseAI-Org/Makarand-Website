@@ -119,25 +119,6 @@ export function Hero() {
               transparent governance and citizen engagement.
             </motion.p>
 
-            {/* Adv Narwekar Corporator */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-              style={{
-                marginBottom: "36px",
-                maxWidth: "620px"
-              }}
-            >
-              <p style={{
-                fontSize: "clamp(15px, 1.6vw, 18px)",
-                fontWeight: 600,
-                color: "#1A1A1A",
-                marginBottom: "8px"
-              }}>
-                <span className="text-coral"></span> Corporator Makarand Narwekar
-              </p>
-            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div

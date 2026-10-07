@@ -21,14 +21,14 @@ export function AboutPreview() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image */}
-          {/* <motion.div
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="relative overflow-hidden shadow-2xl"
             style={{ borderRadius: "48px" }}
           >
-            <img src="/From activism to governance journey.webp" alt="Community service" className="w-full aspect-[4/3] object-cover" />
+            <img src="/community-leadership-two-moments.png" alt="Community service" className="w-full aspect-[4/3] object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 to-transparent" />
             <div className="absolute bottom-8 left-8 right-8">
               <p className="text-white/80" style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "0.05em" }}>LEADERSHIP PHILOSOPHY</p>
@@ -36,7 +36,7 @@ export function AboutPreview() {
                 "Every citizen deserves a leader who listens first and acts with purpose."
               </p>
             </div>
-          </motion.div> */}
+          </motion.div>
 
           {/* Content */}
           <motion.div
